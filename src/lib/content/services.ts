@@ -64,6 +64,7 @@ export const flagshipServices: ServiceItem[] = [
     ],
     cta: "Explore Intimate Weddings",
     image: "/service-images/int-elo.webp",
+    perfectForImage: "/decor/ie1.webp",
     banner: "/service-images/int-cover.webp",
   },
   {
@@ -80,6 +81,7 @@ export const flagshipServices: ServiceItem[] = [
     ],
     cta: "Explore Civil Weddings",
     image: "/service-images/civil-i.webp",
+    perfectForImage: "/service-images/civil-p.webp",
     banner: "/service-images/civil-b.webp",
   },
   {
@@ -96,6 +98,7 @@ export const flagshipServices: ServiceItem[] = [
     ],
     cta: "Explore Luxury Hotel Weddings",
     image: "/service-images/lhw-i.webp",
+    perfectForImage: "/service-images/lhw-p.webp",
     banner: "/service-images/lhw-b.webp",
   },
   {
