@@ -24,28 +24,24 @@ export const Route = createFileRoute("/venues")({
   component: VenuesPage,
 });
 
-const beachWedding = getServiceBySlug("beach-wedding-dubai");
-const outdoorWedding = getServiceBySlug("outdoor-weddings");
-const luxuryHotelWedding = getServiceBySlug("luxury-hotel-weddings");
-
 const featuredVenues = [
   {
-    title: "Beach Wedding Venues",
+    title: "Heritage & Cultural Venues",
     description:
-      "Celebrate by the Arabian Gulf at luxury beachfront resorts and private coastal locations, with elegant ceremony settings, beautiful sea views, and unforgettable sunset backdrops.",
-    image: beachWedding?.image,
+      "Heritage and cultural wedding venues in the UAE include Al Seef Heritage Hotel Dubai, Erth Hotel Abu Dhabi, and Platinum Heritage Desert Camp, offering traditional architecture, Bedouin-inspired settings, and warm hospitality.",
+    image: "/venues/heritage.webp",
   },
   {
-    title: "Outdoor Wedding Venues",
+    title: "Private Villas & Estates",
     description:
-      "Discover romantic open-air settings across the UAE, including garden lawns, terraces, courtyards, desert landscapes, and beautifully styled outdoor celebration spaces.",
-    image: outdoorWedding?.image,
+      "With many beautiful private villas and estates to choose from across the UAE, couples can enjoy an exclusive, flexible setting with personalised décor, private entrances, family areas, landscaped lawns, poolsides, catering spaces, and a warm, intimate atmosphere.",
+    image: "/venues/private.webp",
   },
   {
-    title: "Luxury Wedding Venues Dubai",
+    title: "Palace-Style Wedding Venues",
     description:
-      "Host your celebration in Dubai's finest five-star hotels, grand ballrooms, waterfront resorts, and premium event spaces designed for sophisticated luxury weddings.",
-    image: luxuryHotelWedding?.image,
+      "With several palace-style hotels and grand Arabian-inspired venues across the UAE, couples can enjoy elegant ballrooms, impressive entrances, beautiful courtyards, premium suites, and refined hospitality for luxurious cultural and family celebrations.",
+    image: "/venues/palace.webp",
   },
 ].filter((venue): venue is { title: string; description: string; image: string } =>
   Boolean(venue.image),
@@ -71,7 +67,7 @@ function VenuesPage() {
             <SectionHeader
               eyebrow="Wedding Planners"
               title="Wedding Venues in Dubai & UAE"
-              body="Finding the perfect venue is where every unforgettable celebration begins. As an experienced wedding planner in Dubai, we help couples discover the finest wedding venues in Dubai, Abu Dhabi, Ras Al Khaimah, and across the UAE. Whether you're dreaming of a romantic beach wedding, an elegant five-star ballroom, a private garden ceremony, or an exclusive destination venue, we match every location to your vision, guest list, and style."
+              body="Finding the right venue is the first step towards an unforgettable celebration. At Awesome Events Weddings, our experienced luxury wedding planners help couples explore exceptional wedding venues across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE. From comparing the Burj Al Arab wedding cost and reviewing Atlantis The Palm wedding packages to exploring Madinat Jumeirah wedding venues or planning an Al Maha Desert Resort wedding, our tailored wedding planning services help bridge the gap between inspiration and reality. We match every venue to your vision, guest count, budget, cultural requirements, and celebration style, making the entire venue selection process feel clear, personal, and effortless."
               align="center"
               className="
                 mx-auto
@@ -102,9 +98,7 @@ function VenuesPage() {
         <div className="container-page">
           <div className="mx-auto max-w-6xl text-center">
             <p className="eyebrow">Venues</p>
-            <h2 className="mt-3 font-display text-3xl md:text-5xl">
-              Wedding Venues in Dubai
-            </h2>
+            <h2 className="mt-3 font-display text-3xl md:text-5xl">Wedding Venues in Dubai</h2>
             <p className="mx-auto mt-5 max-w-4xl text-sm leading-7 text-muted-foreground md:text-base">
               Explore beautiful wedding settings across Dubai and the UAE, from beachfront resorts
               and elegant outdoor venues to luxurious hotel ballrooms.
