@@ -8,7 +8,7 @@ import { ServicesCarousel } from "@/components/services-carousel";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { WeddingVenuesShowcase } from "@/components/wedding-venues-showcase";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
-import { flagshipServices } from "@/lib/content/services";
+import { flagshipServices, culturalServices } from "@/lib/content/services";
 import { faqItems } from "@/lib/content/faqs";
 import { testimonials } from "@/lib/content/testimonials";
 import { company } from "@/lib/content/nav";
@@ -201,7 +201,7 @@ function HomePage() {
             body="We provide bespoke wedding planning services across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE."
           />
           <div className="mt-12 -mx-3">
-            <ServicesCarousel items={flagshipServices} />
+            <ServicesCarousel items={[...flagshipServices, ...culturalServices]} />{" "}
           </div>
           <div className="mt-10">
             <Button asChild variant="outline">
