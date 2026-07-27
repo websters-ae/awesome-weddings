@@ -210,7 +210,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       ],
       outro:
         "We create luxury desert wedding setups in Dubai that blend natural beauty, refined styling, cultural details, and timeless elegance.",
-      image: "/DW333.webp",
+      image: "/decor/dw-d.webp",
     },
     faqs: [
       {
@@ -511,7 +511,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       ],
       outro:
         "Every luxury yacht wedding setup in Dubai is thoughtfully designed to feel intimate, sophisticated, and beautifully connected to the waterfront.",
-      image: "/yacht 4.webp",
+      image: "/decor/yacht-d.webp",
     },
     faqs: [
       {
@@ -590,7 +590,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       ],
       outro:
         "Every garden wedding setup in Dubai is thoughtfully designed to complement the landscape and create a warm, elegant, and unforgettable celebration.",
-      image: "/GW2.webp",
+      image: "/decor/gard-d.webp",
     },
     faqs: [
       {
@@ -660,7 +660,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       ],
       outro:
         "Every outdoor wedding setup in Dubai is thoughtfully designed to suit beaches, deserts, gardens, terraces, waterfront venues, or the backyard of your own home, creating a warm and memorable celebration under the open sky.",
-      image: "/EOW1.webp",
+      image: "/decor/ow-d.webp",
     },
     faqs: [
       {
@@ -747,7 +747,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       ],
       outro:
         "Every Emirati and GCC wedding setup in Dubai is thoughtfully designed to honour your traditions and welcome every guest beautifully.",
-      image: "/edwp.webp",
+      image: "/decor/em-d.webp",
     },
     faqs: [
       {
@@ -834,7 +834,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       ],
       outro:
         "Every South Asian wedding setup in Dubai is thoughtfully designed to honour your traditions and create a warm, memorable experience for every guest.",
-      image: "/SAW1-image-upscaler.webp",
+      image: "/decor/saw-d.webp",
     },
     faqs: [
       {
@@ -923,7 +923,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       ],
       outro:
         "From intimate celebrations to grand multicultural and multi-day weddings, we create luxury destination wedding decoration in Dubai and the UAE that feels warm, unforgettable, and uniquely yours.",
-      image: "/DEST1.webp",
+      image: "/decor/destw-d.webp",
     },
     faqs: [
       {

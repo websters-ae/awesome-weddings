@@ -86,102 +86,14 @@ const desertWeddingFaqs: ServiceFaq[] = [
   },
 ];
 
-const serviceSlugAliases: Record<string, string> = {
-  "beach-weddings": "beach-wedding-dubai",
-  "luxury-beach-weddings": "beach-wedding-dubai",
-  "luxury-beach-wedding": "beach-wedding-dubai",
-
-  "desert-weddings": "desert-wedding-dubai",
-  "desert-wedding": "desert-wedding-dubai",
-  "desert-weddings-dubai": "desert-wedding-dubai",
-
-  "intimate-weddings": "intimate-elopements",
-  "intimate-elopements-micro-weddings": "intimate-elopements",
-  "micro-weddings": "intimate-elopements",
-
-  "civil-weddings": "civil-weddings-uae",
-  "civil-wedding": "civil-weddings-uae",
-  "civil-wedding-uae": "civil-weddings-uae",
-
-  "luxury-hotel-wedding": "luxury-hotel-weddings",
-  "hotel-weddings": "luxury-hotel-weddings",
-  "luxury-hotel-weddings-dubai": "luxury-hotel-weddings",
-
-  "emirati-weddings": "emirati-gcc-weddings",
-  "gcc-weddings": "emirati-gcc-weddings",
-  "emirati-and-gcc-weddings": "emirati-gcc-weddings",
-
-  "south-asian-wedding": "south-asian-weddings",
-  "south-asian-weddings-dubai": "south-asian-weddings",
-
-  "yacht-weddings": "yacht-marina-weddings",
-  "yacht-marina-wedding": "yacht-marina-weddings",
-  "yacht-and-marina-weddings": "yacht-marina-weddings",
-
-  "garden-wedding": "garden-weddings",
-  "garden-weddings-dubai": "garden-weddings",
-
-  "outdoor-wedding": "outdoor-weddings",
-  "outdoor-weddings-dubai": "outdoor-weddings",
-
-  "destination-wedding": "destination-weddings",
-  "destination-weddings-dubai": "destination-weddings",
-};
-
-function normaliseServiceSlug(value: string): string {
-  return decodeURIComponent(value)
-    .trim()
-    .toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-function resolveServiceSlug(requestedSlug: string): string | undefined {
-  const normalised = normaliseServiceSlug(requestedSlug);
-
-  const directService = getServiceBySlug(normalised);
-  const directDetail = getServiceDetail(normalised);
-  if (directService && directDetail) return normalised;
-
-  const aliasedSlug = serviceSlugAliases[normalised];
-  if (aliasedSlug && getServiceBySlug(aliasedSlug) && getServiceDetail(aliasedSlug)) {
-    return aliasedSlug;
-  }
-
-  const matchingService = allServices.find((item) => {
-    const serviceSlug = normaliseServiceSlug(item.slug);
-    const titleSlug = normaliseServiceSlug(item.title);
-
-    return (
-      serviceSlug === normalised ||
-      titleSlug === normalised ||
-      serviceSlug.includes(normalised) ||
-      normalised.includes(serviceSlug) ||
-      titleSlug.includes(normalised) ||
-      normalised.includes(titleSlug)
-    );
-  });
-
-  if (matchingService && getServiceDetail(matchingService.slug)) {
-    return matchingService.slug;
-  }
-
-  return undefined;
-}
-
 export const Route = createFileRoute("/wedding-services/$slug")({
   loader: ({ params }) => {
-    const resolvedSlug = resolveServiceSlug(params.slug);
-
-    if (!resolvedSlug) throw notFound();
-
-    const service = getServiceBySlug(resolvedSlug);
-    const detail = getServiceDetail(resolvedSlug);
+    const service = getServiceBySlug(params.slug);
+    const detail = getServiceDetail(params.slug);
 
     if (!service || !detail) throw notFound();
 
-    const meta = serviceCtaMeta[resolvedSlug] ?? {
+    const meta = serviceCtaMeta[params.slug] ?? {
       viewLabel: `View ${service.title}`,
       ctaLabel: `Plan My ${service.title}`,
       contactType: service.title,
@@ -327,7 +239,7 @@ function WeddingServicePage() {
               ))}
             </div>
             <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-sm shadow-lg">
-              <img src={service.detailImage ?? service.image} alt={service.title} className="h-full w-full object-cover" />
+              <img src={service.image} alt={service.title} className="h-full w-full object-cover" />
             </div>
             <div className="mt-8">
               <Button asChild>
