@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -178,20 +178,29 @@ function WeddingServicePage() {
   }, [otherServices]);
 
   const [activeServiceSlide, setActiveServiceSlide] = useState(0);
+  const [isServiceSliderPaused, setIsServiceSliderPaused] = useState(false);
+
+  const showPreviousServiceSlide = () => {
+    setActiveServiceSlide((current) => (current === 0 ? serviceSlides.length - 1 : current - 1));
+  };
+
+  const showNextServiceSlide = () => {
+    setActiveServiceSlide((current) => (current === serviceSlides.length - 1 ? 0 : current + 1));
+  };
 
   useEffect(() => {
     setActiveServiceSlide(0);
   }, [service.slug]);
 
   useEffect(() => {
-    if (serviceSlides.length <= 1) return;
+    if (serviceSlides.length <= 1 || isServiceSliderPaused) return;
 
     const timer = window.setInterval(() => {
       setActiveServiceSlide((current) => (current === serviceSlides.length - 1 ? 0 : current + 1));
-    }, 4500);
+    }, 8000);
 
     return () => window.clearInterval(timer);
-  }, [serviceSlides.length]);
+  }, [isServiceSliderPaused, serviceSlides.length]);
 
   return (
     <>
@@ -327,11 +336,14 @@ function WeddingServicePage() {
       )}
 
       {/* Other services */}
+
       <section className="section-y">
         <div className="container-page">
           <div className="text-center">
             <p className="eyebrow">Services</p>
+
             <h2 className="mt-3 font-display text-3xl md:text-4xl">Other Wedding Services</h2>
+
             <div className="mt-5">
               <Button asChild variant="outline" className="rounded-none">
                 <Link to="/services">View All Services</Link>
@@ -339,58 +351,117 @@ function WeddingServicePage() {
             </div>
           </div>
 
-          <div className="mt-8 overflow-hidden">
-            <div
-              className="flex transition-transform duration-700 ease-in-out"
-              style={{ transform: `translateX(-${activeServiceSlide * 100}%)` }}
-            >
-              {serviceSlides.map((slide, slideIndex) => (
-                <div key={slideIndex} className="w-full shrink-0">
-                  <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {slide.map((item) => (
-                      <Link
-                        key={item.slug}
-                        to="/wedding-services/$slug"
-                        params={{ slug: item.slug }}
-                        className="group overflow-hidden rounded-sm border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-lg"
-                      >
-                        <div className="relative aspect-[4/3] overflow-hidden">
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            loading="lazy"
-                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                          />
-                        </div>
-                        <div className="p-5">
-                          <h4 className="font-display text-lg">{item.title}</h4>
-                          <p className="mt-1.5 text-sm text-muted-foreground">{item.short}</p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <div
+            className="mt-8"
+            role="region"
+            aria-label="Other wedding services slider"
+            tabIndex={0}
+            onMouseEnter={() => setIsServiceSliderPaused(true)}
+            onMouseLeave={() => setIsServiceSliderPaused(false)}
+            onFocus={() => setIsServiceSliderPaused(true)}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                setIsServiceSliderPaused(false);
+              }
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                showPreviousServiceSlide();
+              }
 
-          {serviceSlides.length > 1 && (
-            <div className="mt-6 flex justify-center gap-2">
-              {serviceSlides.map((_, index) => (
+              if (event.key === "ArrowRight") {
+                event.preventDefault();
+                showNextServiceSlide();
+              }
+            }}
+          >
+            <div className="flex items-center gap-3 md:gap-5">
+              {/* Previous button */}
+              {serviceSlides.length > 1 && (
                 <button
-                  key={index}
                   type="button"
-                  onClick={() => setActiveServiceSlide(index)}
-                  aria-label={`Show service slide ${index + 1}`}
-                  className={`h-2.5 rounded-full transition-all ${
-                    activeServiceSlide === index
-                      ? "w-8 bg-primary"
-                      : "w-2.5 bg-border hover:bg-muted-foreground/50"
-                  }`}
-                />
-              ))}
+                  onClick={showPreviousServiceSlide}
+                  aria-label="Show previous wedding services"
+                  className="flex h-10 w-10 shrink-0 items-center cursor-pointer justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:h-12 md:w-12"
+                >
+                  <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />
+                </button>
+              )}
+
+              {/* Slider */}
+              <div className="min-w-0 flex-1 overflow-hidden">
+                <div
+                  className="flex transition-transform duration-700 ease-in-out"
+                  style={{
+                    transform: `translateX(-${activeServiceSlide * 100}%)`,
+                  }}
+                >
+                  {serviceSlides.map((slide, slideIndex) => (
+                    <div key={slideIndex} className="w-full shrink-0">
+                      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {slide.map((item) => (
+                          <Link
+                            key={item.slug}
+                            to="/wedding-services/$slug"
+                            params={{ slug: item.slug }}
+                            className="group overflow-hidden rounded-sm border border-border bg-card transition-all hover:-translate-y-1 hover:shadow-lg"
+                          >
+                            <div className="relative aspect-[4/3] overflow-hidden">
+                              <img
+                                src={item.image}
+                                alt={item.title}
+                                loading="lazy"
+                                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                              />
+                            </div>
+
+                            <div className="p-5">
+                              <h4 className="font-display text-lg">{item.title}</h4>
+
+                              <p className="mt-1.5 text-sm text-muted-foreground">{item.short}</p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Next button */}
+              {serviceSlides.length > 1 && (
+                <button
+                  type="button"
+                  onClick={showNextServiceSlide}
+                  aria-label="Show next wedding services"
+                  className="flex h-10 w-10 shrink-0 items-center cursor-pointer justify-center rounded-full border border-border bg-background text-foreground shadow-sm transition hover:border-primary hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 md:h-12 md:w-12"
+                >
+                  <ChevronRight className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />
+                </button>
+              )}
             </div>
-          )}
+
+            {/* Pagination indicators */}
+            {serviceSlides.length > 1 && (
+              <div className="mt-6 flex justify-center gap-2">
+                {serviceSlides.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => setActiveServiceSlide(index)}
+                    aria-label={`Show service slide ${index + 1}`}
+                    aria-current={activeServiceSlide === index ? "true" : undefined}
+                    className={`h-2.5 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${
+                      activeServiceSlide === index
+                        ? "w-8 bg-primary"
+                        : "w-2.5 bg-border hover:bg-muted-foreground/50"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </section>
 

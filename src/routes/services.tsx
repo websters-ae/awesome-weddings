@@ -261,8 +261,9 @@ function ServicesPage() {
           </div>
         </div>
       </section>
+
       {/* Custom Wedding Planning Services */}
-      <section className="section-y bg-primary text-primary-foreground">
+      <section className="section-y -mb-25 bg-gold text-primary-foreground">
         <div className="container-page">
           <div className="mx-auto max-w-4xl text-center">
             <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary-foreground/70">
