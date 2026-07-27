@@ -43,6 +43,18 @@ const featuredVenues = [
       "With several palace-style hotels and grand Arabian-inspired venues across the UAE, couples can enjoy elegant ballrooms, impressive entrances, beautiful courtyards, premium suites, and refined hospitality for luxurious cultural and family celebrations.",
     image: "/venues/palace.webp",
   },
+  {
+    title: "Island & Coastal Resorts",
+    description:
+      "The UAE offers many beautiful island and coastal resorts across Dubai, Abu Dhabi, and Ras Al Khaimah, with sea views, private terraces, landscaped lawns, guest accommodation, and relaxed settings for multi-day wedding celebrations.",
+    image: "/venues/island.webp",
+  },
+  {
+    title: "Farms & Countryside Venues",
+    description:
+      "For couples seeking a peaceful setting, farm and countryside venues across the UAE offer greenery, open lawns, rustic charm, outdoor dining, private gatherings, and a relaxed atmosphere away from the city.",
+    image: "/venues/farm.webp",
+  },
 ].filter((venue): venue is { title: string; description: string; image: string } =>
   Boolean(venue.image),
 );
