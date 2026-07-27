@@ -167,10 +167,12 @@ export const culturalServices: ServiceItem[] = [
     description:
       "Create a romantic garden wedding surrounded by greenery, elegant floral styling, ambient lighting, and a beautifully designed outdoor setting.",
     perfectFor: [
-      "Romantic garden ceremonies",
-      "Floral wedding concepts",
-      "Outdoor receptions",
-      "Daytime celebrations",
+      "Couples planning a romantic garden wedding in Dubai or the UAE",
+      "Brides and grooms who love greenery, open skies, and natural surroundings",
+      "Intimate ceremonies, elegant receptions, and relaxed family celebrations",
+      "Couples seeking lush florals, soft lighting, and refined outdoor décor",
+      "Families wanting resort lawns, private gardens, or landscaped wedding venues",
+      "Anyone dreaming of a warm, elegant, and memorable garden wedding experience",
     ],
     cta: "Explore Garden Weddings",
     image: "/service-images/gard-i.webp",
@@ -214,7 +216,7 @@ export const culturalServices: ServiceItem[] = [
     cta: "Explore Destination Weddings",
     image: "/service-images/destw-i.webp",
     banner: "/service-images/destw-b.webp",
-    perfectForImage: "/decor/destw-d.webp",
+    perfectForImage: "/service-images/destw-p.webp",
   },
 ];
 

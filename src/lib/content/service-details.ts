@@ -92,20 +92,20 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     whyChooseTitle: "What Sets Our Luxury Beach Weddings Apart",
     whyChoose: [
       {
-        title: "Bespoke Beach Wedding Experiences",
-        body: "Every beach wedding is uniquely designed around your vision, traditions, and personal style. Whether you dream of a romantic sunset ceremony or a grand beachfront celebration, we create bespoke experiences that reflect your story.",
+        title: "Seamless Hotel Wedding Coordination",
+        body: "We work closely with leading five-star hotels in Dubai to manage ballroom access, banquet requirements, menus, accommodation, and venue coordination.",
       },
       {
-        title: "Exclusive Beachfront Venues",
-        body: "We partner with some of the UAE's most sought-after beach wedding venues, luxury resorts, and private coastal locations, helping you find the perfect setting for an elegant seaside celebration.",
+        title: "Elegant Ballroom Wedding Transformations",
+        body: "Our team transforms hotel ballrooms through bespoke wedding décor, floral design, luxury lighting, staging, and personalised styling.",
       },
       {
-        title: "Seamless Beach Wedding Planning",
-        body: "Our dedicated Wedding Coordinator team manages every detail, from venue styling and Wedding Decoration Dubai to guest logistics, entertainment, timelines, and beachfront ceremony coordination, allowing you to enjoy a stress-free wedding day.",
+        title: "Refined Wedding Guest Hospitality & RSVP",
+        body: "From room bookings and airport transfers to welcome experiences and family assistance, we ensure every guest feels comfortable and cared for.",
       },
       {
-        title: "Luxury Touches That Create Lasting Memories",
-        body: "From elegant floral styling and bespoke ceremony setups to spectacular fireworks, synchronized drone shows, and exceptional guest experiences, we create Luxury Beach Weddings that are unforgettable for you and everyone celebrating by your side.",
+        title: "Complete Hotel Wedding Management",
+        body: "We coordinate ceremonies, receptions, rehearsals, entertainment, catering, technical production, seating, schedules, and seamless wedding-day operations.",
       },
     ],
     faqs: [
@@ -643,8 +643,25 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "Couples seeking bespoke décor, scenic surroundings, and personalised styling",
       "Those wanting complete planning, guest comfort, and weather-ready coordination",
     ],
-    whyChooseTitle: "Why Choose Us for an Outdoor Wedding",
-    whyChoose: commonWhyChoose("Outdoor Weddings", "outdoor weddings"),
+    whyChooseTitle: "Outdoor Weddings Designed Around Your Setting",
+    whyChoose: [
+      {
+        title: "Tailored Open-Air Wedding Concepts",
+        body: "We create luxury outdoor weddings in Dubai that reflect your style, surroundings, and celebration vision with thoughtful, personalised design.",
+      },
+      {
+        title: "Diverse Outdoor Wedding Venues",
+        body: "From beaches and deserts to terraces, waterfronts, courtyards, and private estates, we source exceptional outdoor wedding venues across the UAE.",
+      },
+      {
+        title: "Elegant Outdoor Décor & Styling",
+        body: "Our team combines floral design, statement structures, lighting, seating, and refined styling to transform every open-air space beautifully.",
+      },
+      {
+        title: "Seamless Outdoor Wedding Coordination",
+        body: "We manage weather planning, flooring, power, sound, guest comfort, catering, timelines, and on-site coordination for a smooth celebration.",
+      },
+    ],
     decor: {
       heading: "Outdoor Wedding Decoration in Dubai & the UAE",
       intro:

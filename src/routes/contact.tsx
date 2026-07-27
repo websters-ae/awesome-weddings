@@ -73,114 +73,115 @@ function ContactPage() {
 
       {/* Contact and Google Form */}
       <section className="section-y bg-secondary/40">
-        <div className="container-page grid gap-12 lg:grid-cols-[1.4fr_1fr]">
-          {/* Google Form */}
-          <div>
-            <div className="rounded-sm border border-border bg-card p-6 md:p-8">
-              <p className="eyebrow">Free Wedding Consultation</p>
+        <div className="container-page">
+          <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
+            {/* Google Form */}
+            <div>
+              <div className="h-full rounded-sm border border-border bg-card p-6 md:p-8">
+                <p className="eyebrow">Free Wedding Consultation</p>
 
-              <h2 className="mt-3 font-display text-2xl md:text-3xl">
-                Start Your Wedding Questionnaire
-              </h2>
+                <h2 className="mt-3 font-display text-2xl md:text-3xl">
+                  Start Your Wedding Questionnaire
+                </h2>
 
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                Tell us about your wedding date, guest count, preferred location, celebration style,
-                and the services you require. One of our wedding specialists will review your
-                enquiry and contact you shortly.
-              </p>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Tell us about your wedding date, guest count, preferred location, celebration
+                  style, and the services you require. One of our wedding specialists will review
+                  your enquiry and contact you shortly.
+                </p>
 
-              <div className="mt-6">
-                <Button asChild variant="outline">
-                  <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
-                    Open Questionnaire
-                    <ExternalLink className="ml-2 h-4 w-4" />
-                  </a>
-                </Button>
+                <div className="mt-6">
+                  <Button asChild variant="outline">
+                    <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer">
+                      Open Questionnaire
+                      <ExternalLink className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
 
-            <div className="mt-10 overflow-hidden rounded-sm border border-border bg-white shadow-sm">
-              <iframe
-                title="Awesome Events Weddings Consultation Form"
-                src={GOOGLE_FORM_EMBED_URL}
-                width="100%"
-                height="1450"
-                loading="lazy"
-                className="block min-h-[1100px] w-full border-0"
-              >
-                Loading…
-              </iframe>
-            </div>
-          </div>
+            {/* Contact information */}
+            <aside>
+              <div className="h-full rounded-sm border border-border bg-card p-6">
+                <h3 className="font-display text-xl">Get in Touch</h3>
 
-          {/* Contact information */}
-          <aside className="flex flex-col gap-6">
-            <div className="rounded-sm border border-border bg-card p-6">
-              <h3 className="font-display text-xl">Get in Touch</h3>
+                <ul className="mt-5 space-y-4 text-sm">
+                  <li className="flex items-start gap-3">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
 
-              <ul className="mt-5 space-y-4 text-sm">
-                <li className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <span>{company.address}</span>
+                  </li>
 
-                  <span>{company.address}</span>
-                </li>
+                  <li className="flex items-start gap-3">
+                    <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
 
-                <li className="flex items-start gap-3">
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <a
+                      href={`tel:${company.phone}`}
+                      className="transition-colors hover:text-primary"
+                    >
+                      {company.phone}
+                    </a>
+                  </li>
 
-                  <a href={`tel:${company.phone}`} className="transition-colors hover:text-primary">
-                    {company.phone}
+                  <li className="flex items-start gap-3">
+                    <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+
+                    <a
+                      href={`mailto:${company.email}`}
+                      className="break-all transition-colors hover:text-primary"
+                    >
+                      {company.email}
+                    </a>
+                  </li>
+                </ul>
+
+                <div className="mt-6 flex gap-2">
+                  <a
+                    href={socialLinks.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="rounded-full border border-border p-2 transition-colors hover:border-primary hover:text-primary"
+                  >
+                    <Linkedin className="h-4 w-4" />
                   </a>
-                </li>
-
-                <li className="flex items-start gap-3">
-                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
 
                   <a
-                    href={`mailto:${company.email}`}
-                    className="break-all transition-colors hover:text-primary"
+                    href={socialLinks.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="rounded-full border border-border p-2 transition-colors hover:border-primary hover:text-primary"
                   >
-                    {company.email}
+                    <Instagram className="h-4 w-4" />
                   </a>
-                </li>
-              </ul>
-
-              <div className="mt-6 flex gap-2">
-                <a
-                  href={socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="rounded-full border border-border p-2 transition-colors hover:border-primary hover:text-primary"
-                >
-                  <Linkedin className="h-4 w-4" />
-                </a>
-
-                <a
-                  href={socialLinks.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="rounded-full border border-border p-2 transition-colors hover:border-primary hover:text-primary"
-                >
-                  <Instagram className="h-4 w-4" />
-                </a>
+                </div>
               </div>
+            </aside>
+          </div>
+
+          {/* Full-width landscape map */}
+          <div className="mt-12">
+            <div className="mb-6 text-center">
+              <p className="eyebrow">Our Location</p>
+
+              <h2 className="mt-3 font-display text-2xl md:text-3xl">Visit Us in Dubai</h2>
             </div>
 
-            {/* Map */}
-            <div className="overflow-hidden rounded-sm border border-border">
+            <div className="overflow-hidden rounded-sm border border-border bg-card">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.4526034444984!2d55.27847327593053!3d25.221676330707556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6cac1c87c3e1%3A0xeb5f7e43d2be81c4!2sWebsters!5e0!3m2!1sen!2sae!4v1784871304483!5m2!1sen!2sae"
+                title="Awesome Events Weddings location"
                 width="100%"
-                height="320"
+                height="520"
                 loading="lazy"
-                className="block"
+                className="block h-[380px] w-full md:h-[480px] lg:h-[520px]"
                 allowFullScreen
                 referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
-          </aside>
+          </div>
         </div>
       </section>
     </>
