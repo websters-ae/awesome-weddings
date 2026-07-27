@@ -200,7 +200,7 @@ function ServicesPage() {
           <div className="mx-auto max-w-5xl space-y-16 md:space-y-24">
             {allServices.map((service) => {
               const meta = serviceCtaMeta[service.slug];
-              const viewLabel = meta?.viewLabel ?? `View ${service.title}`;
+              const viewLabel = meta?.viewLabel ?? `Explore ${service.title} services`;
               const override = serviceContentOverrides[service.slug];
               const description = override?.description ?? service.description;
               const perfectFor = override?.perfectFor ?? service.perfectFor;

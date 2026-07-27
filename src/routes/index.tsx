@@ -306,34 +306,55 @@ function HomePage() {
 
       {/* Get in Touch */}
       <section className="section-y">
-        <div className="container-page rounded-sm bg-primary p-10 text-primary-foreground md:p-16">
-          <div className="grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-center">
-            <div>
-              <p className="eyebrow text-accent">Get in Touch</p>
-              <h2 className="mt-3 font-display text-3xl md:text-5xl">
-                Ready to plan your dream wedding?
-              </h2>
-              <p className="mt-4 max-w-xl text-primary-foreground/80">
-                Share a few details about your celebration and our wedding specialists will prepare
-                a personalized consultation tailored to your vision.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3 md:justify-end">
-              <Button
-                asChild
-                size="lg"
-                className="bg-accent text-accent-foreground hover:bg-accent/90"
-              >
-                <Link to="/contact">Book Free Consultation</Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-              >
-                <Link to="/portfolio">View our portfolio page</Link>
-              </Button>
+        <div className="container-page">
+          <div className="rounded-sm bg-primary px-6 py-10 text-primary-foreground shadow-[0_24px_70px_rgba(60,15,15,0.18)] md:px-12 md:py-16">
+            <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-center">
+              <div>
+                <p className="eyebrow text-gold">Get in Touch</p>
+
+                <h2 className="mt-3 font-display text-3xl leading-tight md:text-5xl">
+                  Ready to plan your dream wedding?
+                </h2>
+
+                <p className="mt-4 max-w-xl leading-relaxed text-primary-foreground/75">
+                  Share a few details about your celebration and our wedding specialists will
+                  prepare a personalised consultation tailored to your vision.
+                </p>
+              </div>
+              <div className="grid w-full max-w-[460px] gap-3 sm:grid-cols-2 md:ml-auto">
+                <Button
+                  asChild
+                  size="lg"
+                  className="
+                    h-12 w-full rounded-sm border border-gold
+                    bg-gold px-6 text-sm font-medium
+                    text-ink shadow-sm
+                    hover:-translate-y-0.5
+                    hover:bg-gold/90
+                    hover:shadow-md
+                  "
+                >
+                  <Link to="/contact">Book a Free Consultation</Link>
+                </Button>
+
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="
+                    h-12 w-full rounded-sm
+                    border border-white/60
+                    bg-transparent px-6
+                    text-sm font-medium text-white
+                    hover:-translate-y-0.5
+                    hover:border-white
+                    hover:bg-white
+                    hover:text-primary
+                  "
+                >
+                  <Link to="/portfolio">View Our Portfolio</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>

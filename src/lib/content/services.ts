@@ -299,47 +299,47 @@ export interface ServiceCta {
 
 export const serviceCtaMeta: Record<string, ServiceCta> = {
   "beach-wedding-dubai": {
-    viewLabel: "View Luxury Beach Wedding",
+    viewLabel: "Explore Beach Wedding Services",
     ctaLabel: "Start Planning Your Luxury Beach Wedding",
     contactType: "Luxury Beach Wedding",
   },
   "desert-wedding-dubai": {
-    viewLabel: "View Desert Wedding",
+    viewLabel: "Explore Desert Wedding Services",
     ctaLabel: "Begin Your Desert Wedding Journey",
     contactType: "Desert Wedding",
   },
   "intimate-elopements": {
-    viewLabel: "View Intimate Weddings",
+    viewLabel: "Explore Intimate Weddings Services",
     ctaLabel: "Plan My Elopement",
     contactType: "Elopement / Micro Wedding",
   },
   "civil-weddings-uae": {
-    viewLabel: "View Civil Weddings",
+    viewLabel: "Explore Civil Weddings Services",
     ctaLabel: "Start My Civil Wedding",
     contactType: "Civil Wedding",
   },
   "luxury-hotel-weddings": {
-    viewLabel: "View Luxury Hotel Wedding",
+    viewLabel: "Explore Luxury Hotel Wedding Services",
     ctaLabel: "Plan My Luxury Hotel Wedding",
     contactType: "Luxury Hotel Wedding",
   },
   "yacht-marina-weddings": {
-    viewLabel: "View Yacht & Marina Wedding",
+    viewLabel: "Explore Yacht & Marina Wedding Services",
     ctaLabel: "Plan My Yacht & Marina Wedding",
     contactType: "Yacht / Marina Wedding",
   },
   "garden-weddings": {
-    viewLabel: "View Garden Wedding",
+    viewLabel: "Explore Garden Wedding Services",
     ctaLabel: "Plan My Garden Wedding",
     contactType: "Garden Wedding",
   },
   "outdoor-weddings": {
-    viewLabel: "View Outdoor Wedding",
+    viewLabel: "Explore Outdoor Wedding Services",
     ctaLabel: "Plan My Outdoor Wedding",
     contactType: "Outdoor Wedding",
   },
   "destination-weddings": {
-    viewLabel: "View Destination Wedding",
+    viewLabel: "Explore Destination Wedding Services",
     ctaLabel: "Plan My Destination Wedding",
     contactType: "Destination Wedding",
   },
