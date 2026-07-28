@@ -1,10 +1,6 @@
 import type { ArticleBodyBlock } from "@/lib/content/blog";
 
-export function ArticleBody({
-  blocks,
-}: {
-  blocks?: ArticleBodyBlock[];
-}) {
+export function ArticleBody({ blocks }: { blocks?: ArticleBodyBlock[] }) {
   if (!blocks?.length) return null;
 
   return (
@@ -92,18 +88,11 @@ export function ArticleBody({
 
           case "callout":
             return (
-              <aside
-                key={key}
-                className="border border-primary/20 bg-primary/5 px-6 py-5"
-              >
+              <aside key={key} className="border border-primary/20 bg-primary/5 px-6 py-5">
                 {block.title && (
-                  <h3 className="font-display text-xl text-foreground">
-                    {block.title}
-                  </h3>
+                  <h3 className="font-display text-xl text-foreground">{block.title}</h3>
                 )}
-                <p className={block.title ? "mt-2" : ""}>
-                  {block.text}
-                </p>
+                <p className={block.title ? "mt-2" : ""}>{block.text}</p>
               </aside>
             );
         }

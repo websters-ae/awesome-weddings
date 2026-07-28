@@ -1,133 +1,225 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { getPostBySlug, blogPosts } from "@/lib/content/blog";
+import { CalendarDays, Clock3 } from "lucide-react";
+import { formatBlogDate, getPostBySlug } from "@/lib/content/blog";
+import { ArticleBody } from "@/components/article-body";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/wedding-guide/$slug")({
   loader: ({ params }) => {
     const post = getPostBySlug(params.slug);
-    if (!post) throw notFound();
+
+    if (!post) {
+      throw notFound();
+    }
+
     return { post };
   },
+
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
         meta: [
-          { title: "Article not found — Wedding Guide" },
-          { name: "robots", content: "noindex" },
+          {
+            title: "Article not found — Wedding Guide",
+          },
+          {
+            name: "robots",
+            content: "noindex",
+          },
         ],
       };
     }
-    const p = loaderData.post;
+
+    const { post } = loaderData;
+
     return {
       meta: [
-        { title: `${p.title} | Wedding Guide` },
-        { name: "description", content: p.excerpt },
-        { name: "keywords", content: p.keywords.join(", ") },
-        { property: "og:title", content: p.title },
-        { property: "og:description", content: p.excerpt },
-        { property: "og:image", content: p.image },
-        { property: "og:type", content: "article" },
+        {
+          title: `${post.title} | Wedding Guide`,
+        },
+        {
+          name: "description",
+          content: post.excerpt,
+        },
+        {
+          name: "keywords",
+          content: post.keywords.join(", "),
+        },
+        {
+          property: "og:title",
+          content: post.title,
+        },
+        {
+          property: "og:description",
+          content: post.excerpt,
+        },
+        {
+          property: "og:image",
+          content: post.image,
+        },
+        {
+          property: "og:type",
+          content: "article",
+        },
+        {
+          property: "article:published_time",
+          content: post.date,
+        },
+
+        ...(post.updatedDate
+          ? [
+              {
+                property: "article:modified_time",
+                content: post.updatedDate,
+              },
+            ]
+          : []),
       ],
     };
   },
-  notFoundComponent: () => (
-    <div className="section-y">
+
+  notFoundComponent: ArticleNotFound,
+
+  component: ArticlePage,
+});
+
+function ArticleNotFound() {
+  return (
+    <section className="section-y">
       <div className="container-page text-center">
         <h1 className="font-display text-4xl">Article not found</h1>
+
+        <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+          The wedding guide you are looking for may have been moved or is not currently published.
+        </p>
+
         <div className="mt-6">
           <Button asChild>
             <Link to="/wedding-guide">Back to Wedding Guide</Link>
           </Button>
         </div>
       </div>
-    </div>
-  ),
-  component: ArticlePage,
-});
+    </section>
+  );
+}
 
 function ArticlePage() {
   const { post } = Route.useLoaderData();
-  const related = blogPosts
-    .filter((p) => p.status === "published" && p.slug !== post.slug && p.category === post.category)
-    .slice(0, 3);
 
   return (
-    <>
-      <article className="section-y">
-        <div className="container-page max-w-3xl">
-          <nav className="mb-6 text-xs uppercase tracking-widest text-muted-foreground">
-            <Link to="/wedding-guide">Wedding Guide</Link> <span className="mx-2">/</span>{" "}
-            {post.category}
-          </nav>
-          <p className="eyebrow">{post.category}</p>
-          <h1 className="mt-3 font-display text-4xl leading-tight md:text-5xl">{post.title}</h1>
-          <p className="mt-4 text-sm text-muted-foreground">
-            {new Date(post.date).toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })}
-          </p>
-          <div className="mt-8 aspect-[16/9] overflow-hidden rounded-sm">
-            <img src={post.image} alt={post.title} className="h-full w-full object-cover" />
-          </div>
-          <div className="prose prose-neutral mt-10 max-w-none text-base leading-relaxed text-foreground/85">
-            <p className="text-lg text-muted-foreground">{post.excerpt}</p>
-            {post.body ? (
-              <div dangerouslySetInnerHTML={{ __html: post.body }} />
-            ) : (
-              <>
-                <p>
-                  This is a seeded article outline. Our editorial team is preparing the full guide
-                  with expert insight, up-to-date pricing and real venue examples across Dubai, Abu
-                  Dhabi and the wider UAE.
-                </p>
-                <p>
-                  In the meantime, if you'd like to discuss how this topic applies to your wedding,
-                  book a free consultation and one of our planners will walk you through it in
-                  detail.
-                </p>
-              </>
-            )}
-          </div>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Button asChild>
-              <Link to="/contact">Book Free Consultation</Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link to="/wedding-guide">Back to the Guide</Link>
-            </Button>
+    <article>
+      {/* Article heading */}
+      <header className="section-y pb-10 md:pb-14">
+        <div className="container-page">
+          <div className="mx-auto max-w-4xl">
+            <nav className="mb-7 text-xs uppercase tracking-widest text-muted-foreground">
+              <Link to="/" className="transition-colors hover:text-primary">
+                Home
+              </Link>
+
+              <span className="mx-2">/</span>
+
+              <Link to="/wedding-guide" className="transition-colors hover:text-primary">
+                Wedding Guide
+              </Link>
+
+              {post.category && (
+                <>
+                  <span className="mx-2">/</span>
+
+                  <span>{post.category}</span>
+                </>
+              )}
+            </nav>
+
+            {post.category && <p className="eyebrow">{post.category}</p>}
+
+            <h1 className="mt-3 font-display text-4xl leading-tight md:text-5xl lg:text-6xl">
+              {post.title}
+            </h1>
+
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
+              <span className="inline-flex items-center gap-2">
+                <CalendarDays className="h-4 w-4" aria-hidden="true" />
+
+                <time dateTime={post.date}>Published {formatBlogDate(post.date, "long")}</time>
+              </span>
+
+              {post.updatedDate && (
+                <span>
+                  Updated{" "}
+                  <time dateTime={post.updatedDate}>
+                    {formatBlogDate(post.updatedDate, "long")}
+                  </time>
+                </span>
+              )}
+
+              {post.readingTime && (
+                <span className="inline-flex items-center gap-2">
+                  <Clock3 className="h-4 w-4" aria-hidden="true" />
+                  {post.readingTime} min read
+                </span>
+              )}
+            </div>
+
+            {/* Synopsis */}
+            <p className="mt-7 max-w-3xl text-lg leading-8 text-muted-foreground md:text-xl">
+              {post.excerpt}
+            </p>
           </div>
         </div>
-      </article>
+      </header>
 
-      {related.length > 0 && (
-        <section className="section-y bg-secondary/40">
-          <div className="container-page">
-            <h2 className="font-display text-2xl">More in {post.category}</h2>
-            <div className="mt-8 grid gap-6 md:grid-cols-3">
-              {related.map((r) => (
-                <Link
-                  key={r.slug}
-                  to="/wedding-guide/$slug"
-                  params={{ slug: r.slug }}
-                  className="group"
-                >
-                  <div className="aspect-[4/3] overflow-hidden rounded-sm">
-                    <img
-                      src={r.image}
-                      alt={r.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <h3 className="mt-3 font-display text-lg group-hover:text-primary">{r.title}</h3>
-                </Link>
-              ))}
+      {/* Main article image */}
+      <div className="container-page">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-sm bg-muted">
+          <img
+            src={post.image}
+            alt={post.imageAlt || post.title}
+            fetchPriority="high"
+            decoding="async"
+            className="aspect-[16/9] h-auto w-full object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Article body */}
+      <section className="pb-16 pt-10 md:pb-24 md:pt-14">
+        <div className="container-page">
+          <div className="mx-auto max-w-3xl">
+            {post.body && post.body.length > 0 ? (
+              <ArticleBody blocks={post.body} />
+            ) : (
+              <div className="rounded-sm border border-dashed border-border bg-secondary/30 px-6 py-10 text-center">
+                <h2 className="font-display text-2xl">Full guide coming soon</h2>
+
+                <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+                  This article is currently being prepared. Contact our wedding planning team to
+                  discuss how this topic applies to your celebration.
+                </p>
+              </div>
+            )}
+
+            {/* Article CTA */}
+            <div className="mt-14 border-t border-border pt-8">
+              <p className="text-base leading-relaxed text-muted-foreground">
+                Planning a wedding in Dubai or elsewhere in the UAE? Share your plans with our team
+                for a personalised consultation.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button asChild>
+                  <Link to="/contact">Book Free Consultation</Link>
+                </Button>
+
+                <Button asChild variant="outline">
+                  <Link to="/wedding-guide">Back to the Guide</Link>
+                </Button>
+              </div>
             </div>
           </div>
-        </section>
-      )}
-    </>
+        </div>
+      </section>
+    </article>
   );
 }
