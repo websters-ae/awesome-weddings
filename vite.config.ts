@@ -8,9 +8,10 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
+import mdx from "@mdx-js/rollup";
 
 export default defineConfig({
-  plugins: [TanStackRouterVite(), react(), tailwindcss()],
+  plugins: [TanStackRouterVite(), mdx(), react(), tailwindcss()],
   resolve: {
     tsconfigPaths: true,
     alias: {

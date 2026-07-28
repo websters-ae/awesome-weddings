@@ -15,7 +15,7 @@ import { company, socialLinks } from "@/lib/content/nav";
 */
 
 const GOOGLE_FORM_URL =
-  "https://docs.google.com/forms/d/1xkjIvxIXVq9ZPVbAsskQUoDMebkh8eRA9T4V1NJucUM/edit";
+  "https://docs.google.com/forms/d/e/1FAIpQLSfU4PG8jp4_FeStCQZkzwXZEA2UbxYr6a--06CZqtQtf-Tpzg/viewform";
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>): { type?: string } => ({

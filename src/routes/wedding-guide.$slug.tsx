@@ -1,7 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { CalendarDays, Clock3 } from "lucide-react";
 import { formatBlogDate, getPostBySlug } from "@/lib/content/blog";
-import { ArticleBody } from "@/components/article-body";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/wedding-guide/$slug")({
@@ -106,6 +105,8 @@ function ArticleNotFound() {
 function ArticlePage() {
   const { post } = Route.useLoaderData();
 
+  const Content = post.Content;
+
   return (
     <article>
       {/* Article heading */}
@@ -163,15 +164,15 @@ function ArticlePage() {
             </div>
 
             {/* Synopsis */}
-            <p className="mt-7 max-w-3xl text-lg leading-8 text-muted-foreground md:text-xl">
+            {/* <p className="mt-7 max-w-3xl text-lg leading-8 text-muted-foreground md:text-xl">
               {post.excerpt}
-            </p>
+            </p> */}
           </div>
         </div>
       </header>
 
       {/* Main article image */}
-      <div className="container-page">
+      {/* <div className="container-page">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-sm bg-muted">
           <img
             src={post.image}
@@ -181,24 +182,15 @@ function ArticlePage() {
             className="aspect-[16/9] h-auto w-full object-cover"
           />
         </div>
-      </div>
+      </div> */}
 
       {/* Article body */}
-      <section className="pb-16 pt-10 md:pb-24 md:pt-14">
+      <section className="pb-16 md:pb-24 ">
         <div className="container-page">
           <div className="mx-auto max-w-3xl">
-            {post.body && post.body.length > 0 ? (
-              <ArticleBody blocks={post.body} />
-            ) : (
-              <div className="rounded-sm border border-dashed border-border bg-secondary/30 px-6 py-10 text-center">
-                <h2 className="font-display text-2xl">Full guide coming soon</h2>
-
-                <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                  This article is currently being prepared. Contact our wedding planning team to
-                  discuss how this topic applies to your celebration.
-                </p>
-              </div>
-            )}
+            <div className="article-content">
+              <Content />
+            </div>
 
             {/* Article CTA */}
             <div className="mt-14 border-t border-border pt-8">
