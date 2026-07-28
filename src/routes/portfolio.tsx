@@ -28,12 +28,6 @@ export const Route = createFileRoute("/portfolio")({
   component: PortfolioPage,
 });
 
-/*
-  These URLs are collected at build time.
-
-  The browser still downloads each image only when its <img> element is
-  rendered and becomes eligible for loading.
-*/
 const portfolioModules = import.meta.glob("/src/assets/portfolio/*.webp", {
   eager: true,
   import: "default",
@@ -46,35 +40,59 @@ type PortfolioImage = {
   alt: string;
 };
 
+type LoadedPortfolioImage = PortfolioImage & {
+  width: number;
+  height: number;
+};
+
 type PortfolioCardProps = {
-  image: PortfolioImage;
+  image: LoadedPortfolioImage;
   index: number;
   total: number;
   onOpen: () => void;
 };
 
-/*
-  Only the first group is rendered initially.
-  More images are automatically added as the visitor scrolls.
-*/
-const INITIAL_IMAGE_COUNT = 24;
-const IMAGES_PER_BATCH = 20;
+const INITIAL_IMAGE_COUNT = 20;
+const IMAGES_PER_BATCH = 16;
 
 /*
-  Fixed aspect ratios reserve space before each image downloads.
-  This prevents the page from shifting when images finish loading.
+  Read the image's real dimensions before rendering it.
 
-  The thumbnails use object-cover, so they may crop slightly.
-  The lightbox still displays the full image.
+  Because the exact width and height are available before the card appears,
+  CSS can reserve the correct space and prevent layout shifting.
+
+  Loading the image through Image() also warms the browser cache, so the
+  visible <img> normally appears quickly afterwards.
 */
-const CARD_ASPECT_RATIOS = [
-  "aspect-[4/5]",
-  "aspect-square",
-  "aspect-[3/4]",
-  "aspect-[4/3]",
-  "aspect-[5/6]",
-  "aspect-[3/2]",
-] as const;
+function loadImageMetadata(image: PortfolioImage): Promise<LoadedPortfolioImage> {
+  return new Promise((resolve) => {
+    const preloadImage = new Image();
+
+    preloadImage.decoding = "async";
+
+    preloadImage.onload = () => {
+      resolve({
+        ...image,
+        width: preloadImage.naturalWidth || 4,
+        height: preloadImage.naturalHeight || 5,
+      });
+    };
+
+    preloadImage.onerror = () => {
+      /*
+        Use a safe fallback ratio if an image cannot be read.
+        The image card remains visible rather than breaking the page.
+      */
+      resolve({
+        ...image,
+        width: 4,
+        height: 5,
+      });
+    };
+
+    preloadImage.src = image.src;
+  });
+}
 
 function createReadableAlt(filename: string, index: number) {
   const readableName = filename
@@ -92,31 +110,35 @@ function createReadableAlt(filename: string, index: number) {
 function PortfolioCard({ image, index, total, onOpen }: PortfolioCardProps) {
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const aspectRatio = CARD_ASPECT_RATIOS[index % CARD_ASPECT_RATIOS.length];
-
   return (
     <button
       type="button"
       onClick={onOpen}
       aria-label={`Open image ${index + 1} of ${total}`}
-      className={`group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-sm bg-muted text-left shadow-sm outline-none transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${aspectRatio}`}
+      className="group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-sm bg-muted text-left shadow-sm outline-none transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
       style={{
         /*
-          The browser can skip rendering distant cards until
-          they approach the viewport.
+          Preserve this image's exact natural aspect ratio.
+          This reserves the correct height before it is painted.
+        */
+        aspectRatio: `${image.width} / ${image.height}`,
+
+        /*
+          Allow the browser to skip painting distant cards.
         */
         contentVisibility: "auto",
 
         /*
-          Gives the browser an estimated off-screen card size.
+          Off-screen fallback size used by browsers that support
+          content-visibility.
         */
-        containIntrinsicSize: "360px 450px",
+        containIntrinsicSize: `${image.width}px ${image.height}px`,
       }}
     >
-      {/* Placeholder shown before the image finishes loading */}
+      {/* Placeholder occupies the exact final image dimensions */}
       <div
         aria-hidden="true"
-        className={`absolute inset-0 bg-muted transition-opacity duration-500 ${
+        className={`absolute inset-0 bg-muted transition-opacity duration-400 ${
           isLoaded ? "opacity-0" : "animate-pulse opacity-100"
         }`}
       />
@@ -124,20 +146,18 @@ function PortfolioCard({ image, index, total, onOpen }: PortfolioCardProps) {
       <img
         src={image.src}
         alt={image.alt}
-        /*
-          Only prioritise the first few visible images.
-          All remaining images use native lazy loading.
-        */
+        width={image.width}
+        height={image.height}
         loading={index < 6 ? "eager" : "lazy"}
         fetchPriority={index < 4 ? "high" : "auto"}
         decoding="async"
         onLoad={() => setIsLoaded(true)}
-        className={`absolute inset-0 h-full w-full object-cover transition duration-700 ease-out ${
-          isLoaded ? "scale-100 opacity-100" : "scale-[1.02] opacity-0"
-        } group-hover:scale-[1.04]`}
+        className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-500 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
       />
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
 
       <div className="pointer-events-none absolute bottom-4 right-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-white/95 text-black opacity-0 shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
         <Expand className="h-4 w-4" />
@@ -166,23 +186,27 @@ function PortfolioPage() {
       });
   }, []);
 
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [loadedImages, setLoadedImages] = useState<LoadedPortfolioImage[]>([]);
 
-  const [visibleCount, setVisibleCount] = useState(INITIAL_IMAGE_COUNT);
+  const [requestedCount, setRequestedCount] = useState(INITIAL_IMAGE_COUNT);
+
+  const [isLoadingBatch, setIsLoadingBatch] = useState(false);
+
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const [isLightboxImageLoaded, setIsLightboxImageLoaded] = useState(false);
 
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   /*
-    Only render the current batch instead of mounting
-    all 120 images immediately.
+    Tracks how many files have already had their dimensions loaded.
+    This prevents duplicate metadata requests.
   */
-  const visibleImages = useMemo(() => images.slice(0, visibleCount), [images, visibleCount]);
+  const processedCountRef = useRef(0);
 
-  const hasMoreImages = visibleCount < images.length;
+  const hasMoreImages = loadedImages.length < images.length;
 
-  const selectedImage = selectedIndex !== null ? images[selectedIndex] : null;
+  const selectedImage = selectedIndex !== null ? loadedImages[selectedIndex] : null;
 
   const closeLightbox = useCallback(() => {
     setSelectedIndex(null);
@@ -190,51 +214,85 @@ function PortfolioPage() {
 
   const showPrevious = useCallback(() => {
     setSelectedIndex((currentIndex) => {
-      if (currentIndex === null || images.length === 0) {
+      if (currentIndex === null || loadedImages.length === 0) {
         return currentIndex;
       }
 
-      return currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+      return currentIndex === 0 ? loadedImages.length - 1 : currentIndex - 1;
     });
-  }, [images.length]);
+  }, [loadedImages.length]);
 
   const showNext = useCallback(() => {
     setSelectedIndex((currentIndex) => {
-      if (currentIndex === null || images.length === 0) {
+      if (currentIndex === null || loadedImages.length === 0) {
         return currentIndex;
       }
 
-      return currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+      return currentIndex === loadedImages.length - 1 ? 0 : currentIndex + 1;
     });
-  }, [images.length]);
+  }, [loadedImages.length]);
 
   /*
-    Automatically render another small batch when
-    the visitor approaches the bottom of the gallery.
+    Load dimensions for only the requested image batch.
+
+    The batch is not added to the DOM until every image in that batch has a
+    known width and height. This means the layout is stable from the moment
+    the new cards appear.
+  */
+  useEffect(() => {
+    const startIndex = processedCountRef.current;
+    const endIndex = Math.min(requestedCount, images.length);
+
+    if (startIndex >= endIndex || isLoadingBatch) {
+      return;
+    }
+
+    let isCancelled = false;
+
+    async function prepareBatch() {
+      setIsLoadingBatch(true);
+
+      const batch = images.slice(startIndex, endIndex);
+
+      const preparedBatch = await Promise.all(batch.map(loadImageMetadata));
+
+      if (isCancelled) {
+        return;
+      }
+
+      setLoadedImages((current) => [...current, ...preparedBatch]);
+
+      processedCountRef.current = endIndex;
+      setIsLoadingBatch(false);
+    }
+
+    void prepareBatch();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [requestedCount, images, isLoadingBatch]);
+
+  /*
+    Request the next batch before the user reaches the bottom.
   */
   useEffect(() => {
     const target = loadMoreRef.current;
 
-    if (!target || !hasMoreImages) {
+    if (!target || !hasMoreImages || isLoadingBatch) {
       return;
     }
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-
+      ([entry]) => {
         if (!entry?.isIntersecting) {
           return;
         }
 
-        setVisibleCount((current) => Math.min(current + IMAGES_PER_BATCH, images.length));
+        setRequestedCount((current) => Math.min(current + IMAGES_PER_BATCH, images.length));
       },
       {
-        /*
-          Begin loading the next batch before the visitor
-          reaches the exact bottom.
-        */
-        rootMargin: "800px 0px",
+        rootMargin: "900px 0px",
       },
     );
 
@@ -243,40 +301,33 @@ function PortfolioPage() {
     return () => {
       observer.disconnect();
     };
-  }, [hasMoreImages, images.length]);
+  }, [hasMoreImages, isLoadingBatch, images.length]);
 
   /*
-    Reset the loading state when another lightbox image
-    is selected.
-
-    Also preload only the previous and next images so
-    lightbox navigation feels faster.
+    Preload the neighbouring lightbox images for fast navigation.
   */
   useEffect(() => {
-    if (selectedIndex === null || images.length === 0) {
+    if (selectedIndex === null || loadedImages.length === 0) {
       return;
     }
 
     setIsLightboxImageLoaded(false);
 
-    const previousIndex = selectedIndex === 0 ? images.length - 1 : selectedIndex - 1;
+    const previousIndex = selectedIndex === 0 ? loadedImages.length - 1 : selectedIndex - 1;
 
-    const nextIndex = selectedIndex === images.length - 1 ? 0 : selectedIndex + 1;
+    const nextIndex = selectedIndex === loadedImages.length - 1 ? 0 : selectedIndex + 1;
 
-    [images[previousIndex], images[nextIndex]].forEach((image) => {
+    [loadedImages[previousIndex], loadedImages[nextIndex]].forEach((image) => {
       if (!image) {
         return;
       }
 
       const preloadImage = new Image();
+      preloadImage.decoding = "async";
       preloadImage.src = image.src;
     });
-  }, [selectedIndex, images]);
+  }, [selectedIndex, loadedImages]);
 
-  /*
-    Enable keyboard navigation and prevent the page behind
-    the lightbox from scrolling.
-  */
   useEffect(() => {
     if (selectedIndex === null) {
       return;
@@ -348,22 +399,32 @@ function PortfolioPage() {
           <div className="container-page">
             {images.length > 0 ? (
               <>
-                <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 xl:columns-4">
-                  {visibleImages.map((image, index) => (
-                    <PortfolioCard
-                      key={image.filename || image.src}
-                      image={image}
-                      index={index}
-                      total={images.length}
-                      onOpen={() => setSelectedIndex(index)}
-                    />
-                  ))}
-                </div>
+                {loadedImages.length > 0 ? (
+                  <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 xl:columns-4">
+                    {loadedImages.map((image, index) => (
+                      <PortfolioCard
+                        key={image.filename || image.src}
+                        image={image}
+                        index={index}
+                        total={images.length}
+                        onOpen={() => setSelectedIndex(index)}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  /*
+                    Stable first-load placeholder while the initial batch's
+                    dimensions are being prepared.
+                  */
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {Array.from({
+                      length: 12,
+                    }).map((_, index) => (
+                      <div key={index} className="aspect-[4/5] animate-pulse rounded-sm bg-muted" />
+                    ))}
+                  </div>
+                )}
 
-                {/*
-                  This element triggers the next image batch
-                  before the visitor reaches the bottom.
-                */}
                 <div
                   ref={loadMoreRef}
                   className="mt-6 flex min-h-12 items-center justify-center"
@@ -371,10 +432,11 @@ function PortfolioPage() {
                 >
                   {hasMoreImages ? (
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <LoaderCircle className="h-4 w-4 animate-spin" />
+                      {isLoadingBatch && <LoaderCircle className="h-4 w-4 animate-spin" />}
 
                       <span>
-                        Loading more images… Showing {visibleImages.length} of {images.length}
+                        {isLoadingBatch ? "Preparing more images…" : "Scroll to load more"} Showing{" "}
+                        {loadedImages.length} of {images.length}
                       </span>
                     </div>
                   ) : (
@@ -406,7 +468,7 @@ function PortfolioPage() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={`Portfolio image ${selectedIndex + 1} of ${images.length}`}
+          aria-label={`Portfolio image ${selectedIndex + 1} of ${loadedImages.length}`}
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-3 backdrop-blur-sm sm:p-6"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) {
@@ -414,7 +476,6 @@ function PortfolioPage() {
             }
           }}
         >
-          {/* Close button */}
           <button
             type="button"
             onClick={closeLightbox}
@@ -424,13 +485,11 @@ function PortfolioPage() {
             <X className="h-5 w-5" />
           </button>
 
-          {/* Image counter */}
           <div className="absolute left-4 top-4 z-20 rounded-full border border-white/15 bg-black/50 px-4 py-2 text-xs tracking-wide text-white/90 backdrop-blur-md md:left-6 md:top-6">
-            {selectedIndex + 1} / {images.length}
+            {selectedIndex + 1} / {loadedImages.length}
           </div>
 
-          {/* Previous button */}
-          {images.length > 1 && (
+          {loadedImages.length > 1 && (
             <button
               type="button"
               onClick={showPrevious}
@@ -441,16 +500,22 @@ function PortfolioPage() {
             </button>
           )}
 
-          {/* Main image */}
           <div className="relative flex h-full w-full items-center justify-center px-12 py-16 md:px-20">
             {!isLightboxImageLoaded && (
-              <div className="absolute left-1/2 top-1/2 aspect-[4/3] w-[70vw] max-w-4xl -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-sm bg-white/10" />
+              <div
+                className="absolute left-1/2 top-1/2 w-[70vw] max-w-4xl -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-sm bg-white/10"
+                style={{
+                  aspectRatio: `${selectedImage.width} / ${selectedImage.height}`,
+                }}
+              />
             )}
 
             <img
               key={selectedImage.src}
               src={selectedImage.src}
               alt={selectedImage.alt}
+              width={selectedImage.width}
+              height={selectedImage.height}
               decoding="async"
               fetchPriority="high"
               onLoad={() => setIsLightboxImageLoaded(true)}
@@ -461,8 +526,7 @@ function PortfolioPage() {
             />
           </div>
 
-          {/* Next button */}
-          {images.length > 1 && (
+          {loadedImages.length > 1 && (
             <button
               type="button"
               onClick={showNext}
@@ -473,7 +537,6 @@ function PortfolioPage() {
             </button>
           )}
 
-          {/* Controls help */}
           <div className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 rounded-full border border-white/15 bg-black/50 px-4 py-2 text-xs text-white/70 backdrop-blur-md sm:block">
             Use ← and → to browse · Press Esc to close
           </div>
