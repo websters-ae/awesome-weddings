@@ -1,284 +1,191 @@
-export interface BlogPost {
+import defaultArticleImage from "@/assets/wedding-services/beach-wedding-hero.webp";
+
+export type BlogPostStatus = "published" | "draft";
+
+export type ArticleBodyBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "heading"; level: 2 | 3; text: string; id?: string }
+  | { type: "image"; src: string; alt: string; caption?: string }
+  | { type: "list"; items: string[]; ordered?: boolean }
+  | { type: "quote"; text: string; attribution?: string }
+  | { type: "callout"; title?: string; text: string };
+
+export type BlogPost = {
   slug: string;
   title: string;
   excerpt: string;
-  keywords: string[];
   date: string;
-  category: string;
+  updatedDate?: string;
   image: string;
-  status: "published" | "draft";
-  body?: string;
-}
+  imageAlt: string;
+  category?: string;
+  readingTime?: number;
+  keywords: string[];
+  status: BlogPostStatus;
+  body?: ArticleBodyBlock[];
+};
 
-const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1400&q=70`;
+/*
+  ADDING AN ARTICLE
+
+  1. Import its images above.
+  2. Copy an article object below.
+  3. Keep status as "draft" while editing.
+  4. Change status to "published" when ready.
+  5. Add image blocks anywhere between paragraphs.
+*/
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "wedding-cost-dubai-2026",
-    title: "How Much Does a Wedding in Dubai Cost? (2026 Complete Cost Breakdown)",
+    slug: "planning-a-wedding-in-dubai",
+    title: "Planning a Wedding in Dubai: A Practical Guide",
     excerpt:
-      "A transparent look at real Dubai wedding budgets in 2026, from intimate ceremonies to grand celebrations.",
-    keywords: ["wedding planner Dubai cost", "wedding cost Dubai", "wedding packages Dubai"],
-    date: "2026-01-15",
-    category: "Planning",
-    image: img("photo-1519741497674-611481863552"),
-    status: "published",
-  },
-  {
-    slug: "best-time-wedding-dubai-uae",
-    title: "Best Time for a Wedding in Dubai & the UAE (Weather, Seasons & Pricing)",
-    excerpt:
-      "How the UAE's climate shapes wedding season, guest experience, and venue pricing across the year.",
-    keywords: ["best time for a wedding in Dubai", "wedding season Dubai"],
-    date: "2026-01-08",
-    category: "Planning",
-    image: img("photo-1465495976277-4387d4b0b4c6"),
-    status: "published",
-  },
-  {
-    slug: "15-best-wedding-venues-dubai",
-    title: "15 Best Wedding Venues in Dubai (With Prices & Guest Capacity)",
-    excerpt:
-      "A curated shortlist of Dubai's most-loved wedding venues with capacity, pricing and best-fit couples.",
-    keywords: ["wedding venues Dubai", "wedding venues in Dubai with prices"],
-    date: "2025-12-20",
-    category: "Venues",
-    image: img("photo-1519167758481-83f550bb49b3"),
-    status: "published",
-  },
-  {
-    slug: "top-beach-wedding-venues-dubai-uae",
-    title: "Top Beach Wedding Venues in Dubai & the UAE",
-    excerpt:
-      "Our favourite beachfront venues along the Arabian Gulf for sunset ceremonies and barefoot receptions.",
-    keywords: ["beach wedding Dubai", "beach wedding venues Dubai"],
-    date: "2025-12-12",
-    category: "Venues",
-    image: img("photo-1523438885200-e635ba2c371e"),
-    status: "published",
-  },
-  {
-    slug: "beach-vs-desert-wedding",
-    title: "Beach Wedding vs. Desert Wedding: Which Wedding Style Is Right for You?",
-    excerpt: "How to choose between two of the UAE's most iconic wedding backdrops.",
-    keywords: ["beach wedding Dubai", "desert wedding Dubai"],
-    date: "2025-12-01",
-    category: "Planning",
-    image: img("photo-1583939003579-730e3918a45a"),
-    status: "published",
-  },
-  {
-    slug: "luxury-hotel-weddings-dubai-guide",
-    title: "Luxury Hotel Weddings in Dubai: The Ultimate Venue Guide",
-    excerpt:
-      "The city's most spectacular ballrooms, waterfront estates and five-star wedding venues.",
-    keywords: ["luxury wedding planner Dubai", "hotel wedding Dubai"],
-    date: "2025-11-20",
-    category: "Venues",
-    image: img("photo-1519671482749-fd09be7ccebf"),
-    status: "published",
-  },
-  {
-    slug: "how-to-get-married-dubai-abu-dhabi",
-    title: "How to Get Married in Dubai or Abu Dhabi (Complete Legal Guide for Expats & Tourists)",
-    excerpt: "Step-by-step legal requirements for civil ceremonies for residents and visitors.",
+      "A clear starting point for couples planning a wedding in Dubai, from choosing the right setting to organising suppliers, guest logistics, and the wedding-day experience.",
+    date: "2026-07-28",
+    image: defaultArticleImage,
+    imageAlt: "Luxury beach wedding setting in Dubai",
+    category: "Wedding Planning",
+    readingTime: 8,
     keywords: [
-      "how to get married in Dubai",
-      "civil wedding Dubai",
-      "court marriage Dubai",
-      "Dubai wedding requirements for expats",
+      "wedding planning Dubai",
+      "Dubai wedding guide",
+      "wedding planner UAE",
+      "luxury weddings Dubai",
     ],
-    date: "2025-11-10",
-    category: "Legal",
-    image: img("photo-1522673607200-164d1b6ce486"),
     status: "published",
+    body: [
+      {
+        type: "paragraph",
+        text: "Dubai offers couples a wide range of wedding settings, including luxury hotels, beachfront resorts, desert venues, private villas, gardens, yachts, and purpose-built event spaces.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Begin With Your Wedding Priorities",
+        id: "wedding-priorities",
+      },
+      {
+        type: "paragraph",
+        text: "Before contacting venues or suppliers, decide which parts of the celebration matter most to you. Your guest count, preferred date, location, cultural requirements, and overall atmosphere will influence nearly every planning decision.",
+      },
+      {
+        type: "list",
+        items: [
+          "Preferred wedding date or season",
+          "Estimated number of guests",
+          "Indoor, outdoor, beach, desert, or hotel setting",
+          "Ceremony and reception requirements",
+          "Cultural or religious traditions",
+          "Approximate overall budget",
+        ],
+      },
+      {
+        type: "image",
+        src: defaultArticleImage,
+        alt: "Beach wedding venue with elegant ceremony styling",
+        caption:
+          "Choosing the setting early helps shape the venue search, décor direction, and guest experience.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Choose a Venue That Supports the Full Experience",
+        id: "choosing-a-venue",
+      },
+      {
+        type: "paragraph",
+        text: "Consider guest access, accommodation, weather backup options, supplier restrictions, sound limits, catering arrangements, ceremony permissions, and setup time.",
+      },
+      {
+        type: "callout",
+        title: "Planning note",
+        text: "Always ask whether the venue provides a confirmed indoor or covered alternative for outdoor celebrations.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Build a Realistic Planning Timeline",
+        id: "planning-timeline",
+      },
+      {
+        type: "paragraph",
+        text: "Popular wedding dates and venues in Dubai can be reserved well in advance. Starting early gives you more flexibility when selecting priority suppliers.",
+      },
+      {
+        type: "quote",
+        text: "A well-structured timeline gives every supplier enough time to prepare, coordinate, and deliver consistently.",
+      },
+    ],
   },
+
+  /*
+  TEMPLATE
+
   {
-    slug: "tourists-getting-married-uae",
-    title: "Can Tourists Get Married in the UAE? Everything You Need to Know",
-    excerpt: "A clear-eyed guide for international couples planning a UAE ceremony.",
-    keywords: ["civil wedding Dubai", "destination wedding Dubai"],
-    date: "2025-11-01",
-    category: "Legal",
-    image: img("photo-1511795409834-ef04bbd61622"),
-    status: "published",
-  },
-  {
-    slug: "indian-destination-weddings-uae",
-    title: "Indian Destination Weddings in Dubai & the UAE: The Complete Planning Guide",
-    excerpt: "Mehndi, Sangeet, Pheras and Reception — planned across multiple days and venues.",
-    keywords: ["Indian wedding planner Dubai", "destination wedding Dubai"],
-    date: "2025-10-22",
-    category: "Cultural",
-    image: img("photo-1600717535275-0b18ede2f7fc"),
-    status: "published",
-  },
-  {
-    slug: "arabic-wedding-traditions-uae",
-    title: "Arabic Wedding Traditions in the UAE: Planning a Luxurious Celebration",
-    excerpt:
-      "Zaffa processions, Majlis settings and Gulf hospitality, planned with cultural authenticity.",
-    keywords: ["Arabic wedding planner Dubai"],
-    date: "2025-10-14",
-    category: "Cultural",
-    image: img("photo-1519741347686-c1e0aadf4611"),
-    status: "published",
-  },
-  {
-    slug: "destination-weddings-dubai",
-    title: "Destination Weddings in Dubai: Everything You Need to Know Before You Book",
-    excerpt:
-      "Logistics, guest experience, and the moments that make a UAE destination wedding unforgettable.",
-    keywords: ["destination wedding Dubai", "wedding planner Dubai"],
-    date: "2025-10-05",
-    category: "Planning",
-    image: img("photo-1519741497674-611481863552"),
-    status: "published",
-  },
-  {
-    slug: "wedding-planner-vs-diy",
-    title: "Wedding Planner vs DIY Wedding: Why Hiring a Wedding Planner Saves Time & Money",
-    excerpt: "The real cost of DIY — and where a planner pays for themselves.",
-    keywords: ["hire wedding planner Dubai", "wedding planner near me"],
-    date: "2025-09-24",
-    category: "Planning",
-    image: img("photo-1526047932273-341f2a7631f9"),
-    status: "published",
-  },
-  {
-    slug: "outdoor-weddings-uae",
-    title: "Outdoor Weddings in the UAE: Beaches, Gardens, Desert & Rooftop Venues",
-    excerpt:
-      "Every open-air wedding setting the UAE has to offer, from Arabian dunes to skyline rooftops.",
-    keywords: ["outdoor wedding venues Dubai", "beach wedding Dubai"],
-    date: "2025-09-15",
-    category: "Venues",
-    image: img("photo-1464366400600-7168b8af9bc3"),
-    status: "published",
-  },
-  {
-    slug: "elopement-packages-uae",
-    title: "Elopement Packages in Dubai & the UAE: Luxury Weddings for Two",
-    excerpt: "Intimate elopements and micro-weddings across the UAE's most beautiful locations.",
-    keywords: ["elopement packages Dubai", "small wedding packages Dubai"],
-    date: "2025-09-05",
-    category: "Planning",
-    image: img("photo-1465495976277-4387d4b0b4c6"),
-    status: "published",
-  },
-  {
-    slug: "how-early-book-wedding-planner-dubai",
-    title: "How Early Should You Book a Wedding Planner in Dubai?",
-    excerpt: "The realistic booking timeline for luxury weddings in Dubai and the UAE.",
-    keywords: ["best wedding planner in Dubai", "wedding planner Dubai"],
-    date: "2025-08-28",
-    category: "Planning",
-    image: img("photo-1511795409834-ef04bbd61622"),
-    status: "published",
-  },
-  // Coming soon drafts
-  {
-    slug: "ras-al-khaimah-destination-weddings",
-    title: "Why Ras Al Khaimah Is the UAE's Best Destination Wedding Location",
-    excerpt: "Coming soon.",
-    keywords: [],
-    date: "2026-02-01",
-    category: "Venues",
-    image: img("photo-1464366400600-7168b8af9bc3"),
+    slug: "your-article-slug",
+    title: "Your Article Title",
+    excerpt: "A short synopsis used on cards and in metadata.",
+    date: "2026-08-01",
+    updatedDate: "2026-08-05",
+    image: yourHeroImage,
+    imageAlt: "Describe the hero image",
+    category: "Wedding Planning",
+    readingTime: 7,
+    keywords: ["keyword one", "keyword two"],
     status: "draft",
+    body: [
+      { type: "paragraph", text: "Opening paragraph." },
+      {
+        type: "heading",
+        level: 2,
+        text: "Section Heading",
+        id: "section-heading",
+      },
+      { type: "paragraph", text: "Section content." },
+      {
+        type: "image",
+        src: yourInlineImage,
+        alt: "Describe the inline image",
+        caption: "Optional caption.",
+      },
+      {
+        type: "list",
+        items: ["First item", "Second item"],
+      },
+      {
+        type: "quote",
+        text: "Optional quote.",
+        attribution: "Optional attribution",
+      },
+      {
+        type: "callout",
+        title: "Optional title",
+        text: "Important supporting information.",
+      },
+    ],
   },
-  {
-    slug: "jebel-jais-weddings",
-    title: "Getting Married on Jebel Jais: The UAE's Most Scenic Wedding Venue",
-    excerpt: "Coming soon.",
-    keywords: [],
-    date: "2026-02-08",
-    category: "Venues",
-    image: img("photo-1464366400600-7168b8af9bc3"),
-    status: "draft",
-  },
-  {
-    slug: "wedding-planning-checklist-dubai",
-    title: "Wedding Planning Checklist for Dubai Couples",
-    excerpt: "Coming soon.",
-    keywords: [],
-    date: "2026-02-15",
-    category: "Planning",
-    image: img("photo-1519741497674-611481863552"),
-    status: "draft",
-  },
-  {
-    slug: "luxury-wedding-trends-uae",
-    title: "Luxury Wedding Trends in the UAE",
-    excerpt: "Coming soon.",
-    keywords: [],
-    date: "2026-02-22",
-    category: "Trends",
-    image: img("photo-1519671482749-fd09be7ccebf"),
-    status: "draft",
-  },
-  {
-    slug: "choose-perfect-wedding-venue-dubai",
-    title: "How to Choose the Perfect Wedding Venue in Dubai",
-    excerpt: "Coming soon.",
-    keywords: [],
-    date: "2026-03-01",
-    category: "Venues",
-    image: img("photo-1519167758481-83f550bb49b3"),
-    status: "draft",
-  },
-  {
-    slug: "small-wedding-packages-dubai",
-    title: "Small Wedding Packages in Dubai: Intimate Celebrations Done Beautifully",
-    excerpt: "Coming soon.",
-    keywords: [],
-    date: "2026-03-08",
-    category: "Planning",
-    image: img("photo-1465495976277-4387d4b0b4c6"),
-    status: "draft",
-  },
-  {
-    slug: "church-weddings-dubai",
-    title: "Church Weddings in Dubai: Everything Couples Need to Know",
-    excerpt: "Coming soon.",
-    keywords: [],
-    date: "2026-03-15",
-    category: "Cultural",
-    image: img("photo-1522673607200-164d1b6ce486"),
-    status: "draft",
-  },
-  {
-    slug: "wedding-budget-checklist",
-    title: "Wedding Budget Checklist: Where to Spend & Where to Save",
-    excerpt: "Coming soon.",
-    keywords: [],
-    date: "2026-03-22",
-    category: "Planning",
-    image: img("photo-1526047932273-341f2a7631f9"),
-    status: "draft",
-  },
-  {
-    slug: "multicultural-weddings-dubai",
-    title: "Multicultural Weddings in Dubai: Blending Traditions Beautifully",
-    excerpt: "Coming soon.",
-    keywords: [],
-    date: "2026-03-29",
-    category: "Cultural",
-    image: img("photo-1600717535275-0b18ede2f7fc"),
-    status: "draft",
-  },
-  {
-    slug: "wedding-entertainment-ideas-uae",
-    title: "Top Wedding Entertainment Ideas for Luxury Weddings in the UAE",
-    excerpt: "Coming soon.",
-    keywords: [],
-    date: "2026-04-05",
-    category: "Trends",
-    image: img("photo-1519741347686-c1e0aadf4611"),
-    status: "draft",
-  },
+  */
 ];
 
-export function getPostBySlug(slug: string): BlogPost | undefined {
-  return blogPosts.find((p) => p.slug === slug);
+export function getPostBySlug(slug: string) {
+  return blogPosts.find((post) => post.slug === slug && post.status === "published");
+}
+
+export function getPublishedPosts() {
+  return blogPosts
+    .filter((post) => post.status === "published")
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+export function getLatestPublishedPosts(limit: number) {
+  return getPublishedPosts().slice(0, limit);
+}
+
+export function formatBlogDate(date: string, style: "short" | "long" = "short") {
+  return new Date(`${date}T00:00:00`).toLocaleDateString(
+    "en-GB",
+    style === "long"
+      ? { day: "numeric", month: "long", year: "numeric" }
+      : { day: "numeric", month: "short", year: "numeric" },
+  );
 }

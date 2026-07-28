@@ -113,27 +113,6 @@ function ContactPage() {
                     <span>{company.address}</span>
                   </li>
 
-                  <li className="flex items-start gap-3">
-                    <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-
-                    <a
-                      href={`tel:${company.phone}`}
-                      className="transition-colors hover:text-primary"
-                    >
-                      {company.phone}
-                    </a>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-
-                    <a
-                      href={`mailto:${company.email}`}
-                      className="break-all transition-colors hover:text-primary"
-                    >
-                      {company.email}
-                    </a>
-                  </li>
                 </ul>
 
                 <div className="mt-6 flex gap-2">
@@ -171,7 +150,7 @@ function ContactPage() {
 
             <div className="overflow-hidden rounded-sm border border-border bg-card">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.4526034444984!2d55.27847327593053!3d25.221676330707556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6cac1c87c3e1%3A0xeb5f7e43d2be81c4!2sWebsters!5e0!3m2!1sen!2sae!4v1784871304483!5m2!1sen!2sae"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.454404604121!2d55.27858347593051!3d25.221615630710232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43c051408b6d%3A0xf0ecb08f2b1eadb3!2sAwesome%20Events!5e0!3m2!1sen!2sae!4v1785224241633!5m2!1sen!2sae"
                 title="Awesome Events Weddings location"
                 width="100%"
                 height="520"
