@@ -1,24 +1,12 @@
-import {
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Expand,
-  Images,
-  X,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Expand, Images, LoaderCircle, X } from "lucide-react";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
       {
-        title:
-          "Wedding Portfolio | Awesome Events Weddings Dubai",
+        title: "Wedding Portfolio | Awesome Events Weddings Dubai",
       },
       {
         name: "description",
@@ -27,8 +15,7 @@ export const Route = createFileRoute("/portfolio")({
       },
       {
         property: "og:title",
-        content:
-          "Wedding Portfolio | Awesome Events Weddings Dubai",
+        content: "Wedding Portfolio | Awesome Events Weddings Dubai",
       },
       {
         property: "og:description",
@@ -41,13 +28,17 @@ export const Route = createFileRoute("/portfolio")({
   component: PortfolioPage,
 });
 
-const portfolioModules = import.meta.glob(
-  "/src/assets/portfolio/*.webp",
-  {
-    eager: true,
-    import: "default",
-  },
-) as Record<string, string>;
+/*
+  These URLs are collected at build time.
+
+  The browser still downloads each image only when its <img> element is
+  rendered and becomes eligible for loading.
+*/
+const portfolioModules = import.meta.glob("/src/assets/portfolio/*.webp", {
+  eager: true,
+  import: "default",
+  query: "?url",
+}) as Record<string, string>;
 
 type PortfolioImage = {
   src: string;
@@ -55,20 +46,104 @@ type PortfolioImage = {
   alt: string;
 };
 
+type PortfolioCardProps = {
+  image: PortfolioImage;
+  index: number;
+  total: number;
+  onOpen: () => void;
+};
+
+/*
+  Only the first group is rendered initially.
+  More images are automatically added as the visitor scrolls.
+*/
+const INITIAL_IMAGE_COUNT = 24;
+const IMAGES_PER_BATCH = 20;
+
+/*
+  Fixed aspect ratios reserve space before each image downloads.
+  This prevents the page from shifting when images finish loading.
+
+  The thumbnails use object-cover, so they may crop slightly.
+  The lightbox still displays the full image.
+*/
+const CARD_ASPECT_RATIOS = [
+  "aspect-[4/5]",
+  "aspect-square",
+  "aspect-[3/4]",
+  "aspect-[4/3]",
+  "aspect-[5/6]",
+  "aspect-[3/2]",
+] as const;
+
 function createReadableAlt(filename: string, index: number) {
   const readableName = filename
     .replace(/\.webp$/i, "")
     .replace(/[-_]+/g, " ")
     .replace(/\b\w/g, (letter) => letter.toUpperCase());
 
-  if (
-    readableName.toLowerCase().startsWith("portfolio") ||
-    readableName.trim().length === 0
-  ) {
+  if (readableName.toLowerCase().startsWith("portfolio") || readableName.trim().length === 0) {
     return `Luxury wedding portfolio image ${index + 1}`;
   }
 
   return `${readableName} — Awesome Events Weddings`;
+}
+
+function PortfolioCard({ image, index, total, onOpen }: PortfolioCardProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const aspectRatio = CARD_ASPECT_RATIOS[index % CARD_ASPECT_RATIOS.length];
+
+  return (
+    <button
+      type="button"
+      onClick={onOpen}
+      aria-label={`Open image ${index + 1} of ${total}`}
+      className={`group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-sm bg-muted text-left shadow-sm outline-none transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 ${aspectRatio}`}
+      style={{
+        /*
+          The browser can skip rendering distant cards until
+          they approach the viewport.
+        */
+        contentVisibility: "auto",
+
+        /*
+          Gives the browser an estimated off-screen card size.
+        */
+        containIntrinsicSize: "360px 450px",
+      }}
+    >
+      {/* Placeholder shown before the image finishes loading */}
+      <div
+        aria-hidden="true"
+        className={`absolute inset-0 bg-muted transition-opacity duration-500 ${
+          isLoaded ? "opacity-0" : "animate-pulse opacity-100"
+        }`}
+      />
+
+      <img
+        src={image.src}
+        alt={image.alt}
+        /*
+          Only prioritise the first few visible images.
+          All remaining images use native lazy loading.
+        */
+        loading={index < 6 ? "eager" : "lazy"}
+        fetchPriority={index < 4 ? "high" : "auto"}
+        decoding="async"
+        onLoad={() => setIsLoaded(true)}
+        className={`absolute inset-0 h-full w-full object-cover transition duration-700 ease-out ${
+          isLoaded ? "scale-100 opacity-100" : "scale-[1.02] opacity-0"
+        } group-hover:scale-[1.04]`}
+      />
+
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
+
+      <div className="pointer-events-none absolute bottom-4 right-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-white/95 text-black opacity-0 shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
+        <Expand className="h-4 w-4" />
+      </div>
+    </button>
+  );
 }
 
 function PortfolioPage() {
@@ -91,12 +166,23 @@ function PortfolioPage() {
       });
   }, []);
 
-  const [selectedIndex, setSelectedIndex] = useState<
-    number | null
-  >(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const selectedImage =
-    selectedIndex !== null ? images[selectedIndex] : null;
+  const [visibleCount, setVisibleCount] = useState(INITIAL_IMAGE_COUNT);
+
+  const [isLightboxImageLoaded, setIsLightboxImageLoaded] = useState(false);
+
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
+
+  /*
+    Only render the current batch instead of mounting
+    all 120 images immediately.
+  */
+  const visibleImages = useMemo(() => images.slice(0, visibleCount), [images, visibleCount]);
+
+  const hasMoreImages = visibleCount < images.length;
+
+  const selectedImage = selectedIndex !== null ? images[selectedIndex] : null;
 
   const closeLightbox = useCallback(() => {
     setSelectedIndex(null);
@@ -108,9 +194,7 @@ function PortfolioPage() {
         return currentIndex;
       }
 
-      return currentIndex === 0
-        ? images.length - 1
-        : currentIndex - 1;
+      return currentIndex === 0 ? images.length - 1 : currentIndex - 1;
     });
   }, [images.length]);
 
@@ -120,12 +204,79 @@ function PortfolioPage() {
         return currentIndex;
       }
 
-      return currentIndex === images.length - 1
-        ? 0
-        : currentIndex + 1;
+      return currentIndex === images.length - 1 ? 0 : currentIndex + 1;
     });
   }, [images.length]);
 
+  /*
+    Automatically render another small batch when
+    the visitor approaches the bottom of the gallery.
+  */
+  useEffect(() => {
+    const target = loadMoreRef.current;
+
+    if (!target || !hasMoreImages) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        if (!entry?.isIntersecting) {
+          return;
+        }
+
+        setVisibleCount((current) => Math.min(current + IMAGES_PER_BATCH, images.length));
+      },
+      {
+        /*
+          Begin loading the next batch before the visitor
+          reaches the exact bottom.
+        */
+        rootMargin: "800px 0px",
+      },
+    );
+
+    observer.observe(target);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [hasMoreImages, images.length]);
+
+  /*
+    Reset the loading state when another lightbox image
+    is selected.
+
+    Also preload only the previous and next images so
+    lightbox navigation feels faster.
+  */
+  useEffect(() => {
+    if (selectedIndex === null || images.length === 0) {
+      return;
+    }
+
+    setIsLightboxImageLoaded(false);
+
+    const previousIndex = selectedIndex === 0 ? images.length - 1 : selectedIndex - 1;
+
+    const nextIndex = selectedIndex === images.length - 1 ? 0 : selectedIndex + 1;
+
+    [images[previousIndex], images[nextIndex]].forEach((image) => {
+      if (!image) {
+        return;
+      }
+
+      const preloadImage = new Image();
+      preloadImage.src = image.src;
+    });
+  }, [selectedIndex, images]);
+
+  /*
+    Enable keyboard navigation and prevent the page behind
+    the lightbox from scrolling.
+  */
   useEffect(() => {
     if (selectedIndex === null) {
       return;
@@ -151,18 +302,15 @@ function PortfolioPage() {
     window.addEventListener("keydown", handleKeyboard);
 
     const previousOverflow = document.body.style.overflow;
+
     document.body.style.overflow = "hidden";
 
     return () => {
       window.removeEventListener("keydown", handleKeyboard);
+
       document.body.style.overflow = previousOverflow;
     };
-  }, [
-    selectedIndex,
-    showPrevious,
-    showNext,
-    closeLightbox,
-  ]);
+  }, [selectedIndex, showPrevious, showNext, closeLightbox]);
 
   return (
     <>
@@ -178,10 +326,8 @@ function PortfolioPage() {
               </h1>
 
               <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                Explore a selection of luxury weddings,
-                bespoke décor, destination celebrations, and
-                unforgettable moments created across Dubai and
-                the UAE.
+                Explore a selection of luxury weddings, bespoke décor, destination celebrations, and
+                unforgettable moments created across Dubai and the UAE.
               </p>
 
               {images.length > 0 && (
@@ -189,8 +335,7 @@ function PortfolioPage() {
                   <Images className="h-4 w-4" />
 
                   <span>
-                    {images.length} portfolio{" "}
-                    {images.length === 1 ? "image" : "images"}
+                    {images.length} portfolio {images.length === 1 ? "image" : "images"}
                   </span>
                 </div>
               )}
@@ -202,44 +347,52 @@ function PortfolioPage() {
         <section className="pb-16 md:pb-24">
           <div className="container-page">
             {images.length > 0 ? (
-              <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 xl:columns-4">
-                {images.map((image, index) => (
-                  <button
-                    key={image.filename || image.src}
-                    type="button"
-                    onClick={() => setSelectedIndex(index)}
-                    aria-label={`Open image ${index + 1} of ${images.length}`}
-                    className="group relative mb-4 block w-full break-inside-avoid overflow-hidden rounded-sm bg-muted text-left shadow-sm outline-none transition duration-300 hover:-translate-y-1 hover:shadow-xl focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                  >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      loading={index < 8 ? "eager" : "lazy"}
-                      decoding="async"
-                      className="block h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+              <>
+                <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 xl:columns-4">
+                  {visibleImages.map((image, index) => (
+                    <PortfolioCard
+                      key={image.filename || image.src}
+                      image={image}
+                      index={index}
+                      total={images.length}
+                      onOpen={() => setSelectedIndex(index)}
                     />
+                  ))}
+                </div>
 
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" />
+                {/*
+                  This element triggers the next image batch
+                  before the visitor reaches the bottom.
+                */}
+                <div
+                  ref={loadMoreRef}
+                  className="mt-6 flex min-h-12 items-center justify-center"
+                  aria-live="polite"
+                >
+                  {hasMoreImages ? (
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <LoaderCircle className="h-4 w-4 animate-spin" />
 
-                    <div className="pointer-events-none absolute bottom-4 right-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-full bg-white/95 text-black opacity-0 shadow-lg backdrop-blur-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100">
-                      <Expand className="h-4 w-4" />
+                      <span>
+                        Loading more images… Showing {visibleImages.length} of {images.length}
+                      </span>
                     </div>
-                  </button>
-                ))}
-              </div>
+                  ) : (
+                    <p className="text-sm text-muted-foreground">
+                      All {images.length} images loaded
+                    </p>
+                  )}
+                </div>
+              </>
             ) : (
               <div className="mx-auto max-w-2xl rounded-sm border border-dashed border-border bg-secondary/30 px-6 py-16 text-center">
                 <Images className="mx-auto h-10 w-10 text-muted-foreground" />
 
-                <h2 className="mt-5 font-display text-2xl">
-                  Portfolio images coming soon
-                </h2>
+                <h2 className="mt-5 font-display text-2xl">Portfolio images coming soon</h2>
 
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   Add your WebP images to{" "}
-                  <code className="rounded bg-muted px-1.5 py-1 text-xs">
-                    src/assets/portfolio
-                  </code>{" "}
+                  <code className="rounded bg-muted px-1.5 py-1 text-xs">src/assets/portfolio</code>{" "}
                   and they will automatically appear here.
                 </p>
               </div>
@@ -289,12 +442,21 @@ function PortfolioPage() {
           )}
 
           {/* Main image */}
-          <div className="flex h-full w-full items-center justify-center px-12 py-16 md:px-20">
+          <div className="relative flex h-full w-full items-center justify-center px-12 py-16 md:px-20">
+            {!isLightboxImageLoaded && (
+              <div className="absolute left-1/2 top-1/2 aspect-[4/3] w-[70vw] max-w-4xl -translate-x-1/2 -translate-y-1/2 animate-pulse rounded-sm bg-white/10" />
+            )}
+
             <img
               key={selectedImage.src}
               src={selectedImage.src}
               alt={selectedImage.alt}
-              className="max-h-full max-w-full select-none object-contain shadow-2xl"
+              decoding="async"
+              fetchPriority="high"
+              onLoad={() => setIsLightboxImageLoaded(true)}
+              className={`max-h-full max-w-full select-none object-contain shadow-2xl transition-opacity duration-300 ${
+                isLightboxImageLoaded ? "opacity-100" : "opacity-0"
+              }`}
               draggable={false}
             />
           </div>
