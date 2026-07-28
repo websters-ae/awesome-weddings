@@ -118,22 +118,22 @@ function VenuesPage() {
             <div className="mx-auto mt-8 h-px w-16 bg-border" />
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-6xl gap-6 md:grid-cols-3">
+          <div className="mx-auto mt-12 flex max-w-5xl flex-col gap-6">
             {featuredVenues.map((venue) => (
               <article
                 key={venue.title}
-                className="overflow-hidden rounded-sm border border-border bg-card"
+                className="group overflow-hidden rounded-sm border border-border bg-card transition-colors hover:border-muted-foreground/30 md:grid md:grid-cols-12 md:items-center"
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[16/10] overflow-hidden md:col-span-5 md:h-full">
                   <img
                     src={venue.image}
                     alt={venue.title}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
 
-                <div className="p-6 text-left">
+                <div className="p-6 text-left md:col-span-7 md:p-8">
                   <h3 className="font-display text-2xl leading-snug">{venue.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-muted-foreground">
                     {venue.description}

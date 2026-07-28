@@ -389,7 +389,40 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         "Our civil wedding décor services in Dubai and the UAE bring together thoughtful styling, timeless details, and a setting that feels beautifully yours.",
       image: "/decor/civil-d.webp",
     },
-    faqs: commonFaqs("Civil weddings", "civil wedding"),
+    faqs: [
+      {
+        q: "What is a civil wedding in the UAE?",
+        a: "A civil wedding in the UAE is a legally recognised, non-religious marriage ceremony conducted through the relevant authority.",
+      },
+      {
+        q: "Who can apply for a civil marriage in the UAE?",
+        a: "Eligibility depends on the emirate, nationality, residency status, religion, and chosen civil marriage process.",
+      },
+      {
+        q: "Can we celebrate after our civil marriage ceremony?",
+        a: "Absolutely. We can create an intimate lunch, elegant reception, or joyful celebration following your legal ceremony.",
+      },
+      {
+        q: "Can a civil wedding be personalised?",
+        a: "Yes. Your civil wedding in Dubai can include personal vows, music, florals, décor, and meaningful details.",
+      },
+      {
+        q: "Can we include cultural traditions in a civil wedding?",
+        a: "Yes. Cultural rituals, traditional attire, music, cuisine, and family customs can complement your civil ceremony beautifully.",
+      },
+      {
+        q: "How long does planning a civil wedding take?",
+        a: "Timelines vary, but intimate civil weddings in the UAE can often be planned within a shorter timeframe.",
+      },
+      {
+        q: "Do you help with civil marriage documents and requirements?",
+        a: "We provide planning guidance and help couples understand the documentation required by the relevant UAE authorities.",
+      },
+      {
+        q: "Do you provide complete civil wedding planning?",
+        a: "Yes. We manage venue sourcing, styling, catering, photography, guest hospitality, schedules, and wedding-day coordination.",
+      },
+    ],
   },
 
   "luxury-hotel-weddings": {
@@ -408,7 +441,24 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       "Anyone looking for a warm, elegant, and unforgettable celebration in a luxury venue",
     ],
     whyChooseTitle: "Why Choose Us for a Luxury Hotel Wedding",
-    whyChoose: commonWhyChoose("Luxury Hotel Weddings", "luxury hotel weddings"),
+    whyChoose: [
+      {
+        title: "Seamless Hotel Wedding Coordination",
+        body: "We work closely with leading five-star hotels in Dubai to manage ballroom access, banquet requirements, menus, accommodation, and venue coordination.",
+      },
+      {
+        title: "Elegant Ballroom Wedding Transformations",
+        body: "Our team transforms hotel ballrooms through bespoke wedding décor, floral design, luxury lighting, staging, and personalised styling.",
+      },
+      {
+        title: "Refined Wedding Guest Hospitality & RSVP",
+        body: "From room bookings and airport transfers to welcome experiences and family assistance, we ensure every guest feels comfortable and cared for.",
+      },
+      {
+        title: "Complete Hotel Wedding Management",
+        body: "We coordinate ceremonies, receptions, rehearsals, entertainment, catering, technical production, seating, schedules, and seamless wedding-day operations.",
+      },
+    ],
     decor: {
       heading: "Luxury Hotel Wedding Decoration in Dubai",
       intro:
