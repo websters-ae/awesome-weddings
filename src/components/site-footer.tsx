@@ -24,7 +24,7 @@ export function SiteFooter() {
                 href={socialLinks.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="transition-colors hover:text-accent"
+                className="transition-colors hover:text-gold"
               >
                 Instagram
               </a>
@@ -34,7 +34,7 @@ export function SiteFooter() {
                 href={socialLinks.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="transition-colors hover:text-accent"
+                className="transition-colors hover:text-gold"
               >
                 LinkedIn
               </a>
@@ -49,7 +49,7 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm text-primary-foreground/80">
             {footerExplore.map((l) => (
               <li key={l.to}>
-                <Link to={l.to} className="transition-colors hover:text-accent">
+                <Link to={l.to} className="transition-colors hover:text-gold">
                   {l.label}
                 </Link>
               </li>

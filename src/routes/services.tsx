@@ -129,6 +129,151 @@ const serviceContentOverrides: Record<
   },
 };
 
+type BespokePlanningItem = {
+  title: string;
+  description: string;
+};
+
+const bespokePlanningContent = {
+  eyebrow: "Bespoke Planning",
+  title: "Custom Wedding Planning Services",
+  introduction: [
+    "At Awesome Events Weddings, our custom wedding planning services are tailored around your story, style, culture, and celebration goals. From the first idea to the final moment, we bring every detail together with creativity, care, and seamless coordination.",
+    "The services below will give you a clearer understanding of how we support you in creating a wedding that feels personal, effortless, and beautifully yours.",
+  ],
+  services: [
+    {
+      title: "End-to-End Wedding Planning in Dubai & UAE",
+      description:
+        "From the first consultation to the final farewell, we manage every detail of your luxury wedding dream, ensuring a seamless, stress-free, and beautifully executed celebration takes place.",
+    },
+    {
+      title: "Wedding Entertainment Experiences",
+      description:
+        "We curate DJs, live performers, artists, celebrities, EMCEE, traditional acts, and memorable bride and groom entry concepts with music, lighting, choreography, and special effects.",
+    },
+    {
+      title: "Venue, Décor & Wedding Styling",
+      description:
+        "We help source the perfect wedding venue and transform it with elegant décor, floral styling, stage design, table settings, and theme-based concepts tailored to your vision.",
+    },
+    {
+      title: "Milestone Celebrations",
+      description:
+        "We help celebrate life's special milestones with customized experiences, designed to feel completely stress-free and create lasting memories in Dubai or anywhere in the UAE.",
+    },
+    {
+      title: "Luxury Private Parties in Dubai & UAE",
+      description:
+        "From renting out luxury yachts or private islands, exclusive poolside celebrations, desert soirées, contemporary galleries, to private jets, we get it for you and transform these extraordinary venues into unforgettable celebrations, tailored entirely to your style and occasion.",
+    },
+    {
+      title: "Audio-Visual & Lighting Solutions",
+      description:
+        "We provide advanced audio-visual systems, intelligent lighting, LED screens, and sound engineering for elegant luxury wedding experiences.",
+    },
+    {
+      title: "Wedding Catering Services",
+      description:
+        "Our wedding catering services offer customized menus, luxury catering, professional hospitality, and exceptional dining experiences for weddings and grand celebrations across the UAE.",
+    },
+    {
+      title: "Drone Light Shows & Fireworks",
+      description:
+        "Create an unforgettable grand entrance for your wedding or finale with breathtaking aerial spectacles and synchronized moments that leave every guest amazed.",
+    },
+    {
+      title: "Makeup & Henna Artists (Bride, Friends & Family)",
+      description:
+        "Our trusted beauty professionals ensure every member of your celebration feels confident, camera-ready, and beautifully prepared for the big day.",
+    },
+    {
+      title: "AI Technology",
+      description:
+        "Elevate your wedding in Dubai or anywhere in the UAE with e-invitations, QR guest experiences, AI photo booths, robots, live streaming, language translators, and virtual access for family and friends.",
+    },
+    {
+      title: "Guest Hospitality & RSVP",
+      description:
+        "From invitations and RSVP tracking to welcome services, seating plans, guest assistance, and family coordination, we ensure every guest experience is thoughtfully managed from start to finish.",
+    },
+  ] satisfies BespokePlanningItem[],
+};
+
+function BespokePlanningCard({
+  item,
+  index,
+  isLast,
+  hasOddItemCount,
+}: {
+  item: BespokePlanningItem;
+  index: number;
+  isLast: boolean;
+  hasOddItemCount: boolean;
+}) {
+  const number = String(index + 1).padStart(2, "0");
+
+  return (
+    <article
+      className={`group border border-primary-foreground/20 bg-primary/90 p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary/90 md:p-9 ${
+        isLast && hasOddItemCount ? "md:col-span-2 md:mx-auto md:w-[calc(50%-0.75rem)]" : ""
+      }`}
+    >
+      <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">{number}</p>
+
+      <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl text-primary-foreground/70">
+        {item.title}
+      </h3>
+
+      <p className="mt-4 text-sm leading-7 md:text-base text-primary-foreground/80">
+        {item.description}
+      </p>
+    </article>
+  );
+}
+
+function BespokePlanningSection() {
+  const { eyebrow, title, introduction, services } = bespokePlanningContent;
+  const hasOddItemCount = services.length % 2 !== 0;
+
+  return (
+    <section className="section-y -mb-25 bg-secondary/40">
+      <div className="container-page">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-xs font-medium uppercase tracking-[0.28em] text-gold">{eyebrow}</p>
+
+          <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">{title}</h2>
+
+          <div className="mx-auto mt-7 h-px w-20 bg-primary-foreground/30" />
+
+          {introduction.map((paragraph, index) => (
+            <p
+              key={paragraph}
+              className={`mx-auto max-w-3xl text-base leading-8 md:text-lg ${
+                index === 0 ? "mt-7" : "mt-4"
+              }`}
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
+
+        <div className="mx-auto mt-14 grid max-w-6xl gap-6 md:grid-cols-2">
+          {services.map((item, index) => (
+            <BespokePlanningCard
+              key={item.title}
+              item={item}
+              index={index}
+              isLast={index === services.length - 1}
+              hasOddItemCount={hasOddItemCount}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ServicesPage() {
   return (
     <>
@@ -141,7 +286,7 @@ function ServicesPage() {
         </div>
 
         <div className="container-page flex min-h-[420px] items-center justify-center py-24 md:min-h-[520px]">
-          <div className="mx-auto w-full max-w-3xl text-center text-white">
+          <div className="mx-auto w-full text-center text-white">
             <nav className="mb-6 text-[0.65rem] uppercase tracking-[0.3em] text-white/70">
               <Link to="/" className="hover:text-white">
                 Home
@@ -156,7 +301,7 @@ function ServicesPage() {
               Creating Unforgettable Weddings Across the UAE
             </h1>
 
-            <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-white/85 md:text-lg">
+            <p className="mt-6 text-base leading-relaxed text-white/85 md:text-lg">
               Celebrate your love story with Awesome Events Weddings, an award-winning Wedding
               Agency in UAE and trusted Wedding Planner in Dubai. Based in Dubai, we create
               unforgettable celebrations across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE. From
@@ -263,163 +408,7 @@ function ServicesPage() {
       </section>
 
       {/* Custom Wedding Planning Services */}
-      <section className="section-y -mb-25 bg-secondary/40">
-        <div className="container-page">
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="text-xs font-medium uppercase tracking-[0.28em] text-gold">
-              Bespoke Planning
-            </p>
-
-            <h2 className="mt-4 font-display text-4xl leading-tight md:text-5xl">
-              Custom Wedding Planning Services
-            </h2>
-
-            <div className="mx-auto mt-7 h-px w-20 bg-primary-foreground/30" />
-
-            <p className="mx-auto mt-7 max-w-3xl text-base leading-8 md:text-lg">
-              At Awesome Events Weddings, our custom wedding planning services are tailored around
-              your story, style, culture, and celebration goals. From the first idea to the final
-              moment, we bring every detail together with creativity, care, and seamless
-              coordination.
-            </p>
-
-            <p className="mx-auto mt-4 max-w-3xl text-base leading-8 md:text-lg">
-              The services below will give you a clearer understanding of how we support you in
-              creating a wedding that feels personal, effortless, and beautifully yours.
-            </p>
-          </div>
-
-          <div className="mx-auto mt-14 grid max-w-6xl gap-6 md:grid-cols-2">
-            <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">01</p>
-              <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
-                End-to-End Wedding Planning in Dubai &amp; UAE
-              </h3>
-              <p className="mt-4 text-sm leading-7 md:text-base">
-                From the first consultation to the final farewell, we manage every detail of your
-                luxury wedding dream, ensuring a seamless, stress-free, and beautifully executed
-                celebration takes place.
-              </p>
-            </article>
-
-            <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">02</p>
-              <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
-                Wedding Entertainment Experiences
-              </h3>
-              <p className="mt-4 text-sm leading-7 md:text-base">
-                We curate DJs, live performers, artists, celebrities, EMCEE, traditional acts, and
-                memorable bride and groom entry concepts with music, lighting, choreography, and
-                special effects.
-              </p>
-            </article>
-
-            <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">03</p>
-              <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
-                Venue, Décor &amp; Wedding Styling
-              </h3>
-              <p className="mt-4 text-sm leading-7 md:text-base">
-                We help source the perfect wedding venue and transform it with elegant décor, floral
-                styling, stage design, table settings, and theme-based concepts tailored to your
-                vision.
-              </p>
-            </article>
-
-            <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">04</p>
-              <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
-                Milestone Celebrations
-              </h3>
-              <p className="mt-4 text-sm leading-7 md:text-base">
-                We help celebrate life's special milestones with customized experiences, designed to
-                feel completely stress-free and create lasting memories in Dubai or anywhere in the
-                UAE.
-              </p>
-            </article>
-
-            <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">05</p>
-              <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
-                Luxury Private Parties in Dubai &amp; UAE
-              </h3>
-              <p className="mt-4 text-sm leading-7 md:text-base">
-                From renting out luxury yachts or private islands, exclusive poolside celebrations,
-                desert soirées, contemporary galleries, to private jets, we get it for you and
-                transform these extraordinary venues into unforgettable celebrations, tailored
-                entirely to your style and occasion.
-              </p>
-            </article>
-
-            <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">06</p>
-              <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
-                Audio-Visual &amp; Lighting Solutions
-              </h3>
-              <p className="mt-4 text-sm leading-7 md:text-base">
-                We provide advanced audio-visual systems, intelligent lighting, LED screens, and
-                sound engineering for elegant luxury wedding experiences.
-              </p>
-            </article>
-
-            <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">07</p>
-              <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
-                Wedding Catering Services
-              </h3>
-              <p className="mt-4 text-sm leading-7 md:text-base">
-                Our wedding catering services offer customized menus, luxury catering, professional
-                hospitality, and exceptional dining experiences for weddings and grand celebrations
-                across the UAE.
-              </p>
-            </article>
-
-            <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">08</p>
-              <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
-                Drone Light Shows &amp; Fireworks
-              </h3>
-              <p className="mt-4 text-sm leading-7 md:text-base">
-                Create an unforgettable grand entrance for your wedding or finale with breathtaking
-                aerial spectacles and synchronized moments that leave every guest amazed.
-              </p>
-            </article>
-
-            <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">09</p>
-              <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
-                Makeup &amp; Henna Artists (Bride, Friends &amp; Family)
-              </h3>
-              <p className="mt-4 text-sm leading-7 md:text-base">
-                Our trusted beauty professionals ensure every member of your celebration feels
-                confident, camera-ready, and beautifully prepared for the big day.
-              </p>
-            </article>
-
-            <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">10</p>
-              <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">AI Technology</h3>
-              <p className="mt-4 text-sm leading-7 md:text-base">
-                Elevate your wedding in Dubai or anywhere in the UAE with e-invitations, QR guest
-                experiences, AI photo booths, robots, live streaming, language translators, and
-                virtual access for family and friends.
-              </p>
-            </article>
-
-            <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:col-span-2 md:mx-auto md:w-[calc(50%-0.75rem)] md:p-9">
-              <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">11</p>
-              <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
-                Guest Hospitality &amp; RSVP
-              </h3>
-              <p className="mt-4 text-sm leading-7 md:text-base">
-                From invitations and RSVP tracking to welcome services, seating plans, guest
-                assistance, and family coordination, we ensure every guest experience is
-                thoughtfully managed from start to finish.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
+      <BespokePlanningSection />
     </>
   );
 }
