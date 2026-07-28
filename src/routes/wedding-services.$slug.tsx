@@ -15,6 +15,8 @@ import {
   type ServiceFaq,
 } from "@/lib/content/service-details";
 import servicesHero from "@/assets/services-hero.jpg";
+import { FaqAccordion } from "@/components/faq-accordion";
+import type { FaqItem } from "@/lib/content/faqs";
 
 const beachWeddingFaqs: ServiceFaq[] = [
   {
@@ -157,7 +159,7 @@ function ServiceNotFound() {
 function WeddingServicePage() {
   const { service, meta, detail } = Route.useLoaderData();
 
-  const faqsToDisplay =
+  const faqsToDisplay: FaqItem[] =
     service.slug === "desert-wedding-dubai"
       ? desertWeddingFaqs
       : service.slug.toLowerCase().includes("beach")
@@ -531,18 +533,7 @@ function WeddingServicePage() {
             <h2 className="mt-3 font-display text-3xl md:text-4xl">Frequently Asked Questions</h2>
           </div>
           <div className="mt-8 max-w-3xl">
-            <Accordion type="single" collapsible className="w-full font-['Times_New_Roman']">
-              {faqsToDisplay.map((faq: ServiceFaq, i: number) => (
-                <AccordionItem key={i} value={`item-${i}`}>
-                  <AccordionTrigger className="text-left font-['Times_New_Roman'] text-xl leading-relaxed md:text-2xl">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="font-['Times_New_Roman'] text-lg leading-relaxed md:text-xl">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
+            <FaqAccordion items={faqsToDisplay} />
           </div>
         </div>
       </section>

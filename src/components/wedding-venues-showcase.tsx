@@ -6,7 +6,7 @@ import { venueCategories } from "@/lib/content/venues";
 
 export function WeddingVenuesShowcase() {
   return (
-    <section className="bg-gold/20 section-y scroll-mt-24">
+    <section className="bg-secondary/40 section-y scroll-mt-24">
       <div className="container-page">
         <SectionHeader
           align="center"
