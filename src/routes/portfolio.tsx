@@ -243,7 +243,7 @@ function PortfolioPage() {
     const startIndex = processedCountRef.current;
     const endIndex = Math.min(requestedCount, images.length);
 
-    if (startIndex >= endIndex || isLoadingBatch) {
+    if (startIndex >= endIndex) {
       return;
     }
 
@@ -271,7 +271,7 @@ function PortfolioPage() {
     return () => {
       isCancelled = true;
     };
-  }, [requestedCount, images, isLoadingBatch]);
+  }, [requestedCount, images]);
 
   /*
     Request the next batch before the user reaches the bottom.
