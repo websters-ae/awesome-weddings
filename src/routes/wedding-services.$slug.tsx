@@ -336,7 +336,6 @@ function WeddingServicePage() {
       )}
 
       {/* Other services */}
-
       <section className="section-y">
         <div className="container-page">
           <div className="text-center">

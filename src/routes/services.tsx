@@ -263,10 +263,10 @@ function ServicesPage() {
       </section>
 
       {/* Custom Wedding Planning Services */}
-      <section className="section-y -mb-25 bg-gold text-primary-foreground">
+      <section className="section-y -mb-25 bg-secondary/40">
         <div className="container-page">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary-foreground/70">
+            <p className="text-xs font-medium uppercase tracking-[0.28em] text-gold">
               Bespoke Planning
             </p>
 
@@ -276,14 +276,14 @@ function ServicesPage() {
 
             <div className="mx-auto mt-7 h-px w-20 bg-primary-foreground/30" />
 
-            <p className="mx-auto mt-7 max-w-3xl text-base leading-8 text-primary-foreground/85 md:text-lg">
+            <p className="mx-auto mt-7 max-w-3xl text-base leading-8 md:text-lg">
               At Awesome Events Weddings, our custom wedding planning services are tailored around
               your story, style, culture, and celebration goals. From the first idea to the final
               moment, we bring every detail together with creativity, care, and seamless
               coordination.
             </p>
 
-            <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-primary-foreground/75 md:text-lg">
+            <p className="mx-auto mt-4 max-w-3xl text-base leading-8 md:text-lg">
               The services below will give you a clearer understanding of how we support you in
               creating a wedding that feels personal, effortless, and beautifully yours.
             </p>
@@ -295,7 +295,7 @@ function ServicesPage() {
               <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
                 End-to-End Wedding Planning in Dubai &amp; UAE
               </h3>
-              <p className="mt-4 text-sm leading-7 text-primary-foreground/75 md:text-base">
+              <p className="mt-4 text-sm leading-7 md:text-base">
                 From the first consultation to the final farewell, we manage every detail of your
                 luxury wedding dream, ensuring a seamless, stress-free, and beautifully executed
                 celebration takes place.
@@ -307,7 +307,7 @@ function ServicesPage() {
               <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
                 Wedding Entertainment Experiences
               </h3>
-              <p className="mt-4 text-sm leading-7 text-primary-foreground/75 md:text-base">
+              <p className="mt-4 text-sm leading-7 md:text-base">
                 We curate DJs, live performers, artists, celebrities, EMCEE, traditional acts, and
                 memorable bride and groom entry concepts with music, lighting, choreography, and
                 special effects.
@@ -319,7 +319,7 @@ function ServicesPage() {
               <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
                 Venue, Décor &amp; Wedding Styling
               </h3>
-              <p className="mt-4 text-sm leading-7 text-primary-foreground/75 md:text-base">
+              <p className="mt-4 text-sm leading-7 md:text-base">
                 We help source the perfect wedding venue and transform it with elegant décor, floral
                 styling, stage design, table settings, and theme-based concepts tailored to your
                 vision.
@@ -331,7 +331,7 @@ function ServicesPage() {
               <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
                 Milestone Celebrations
               </h3>
-              <p className="mt-4 text-sm leading-7 text-primary-foreground/75 md:text-base">
+              <p className="mt-4 text-sm leading-7 md:text-base">
                 We help celebrate life's special milestones with customized experiences, designed to
                 feel completely stress-free and create lasting memories in Dubai or anywhere in the
                 UAE.
@@ -343,7 +343,7 @@ function ServicesPage() {
               <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
                 Luxury Private Parties in Dubai &amp; UAE
               </h3>
-              <p className="mt-4 text-sm leading-7 text-primary-foreground/75 md:text-base">
+              <p className="mt-4 text-sm leading-7 md:text-base">
                 From renting out luxury yachts or private islands, exclusive poolside celebrations,
                 desert soirées, contemporary galleries, to private jets, we get it for you and
                 transform these extraordinary venues into unforgettable celebrations, tailored
@@ -356,7 +356,7 @@ function ServicesPage() {
               <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
                 Audio-Visual &amp; Lighting Solutions
               </h3>
-              <p className="mt-4 text-sm leading-7 text-primary-foreground/75 md:text-base">
+              <p className="mt-4 text-sm leading-7 md:text-base">
                 We provide advanced audio-visual systems, intelligent lighting, LED screens, and
                 sound engineering for elegant luxury wedding experiences.
               </p>
@@ -367,7 +367,7 @@ function ServicesPage() {
               <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
                 Wedding Catering Services
               </h3>
-              <p className="mt-4 text-sm leading-7 text-primary-foreground/75 md:text-base">
+              <p className="mt-4 text-sm leading-7 md:text-base">
                 Our wedding catering services offer customized menus, luxury catering, professional
                 hospitality, and exceptional dining experiences for weddings and grand celebrations
                 across the UAE.
@@ -379,7 +379,7 @@ function ServicesPage() {
               <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
                 Drone Light Shows &amp; Fireworks
               </h3>
-              <p className="mt-4 text-sm leading-7 text-primary-foreground/75 md:text-base">
+              <p className="mt-4 text-sm leading-7 md:text-base">
                 Create an unforgettable grand entrance for your wedding or finale with breathtaking
                 aerial spectacles and synchronized moments that leave every guest amazed.
               </p>
@@ -390,7 +390,7 @@ function ServicesPage() {
               <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
                 Makeup &amp; Henna Artists (Bride, Friends &amp; Family)
               </h3>
-              <p className="mt-4 text-sm leading-7 text-primary-foreground/75 md:text-base">
+              <p className="mt-4 text-sm leading-7 md:text-base">
                 Our trusted beauty professionals ensure every member of your celebration feels
                 confident, camera-ready, and beautifully prepared for the big day.
               </p>
@@ -399,7 +399,7 @@ function ServicesPage() {
             <article className="group border border-primary-foreground/20 bg-primary-foreground/[0.06] p-7 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-primary-foreground/[0.1] md:p-9">
               <p className="text-xs uppercase tracking-[0.24em] text-primary-foreground/55">10</p>
               <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">AI Technology</h3>
-              <p className="mt-4 text-sm leading-7 text-primary-foreground/75 md:text-base">
+              <p className="mt-4 text-sm leading-7 md:text-base">
                 Elevate your wedding in Dubai or anywhere in the UAE with e-invitations, QR guest
                 experiences, AI photo booths, robots, live streaming, language translators, and
                 virtual access for family and friends.
@@ -411,7 +411,7 @@ function ServicesPage() {
               <h3 className="mt-4 font-display text-2xl leading-snug md:text-3xl">
                 Guest Hospitality &amp; RSVP
               </h3>
-              <p className="mt-4 text-sm leading-7 text-primary-foreground/75 md:text-base">
+              <p className="mt-4 text-sm leading-7 md:text-base">
                 From invitations and RSVP tracking to welcome services, seating plans, guest
                 assistance, and family coordination, we ensure every guest experience is
                 thoughtfully managed from start to finish.
