@@ -14,9 +14,8 @@ import { company, socialLinks } from "@/lib/content/nav";
   https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true
 */
 
-const GOOGLE_FORM_URL = "PASTE_YOUR_GOOGLE_FORM_LINK_HERE";
-
-const GOOGLE_FORM_EMBED_URL = "PASTE_YOUR_GOOGLE_FORM_EMBED_LINK_HERE";
+const GOOGLE_FORM_URL =
+  "https://docs.google.com/forms/d/1xkjIvxIXVq9ZPVbAsskQUoDMebkh8eRA9T4V1NJucUM/edit";
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>): { type?: string } => ({
@@ -112,7 +111,6 @@ function ContactPage() {
 
                     <span>{company.address}</span>
                   </li>
-
                 </ul>
 
                 <div className="mt-6 flex gap-2">
