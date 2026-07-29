@@ -46,6 +46,16 @@ const trustStats = [
   { value: "300+", label: "Happy Couples" },
 ];
 
+const emirates = [
+  "Dubai",
+  "Abu Dhabi",
+  "Sharjah",
+  "Ajman",
+  "Umm Al Quwain",
+  "Ras Al Khaimah",
+  "Fujairah",
+];
+
 function HomePage() {
   return (
     <>
@@ -159,35 +169,34 @@ function HomePage() {
       </section>
 
       {/* UAE coverage */}
-      <section className="bg-secondary/60 section-y">
-        <div className="container-page grid gap-10 lg:grid-cols-2 lg:items-center">
+      <section className="section-y bg-secondary/60">
+        <div className="container-page grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
             <p className="eyebrow flex items-center gap-2">
-              <MapPin className="h-3.5 w-3.5" /> UAE-wide coverage
+              <MapPin className="h-3.5 w-3.5" />
+              UAE-wide coverage
             </p>
+
             <h2 className="mt-3 font-display text-3xl md:text-5xl">
-              UAE Weddings across the country
+              Weddings across all seven emirates
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
               From our headquarters in Dubai, we plan and coordinate weddings across all seven
-              emirates of the UAE, including Dubai, Abu Dhabi, Sharjah, Ajman, Umm Al Quwain, Ras Al
-              Khaimah, Fujairah, and other parts of the UAE, creating personalised celebrations in
-              some of the country's most beautiful destinations.
+              emirates of the UAE, creating personalised celebrations in some of the country&apos;s
+              most beautiful destinations.
             </p>
           </div>
-          <div className="relative -mx-2 md:-mx-4 lg:scale-[1.07] lg:origin-center">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-6 bottom-2 h-10 rounded-[50%] bg-primary/20 blur-2xl"
-            />
-            <img
-              src={uaeMapAsset}
-              alt="Map of the UAE with all seven emirates marked — Dubai, Abu Dhabi, Sharjah, Ajman, Umm Al Quwain, Ras Al Khaimah, and Fujairah"
-              width={1664}
-              height={936}
-              loading="lazy"
-              className="relative h-auto w-full object-contain drop-shadow-[0_20px_35px_rgba(120,85,40,0.18)]"
-            />
+
+          <div className="flex flex-wrap gap-3 lg:justify-end">
+            {emirates.map((emirate, index) => (
+              <span
+                key={emirate}
+                className={`rounded-full border px-5 py-3 text-sm transition-colors border-primary bg-primary text-primary-foreground`}
+              >
+                {emirate}
+              </span>
+            ))}
           </div>
         </div>
       </section>

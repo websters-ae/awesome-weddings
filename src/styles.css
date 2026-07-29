@@ -494,3 +494,14 @@ video {
     font-size: 1.4rem;
   }
 }
+
+/* Global justified body text */
+p,
+li,
+blockquote,
+figcaption,
+.article-content {
+  text-align: justify;
+  /* text-justify: inter-word; */
+  /* hyphens: auto; */
+}
