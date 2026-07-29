@@ -131,8 +131,8 @@ h4,
   font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.22em;
-  font-size: 0.72rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 600;
   color: var(--color-primary);
 }
 
@@ -162,15 +162,6 @@ h4,
   font-family: var(--font-display);
   font-weight: 500;
   letter-spacing: -0.01em;
-}
-
-.eyebrow {
-  font-family: var(--font-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--color-primary);
 }
 
 @utility container-page {
@@ -495,7 +486,6 @@ video {
   }
 }
 
-/* Global justified body text */
 p,
 li,
 blockquote,
@@ -504,4 +494,16 @@ figcaption,
   text-align: justify;
   /* text-justify: inter-word; */
   /* hyphens: auto; */
+}
+
+nav p,
+nav li,
+nav a,
+header p,
+header li,
+header a,
+button,
+[role="menu"],
+[role="menuitem"] {
+  text-align: left;
 }

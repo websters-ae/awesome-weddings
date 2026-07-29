@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin } from "lucide-react";
-import heroImage from "@/assets/hero-wedding.jpg";
+import heroImage from "@/assets/hero-wedding.webp";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/section-header";
 import { ServiceIconRow } from "@/components/service-icon-row";
@@ -12,7 +12,6 @@ import { flagshipServices, culturalServices } from "@/lib/content/services";
 import { faqItems } from "@/lib/content/faqs";
 import { testimonials } from "@/lib/content/testimonials";
 import { company } from "@/lib/content/nav";
-import uaeMapAsset from "@/assets/uae-map-final.webp";
 import whyChooseUs1 from "@/assets/why-choose-us-1.webp";
 import whyChooseUs2 from "@/assets/why-choose-us-2.webp";
 
@@ -73,7 +72,7 @@ function HomePage() {
         </div>
         <div className="container-page relative flex min-h-[85vh] flex-col justify-end pb-20 pt-32 text-primary-foreground">
           <div className="inline-flex max-w-fit rounded-full bg-white/15 px-4 py-2 backdrop-blur-xl backdrop-saturate-150">
-            <p className="eyebrow text-accent">{company.tagline}</p>
+            <p className=" eyebrow text-accent">{company.tagline}</p>
           </div>
           <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[1.02] md:text-7xl">
             Turning Dreams into Beautiful Realities
