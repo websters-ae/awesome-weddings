@@ -294,8 +294,9 @@ function ServicesPage() {
               <span className="mx-2">/</span>
               <span className="text-white">Wedding Services</span>
             </nav>
-
-            <p className="eyebrow text-white/75">Wedding Services</p>
+            <div className="inline-flex max-w-fit rounded-full bg-white/15 px-4 py-2 backdrop-blur-xl backdrop-saturate-150">
+              <p className="eyebrow text-white/75">Wedding Services</p>
+            </div>
 
             <h1 className="mt-4 font-display text-4xl leading-tight md:text-5xl lg:text-6xl">
               Creating Unforgettable Weddings Across the UAE

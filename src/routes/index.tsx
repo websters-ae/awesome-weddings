@@ -41,7 +41,7 @@ export const Route = createFileRoute("/")({
 
 const trustStats = [
   { value: "450+", label: "Events" },
-  { value: "62k+", label: "Attendees" },
+  { value: "62,000", label: "Attendees" },
   { value: "100+", label: "Event Partners" },
   { value: "300+", label: "Happy Couples" },
 ];
@@ -105,7 +105,7 @@ function HomePage() {
               Experience you can count on, elegance you can feel.
             </p>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              With over 12 years of experience, Awesome Events Weddings is a trusted luxury wedding
+              With over a decade of experience, Awesome Events Weddings is a trusted luxury wedding
               planner in Dubai, creating extraordinary celebrations across the UAE.
             </p>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
@@ -119,7 +119,7 @@ function HomePage() {
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
               Through meticulous planning, personalized service, and world-class production, we
               manage every detail from the first consultation to the final celebration, bringing
-              each couple’s unique wedding vision to life.
+              each couple's unique wedding vision to life.
             </p>
           </div>
           <dl className="grid grid-cols-2 gap-4">

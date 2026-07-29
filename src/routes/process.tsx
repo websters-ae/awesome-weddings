@@ -48,7 +48,9 @@ function ProcessPage() {
               <span className="mx-2">/</span>
               <span className="text-white">Work Process</span>
             </nav>
-            <p className="eyebrow text-white/75">How We Work</p>
+            <div className="inline-flex max-w-fit rounded-full bg-white/35 px-4 py-2 backdrop-blur-xl backdrop-saturate-150">
+              <p className="eyebrow text-white/75">How We Work</p>
+            </div>
             <h1 className="mt-4 font-display text-4xl uppercase tracking-wide md:text-5xl lg:text-6xl">
               Work Process
             </h1>

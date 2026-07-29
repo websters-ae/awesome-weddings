@@ -64,7 +64,7 @@ export const flagshipServices: ServiceItem[] = [
     ],
     cta: "Explore Intimate Weddings",
     image: "/service-images/int-elo.webp",
-    perfectForImage: "/decor/ie1.webp",
+    perfectForImage: "/service-images/ie-p.webp",
     banner: "/service-images/int-cover.webp",
   },
   {

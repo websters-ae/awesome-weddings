@@ -180,7 +180,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     whyChoose: [
       {
         title: "Experienced Desert Wedding Planners",
-        body: "With over 12 years of experience, we create luxury desert weddings across Dubai and the UAE, combining creative design, cultural understanding, and seamless execution.",
+        body: "With over a decade of experience, we create luxury desert weddings across Dubai and the UAE, combining creative design, cultural understanding, and seamless execution.",
       },
       {
         title: "Bespoke Desert Wedding Concepts",

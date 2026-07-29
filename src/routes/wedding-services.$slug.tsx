@@ -2,12 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Check, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { getServiceBySlug, allServices, serviceCtaMeta } from "@/lib/content/services";
 import {
   getServiceDetail,
@@ -226,7 +220,9 @@ function WeddingServicePage() {
               <span className="mx-2">/</span>
               <span className="text-white">{service.title}</span>
             </nav>
-            <p className="eyebrow text-white/75">Wedding Services</p>
+            <div className="inline-flex max-w-fit rounded-full bg-white/35 px-4 py-2 backdrop-blur-md backdrop-saturate-150">
+              <p className="eyebrow text-white/75">Wedding Services</p>
+            </div>
             <h1 className="mt-4 font-display text-4xl leading-tight md:text-5xl lg:text-6xl">
               {service.title}
             </h1>
@@ -332,6 +328,65 @@ function WeddingServicePage() {
                   </Button>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Wedding Décor */}
+      {detail.decor && (
+        <section className="section-y bg-secondary/20">
+          <div className="container-page">
+            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+              <div className="max-w-2xl">
+                <p className="eyebrow">{detail.decor.eyebrow ?? "Wedding Décor"}</p>
+
+                <h2 className="mt-3 font-display text-3xl leading-tight md:text-4xl">
+                  {detail.decor.heading}
+                </h2>
+
+                <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                  {detail.decor.intro}
+                </p>
+
+                <h3 className="mt-7 font-display text-xl">{detail.decor.listHeading}</h3>
+
+                <ul className="mt-5 space-y-3 text-sm text-muted-foreground md:text-base">
+                  {detail.decor.items.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {detail.decor.outro && (
+                  <p className="mt-7 text-base leading-relaxed text-muted-foreground">
+                    {detail.decor.outro}
+                  </p>
+                )}
+
+                <div className="mt-8">
+                  <Button
+                    asChild
+                    className="rounded-none bg-primary text-primary-foreground hover:bg-primary/90"
+                  >
+                    <Link to="/contact" search={{ type: meta.contactType }}>
+                      {detail.decor.ctaLabel ?? "Contact Us"}
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+
+              {detail.decor.image && (
+                <div className="relative aspect-[4/3] overflow-hidden rounded-sm shadow-lg">
+                  <img
+                    src={detail.decor.image}
+                    alt={detail.decor.imageAlt ?? detail.decor.heading}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -465,65 +520,6 @@ function WeddingServicePage() {
           </div>
         </div>
       </section>
-
-      {/* Wedding Décor */}
-      {detail.decor && (
-        <section className="section-y bg-secondary/20">
-          <div className="container-page">
-            <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-              <div className="max-w-2xl">
-                <p className="eyebrow">{detail.decor.eyebrow ?? "Wedding Décor"}</p>
-
-                <h2 className="mt-3 font-display text-3xl leading-tight md:text-4xl">
-                  {detail.decor.heading}
-                </h2>
-
-                <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                  {detail.decor.intro}
-                </p>
-
-                <h3 className="mt-7 font-display text-xl">{detail.decor.listHeading}</h3>
-
-                <ul className="mt-5 space-y-3 text-sm text-muted-foreground md:text-base">
-                  {detail.decor.items.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {detail.decor.outro && (
-                  <p className="mt-7 text-base leading-relaxed text-muted-foreground">
-                    {detail.decor.outro}
-                  </p>
-                )}
-
-                <div className="mt-8">
-                  <Button
-                    asChild
-                    className="rounded-none bg-primary text-primary-foreground hover:bg-primary/90"
-                  >
-                    <Link to="/contact" search={{ type: meta.contactType }}>
-                      {detail.decor.ctaLabel ?? "Contact Us"}
-                    </Link>
-                  </Button>
-                </div>
-              </div>
-
-              {detail.decor.image && (
-                <div className="relative aspect-[4/3] overflow-hidden rounded-sm shadow-lg">
-                  <img
-                    src={detail.decor.image}
-                    alt={detail.decor.imageAlt ?? detail.decor.heading}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* FAQs */}
       <section className="section-y bg-secondary/40">
