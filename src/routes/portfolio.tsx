@@ -381,7 +381,7 @@ function PortfolioPage() {
                 unforgettable moments created across Dubai and the UAE.
               </p>
 
-              {images.length > 0 && (
+              {/* {images.length > 0 && (
                 <div className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
                   <Images className="h-4 w-4" />
 
@@ -389,7 +389,7 @@ function PortfolioPage() {
                     {images.length} portfolio {images.length === 1 ? "image" : "images"}
                   </span>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </section>
@@ -425,7 +425,7 @@ function PortfolioPage() {
                   </div>
                 )}
 
-                <div
+                {/* <div
                   ref={loadMoreRef}
                   className="mt-6 flex min-h-12 items-center justify-center"
                   aria-live="polite"
@@ -444,7 +444,7 @@ function PortfolioPage() {
                       All {images.length} images loaded
                     </p>
                   )}
-                </div>
+                </div> */}
               </>
             ) : (
               <div className="mx-auto max-w-2xl rounded-sm border border-dashed border-border bg-secondary/30 px-6 py-16 text-center">
