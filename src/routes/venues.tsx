@@ -79,7 +79,7 @@ function VenuesPage() {
             <SectionHeader
               eyebrow="Wedding Planners"
               title="Wedding Venues in Dubai & UAE"
-              body="Finding the right venue is the first step towards an unforgettable celebration. At Awesome Events Weddings, our experienced luxury wedding planners help couples explore exceptional wedding venues across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE. From comparing the Burj Al Arab wedding cost and reviewing Atlantis The Palm wedding packages to exploring Madinat Jumeirah wedding venues or planning an Al Maha Desert Resort wedding, our tailored wedding planning services help bridge the gap between inspiration and reality. We match every venue to your vision, guest count, budget, cultural requirements, and celebration style, making the entire venue selection process feel clear, personal, and effortless."
+              body="Finding the right venue is the first step towards an unforgettable celebration. At Awesome Events Weddings, our experienced luxury wedding planners help couples explore exceptional wedding venues across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE. Whether you are looking for an iconic celebration at Emirates Palace, an elegant outdoor wedding at Atlantis The Palm, or the scenic beauty and timeless charm of One&Only Royal Mirage, our tailored wedding planning services help bridge the gap between inspiration and reality. We match every venue to your vision, guest count, budget, cultural requirements, and celebration style, making the entire venue selection process feel clear, personal, and effortless."
               align="center"
               className="
                 mx-auto
