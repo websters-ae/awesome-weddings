@@ -508,8 +508,8 @@ button,
   text-align: left;
 }
 
-.featured-venues p {
-  text-align: left;
+.featured-venues > div > div > p {
+  text-align: center;
 }
 
 .featured-venues article p {
@@ -517,6 +517,6 @@ button,
 }
 
 .featured-venues .eyebrow,
-.featured-venues article p:first-child {
+.featured-venues [data-venue-label] {
   text-align: left;
 }

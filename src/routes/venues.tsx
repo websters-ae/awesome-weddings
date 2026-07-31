@@ -175,8 +175,8 @@ function VenuesPage() {
                   {/* Oversized background number */}
                   <span
                     aria-hidden="true"
-                    className={`pointer-events-none absolute -top-16 z-0 font-display text-[7rem] leading-none text-primary/[0.07] md:-top-24 md:text-[12rem] ${
-                      imageOnRight ? "left-0 md:left-8" : "right-0 md:right-8"
+                    className={`pointer-events-none absolute -top-12 z-[5] select-none font-display text-[7rem] leading-none text-primary/[0.14] md:-top-20 md:text-[11rem] ${
+                      imageOnRight ? "right-4 md:right-10" : "left-4 md:left-10"
                     }`}
                   >
                     {number}
@@ -203,18 +203,7 @@ function VenuesPage() {
                           className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.045]"
                         />
 
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-black/5" />
-
-                        {/* Image number */}
-                        <div className="absolute bottom-5 left-5 flex items-center gap-3 text-white">
-                          <span className="font-display text-3xl">{number}</span>
-
-                          <span className="h-px w-10 bg-white/60" />
-
-                          <span className="text-[10px] uppercase tracking-[0.28em] text-white/80">
-                            Venue Collection
-                          </span>
-                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-transparent" />
                       </div>
 
                       {/* Decorative outline */}
@@ -230,14 +219,17 @@ function VenuesPage() {
                     <div
                       className={`relative z-20 -mt-8 bg-background px-6 py-8 shadow-[0_24px_70px_rgba(40,25,15,0.12)] sm:px-8 md:px-10 md:py-11 lg:col-span-6 lg:mt-0 ${
                         imageOnRight
-                          ? "lg:col-start-1 lg:row-start-1 lg:mr-[-4rem]"
-                          : "lg:col-start-7 lg:row-start-1 lg:ml-[-4rem]"
+                          ? "lg:col-start-1 lg:row-start-1 lg:mr-[-3rem]"
+                          : "lg:col-start-7 lg:row-start-1 lg:ml-[-3rem]"
                       }`}
                     >
                       <div className="flex items-center gap-3">
                         <span className="h-px w-8 bg-primary" />
 
-                        <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-primary">
+                        <p
+                          data-venue-label
+                          className="text-[10px] font-medium uppercase tracking-[0.28em] text-primary"
+                        >
                           Featured Setting
                         </p>
                       </div>
