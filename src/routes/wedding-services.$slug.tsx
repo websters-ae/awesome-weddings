@@ -352,7 +352,7 @@ function WeddingServicePage() {
                 <h3 className="mt-7 font-display text-xl">{detail.decor.listHeading}</h3>
 
                 <ul className="mt-5 space-y-3 text-sm text-muted-foreground md:text-base">
-                  {detail.decor.items.map((item) => (
+                  {detail.decor.items.map((item: string) => (
                     <li key={item} className="flex items-start gap-3">
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                       <span>{item}</span>
