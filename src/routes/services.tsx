@@ -7,13 +7,13 @@ import servicesHero from "@/assets/wedding-services/beach-wedding-hero.webp";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Wedding Services in Dubai & UAE | Awesome Events Weddings" },
+      { title: "Wedding Services in Dubai & the UAE | Awesome Events Weddings" },
       {
         name: "description",
         content:
           "Bespoke wedding planning services across Dubai, Abu Dhabi & the UAE — beach, desert, hotel, cultural, civil and destination weddings.",
       },
-      { property: "og:title", content: "Wedding Services in Dubai & UAE" },
+      { property: "og:title", content: "Wedding Services in Dubai & the UAE" },
       {
         property: "og:description",
         content: "Every wedding planning service, one trusted team.",
@@ -37,7 +37,7 @@ const serviceContentOverrides: Record<
 
   "desert-wedding-dubai": {
     description:
-      "Looking for something truly unique? A Desert Wedding in Dubai & UAE offers breathtaking sand dunes, spectacular sunsets, and a magical outdoor wedding experience inspired by Arabian traditions. It's an unforgettable setting for couples planning a destination wedding filled with unforgettable moments.",
+      "Looking for something truly unique? A Desert Wedding in Dubai & the UAE offers breathtaking sand dunes, spectacular sunsets, and a magical outdoor wedding experience inspired by Arabian traditions. It's an unforgettable setting for couples planning a destination wedding filled with unforgettable moments.",
     perfectFor: [
       "Arabian-inspired weddings",
       "Destination weddings",
@@ -59,13 +59,12 @@ const serviceContentOverrides: Record<
 
   "civil-weddings-uae": {
     description:
-      "Whether you're a resident or travelling to the UAE, we'll help make your Civil Weddings UAE journey simple and memorable. Many couples choose to celebrate their legal ceremony with a luxury wedding, an intimate reception, or a destination wedding experience afterwards.",
+      "Whether you're a resident or travelling to the UAE, we'll help make your Civil Weddings journey simple and memorable. Many couples choose to celebrate their legal ceremony with a luxury wedding, an intimate reception, or a destination wedding experience afterwards.",
     perfectFor: [
       "UAE residents",
       "International couples",
-      "Couples looking for a Celebrant in Dubai or UAE",
+      "Couples looking for a Celebrant in Dubai or the UAE",
       "Legally recognised civil marriages",
-      "Wedding Celebrations planning after your ceremony",
     ],
   },
 
@@ -107,7 +106,7 @@ const serviceContentOverrides: Record<
     perfectFor: [
       "Intimate garden ceremonies",
       "Outdoor wedding receptions",
-      "Resort garden weddings",
+      "Garden weddings in resort",
       "Luxury destination weddings",
     ],
   },
@@ -143,7 +142,7 @@ const bespokePlanningContent = {
   ],
   services: [
     {
-      title: "End-to-End Wedding Planning in Dubai & UAE",
+      title: "End-to-End Wedding Planning in Dubai & the UAE",
       description:
         "From the first consultation to the final farewell, we manage every detail of your luxury wedding dream, ensuring a seamless, stress-free, and beautifully executed celebration takes place.",
     },
@@ -163,7 +162,7 @@ const bespokePlanningContent = {
         "We help celebrate life's special milestones with customized experiences, designed to feel completely stress-free and create lasting memories in Dubai or anywhere in the UAE.",
     },
     {
-      title: "Luxury Private Parties in Dubai & UAE",
+      title: "Luxury Private Parties in Dubai & the UAE",
       description:
         "From renting out luxury yachts or private islands, exclusive poolside celebrations, desert soirées, contemporary galleries, to private jets, we get it for you and transform these extraordinary venues into unforgettable celebrations, tailored entirely to your style and occasion.",
     },
@@ -193,7 +192,7 @@ const bespokePlanningContent = {
         "Elevate your wedding in Dubai or anywhere in the UAE with e-invitations, QR guest experiences, AI photo booths, robots, live streaming, language translators, and virtual access for family and friends.",
     },
     {
-      title: "Guest Hospitality & RSVP",
+      title: "Guest Hospitality, RSVP & logistics",
       description:
         "From invitations and RSVP tracking to welcome services, seating plans, guest assistance, and family coordination, we ensure every guest experience is thoughtfully managed from start to finish.",
     },
@@ -304,7 +303,7 @@ function ServicesPage() {
 
             <p className="mt-6 text-base leading-relaxed text-white/85 md:text-lg">
               Celebrate your love story with Awesome Events Weddings, an award-winning Wedding
-              Agency in UAE and trusted Wedding Planner in Dubai. Based in Dubai, we create
+              Agency in the UAE and trusted Wedding Planner in Dubai. Based in Dubai, we create
               unforgettable celebrations across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE. From
               romantic Beach Weddings and magical Desert Weddings to elegant Luxury Hotel Weddings
               and unforgettable Destination Weddings, our personalised Wedding Planning Services
@@ -331,8 +330,9 @@ function ServicesPage() {
               From elegant Beach Weddings and Luxury Hotel Weddings to Destination Weddings, Civil
               Weddings, and intimate celebrations, Awesome Events Weddings offers customised Wedding
               Planning Services across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE. As an
-              experienced Wedding Planner Dubai and Wedding Organizer UAE, we help bring your ideas
-              to life with thoughtful planning, creative styling, and personalised experiences.
+              experienced Wedding Planner in Dubai and Wedding Organizer in the UAE, we help bring
+              your ideas to life with thoughtful planning, creative styling, and personalised
+              experiences.
             </p>
 
             <div className="mx-auto mt-8 h-px w-24 bg-border" />
@@ -382,7 +382,7 @@ function ServicesPage() {
                           Perfect for
                         </p>
 
-                        <ul className="mt-3 grid gap-1.5 text-sm text-muted-foreground sm:grid-cols-2">
+                        <ul className="mt-3 grid gap-x-10 gap-y-4 text-sm text-muted-foreground sm:grid-cols-2">
                           {perfectFor.map((item) => (
                             <li key={item} className="flex items-start gap-2">
                               <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />

@@ -9,28 +9,28 @@ const img = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=c
 
 export const venueCategories: VenueCategory[] = [
   {
-    slug: "beachfront",
-    title: "Beachfront Wedding Venues",
-    cta: "Explore Beachfront Wedding Venues",
-    image: "/venues/beach-front.webp",
+    slug: "luxury-hotels-and-ballrooms",
+    title: "Luxury Hotels and Grand Ballrooms",
+    cta: "Explore Luxury Hotel Venues",
+    image: "/venues/lhgb.webp",
   },
   {
-    slug: "garden",
-    title: "Garden Wedding Venues",
-    cta: "Explore Garden Wedding Venues",
-    image: "/venues/g5.webp",
+    slug: "beach-and-island-resorts",
+    title: "Beach and Island Resorts",
+    cta: "Explore Beach & Island Venues",
+    image: "/venues/bir.webp",
   },
   {
-    slug: "luxury-hotel",
-    title: "Luxury Hotel Wedding Venues",
-    cta: "Explore Luxury Hotel Wedding Venues",
-    image: "/venues/luxury.webp",
+    slug: "desert-oasis-and-dune-camps",
+    title: "Desert Oasis and Dune Camps",
+    cta: "Explore Desert Venues",
+    image: "/venues/dodc.webp",
   },
   {
-    slug: "unique",
-    title: "Unique Wedding Venues",
-    cta: "Explore All Wedding Venues",
-    image: "/venues/gc.webp",
+    slug: "polo-and-equestrian-clubs",
+    title: "Polo and Equestrian Clubs",
+    cta: "Explore Equestrian Venues",
+    image: "/venues/pec.webp",
   },
 ];
 
@@ -51,12 +51,12 @@ export const whyChooseItems: WhyChooseItem[] = [
     number: "02",
     title: "Bespoke Wedding Design & Luxury Styling",
     description:
-      "Every wedding is uniquely designed to reflect your personality and vision. From elegant wedding decoration in Dubai and floral installations to custom stage styling, lighting, and tablescapes, we create timeless settings for unforgettable luxury weddings in Dubai & UAE.",
+      "Every wedding is uniquely designed to reflect your personality and vision. From elegant wedding decoration in Dubai and floral installations to custom stage styling, lighting, and tablescapes, we create timeless settings for unforgettable luxury weddings in Dubai & the UAE.",
   },
   {
     number: "03",
     title: "Trusted Wedding Partners & Seamless Planning",
     description:
-      "As a leading wedding organizer UAE, we've built strong relationships with the region's finest venues, photographers, designers, entertainers, and hospitality partners. Our wedding planning services ensure a smooth, stress-free experience with trusted professionals by your side every step of the way.",
+      "As a leading wedding organizer the UAE, we've built strong relationships with the region's finest venues, photographers, designers, entertainers, and hospitality partners. Our wedding planning services ensure a smooth, stress-free experience with trusted professionals by your side every step of the way.",
   },
 ];

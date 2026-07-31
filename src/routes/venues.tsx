@@ -8,13 +8,13 @@ import venueTwo from "@/assets/venue/awimg2.png";
 export const Route = createFileRoute("/venues")({
   head: () => ({
     meta: [
-      { title: "Wedding Venues in Dubai & UAE | Awesome Events Weddings" },
+      { title: "Wedding Venues in Dubai & the UAE | Awesome Events Weddings" },
       {
         name: "description",
         content:
           "Discover the finest wedding venues in Dubai, Abu Dhabi & the UAE — beachfront, garden, luxury hotel and unique venues, curated for luxury weddings.",
       },
-      { property: "og:title", content: "Wedding Venues in Dubai & UAE" },
+      { property: "og:title", content: "Wedding Venues in Dubai & the UAE" },
       {
         property: "og:description",
         content: "Handpicked venues for luxury weddings across the UAE.",
@@ -104,7 +104,7 @@ function VenuesPage() {
 
             <SectionHeader
               eyebrow="Wedding Planners"
-              title="Wedding Venues in Dubai & UAE"
+              title="Wedding Venues in Dubai & the UAE"
               body="Finding the right venue is the first step towards an unforgettable celebration. At Awesome Events Weddings, our experienced luxury wedding planners help couples explore exceptional wedding venues across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE. Whether you are looking for an iconic celebration at Emirates Palace, an elegant outdoor wedding at Atlantis The Palm, or the scenic beauty and timeless charm of One&Only Royal Mirage, our tailored wedding planning services help bridge the gap between inspiration and reality. We match every venue to your vision, guest count, budget, cultural requirements, and celebration style, making the entire venue selection process feel clear, personal, and effortless."
               align="center"
               className="
@@ -147,7 +147,7 @@ function VenuesPage() {
             <p className="eyebrow">Featured Venues</p>
 
             <h2 className="mt-4 font-display text-4xl leading-tight md:text-6xl">
-              Extraordinary Settings for
+              Extraordinary Venues for
               <span className="block italic text-primary">Unforgettable Celebrations</span>
             </h2>
 
@@ -307,7 +307,7 @@ function VenuesPage() {
                     Every wedding is uniquely designed to reflect your personality and vision. From
                     elegant wedding decoration in Dubai and floral installations to custom stage
                     styling, lighting, and tablescapes, we create timeless settings for
-                    unforgettable luxury weddings in Dubai &amp; UAE.
+                    unforgettable luxury weddings in Dubai &amp; the UAE.
                   </p>
                 </div>
 
@@ -317,7 +317,7 @@ function VenuesPage() {
                   </h3>
 
                   <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
-                    As a leading wedding organizer UAE, we've built strong relationships with the
+                    As a leading wedding organizer the UAE, we've built strong relationships with the
                     region's finest venues, photographers, designers, entertainers, and hospitality
                     partners. Whether you're planning a destination celebration or a local wedding,
                     our wedding planning services ensure a smooth, stress-free experience with

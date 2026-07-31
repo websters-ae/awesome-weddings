@@ -6,13 +6,13 @@ import { getPublishedPosts } from "@/lib/content/blog";
 export const Route = createFileRoute("/wedding-guide/")({
   head: () => ({
     meta: [
-      { title: "Wedding Guide — Dubai & UAE Wedding Planning Blog" },
+      { title: "Wedding Guide — Dubai & the UAE Wedding Planning Blog" },
       {
         name: "description",
         content:
           "Expert wedding planning guides for Dubai and the UAE — costs, venues, legal requirements, cultural traditions and more.",
       },
-      { property: "og:title", content: "Wedding Guide — Dubai & UAE" },
+      { property: "og:title", content: "Wedding Guide — Dubai & the UAE" },
       {
         property: "og:description",
         content: "Guides, tips and inspiration for couples planning weddings in the UAE.",

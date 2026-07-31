@@ -234,7 +234,7 @@ function HomePage() {
               <div>
                 <h3 className="font-display text-xl md:text-2xl">Experienced Wedding Planners</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  As a trusted Wedding Planner Dubai and Wedding Organizer UAE, we provide
+                  As a trusted Wedding Planner in Dubai and Wedding Organizer in the UAE, we provide
                   personalised Wedding Planning Services, guiding you through every stage of your
                   celebration with care and attention to detail.
                 </p>
@@ -244,7 +244,7 @@ function HomePage() {
                   Luxury & Customized Wedding Experiences
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  From elegant styling and Wedding Decoration Dubai to bespoke themes and venue
+                  From elegant styling and Wedding Decoration in Dubai to bespoke themes and venue
                   design, every celebration is thoughtfully customised to reflect your vision,
                   traditions, and personal style.
                 </p>
@@ -254,7 +254,7 @@ function HomePage() {
                   Complete Wedding Planning Services
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                  Our dedicated Wedding Coordinator manages venue selection, décor, entertainment,
+                  Our dedicated Wedding Coordinators manage venue selection, décor, entertainment,
                   photography, guest experiences, and production for weddings across Dubai, Abu
                   Dhabi, Ras Al Khaimah, and the UAE.
                 </p>
