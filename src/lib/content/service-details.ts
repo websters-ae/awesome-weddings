@@ -768,9 +768,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "emirati-gcc-weddings": {
     introHeading: "Emirati & GCC Weddings Dubai",
     intro: [
-      "Experience elegant Emirati weddings in Dubai with luxury wedding planning services designed to honour local traditions and Gulf customs.",
-      "Our expert wedding coordinator team delivers sophisticated celebrations featuring traditional Zaffa processions, elegant Majlis settings, exceptional hospitality, and bespoke wedding decoration Dubai. As a trusted wedding organizer in UAE, we ensure every ceremony is planned with precision and cultural authenticity.",
-      "From intimate family gatherings to grand multi-day celebrations, every detail is thoughtfully coordinated to reflect your heritage, family traditions, and personal vision.",
+      "Rooted in tradition, family values, and timeless hospitality, Emirati and GCC weddings are among the region's most cherished celebrations. As a trusted Wedding Planner Dubai and Wedding Organizer UAE, Awesome Events Weddings specialises in creating elegant Emirati and GCC Weddings that honour cultural traditions while delivering a refined and personalised experience. From intimate family gatherings to magnificent multi-day celebrations, every wedding is thoughtfully planned around your customs, preferences, and vision.",
+      "Whether you're planning a traditional Engagement, Henna Night, Nikah (Katb Kitab), Zaffa entrance, or a grand wedding reception, we work closely with your family to ensure every detail reflects your heritage with the utmost respect and discretion. Our experienced team can provide all-female event professionals, all-male event professionals, or a carefully coordinated combination of both, based on your family's preferences. We also assist with beautifully curated invitations and RSVP management, personalised wedding gifts and guest favours, guidance on traditional bridal and groom attire, menu planning, live Arabic music and cultural entertainment withluxury hospitality.",
+      "Our customized Wedding Planning Services bring every element together, including elegant majlis setups, floral décor, staging, lighting, entertainment, guest management, logistics, photography and videography coordination, valet services, VIP hospitality, and complete wedding management. Every celebration is designed to honour Emirati and GCC traditions while creating an unforgettable experience for you, your family, and your guests.",
     ],
     idealFor: [
       "Couples planning Emirati weddings in Dubai and the UAE",

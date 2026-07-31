@@ -279,7 +279,7 @@ function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-primary text-primary-foreground section-y">
+      {/* <section className="bg-primary text-primary-foreground section-y">
         <div className="container-page">
           <SectionHeader
             eyebrow="Testimonials"
@@ -292,7 +292,7 @@ function HomePage() {
             <TestimonialsCarousel items={testimonials} />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ */}
       <section id="faq" className="bg-secondary/60 section-y scroll-mt-24">
