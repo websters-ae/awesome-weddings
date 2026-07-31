@@ -91,20 +91,20 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     whyChooseTitle: "What Sets Our Luxury Beach Weddings Apart",
     whyChoose: [
       {
-        title: "Seamless Hotel Wedding Coordination",
-        body: "We work closely with leading five-star hotels in Dubai to manage ballroom access, banquet requirements, menus, accommodation, and venue coordination.",
+        title: "Seamless Beach Venue Coordination",
+        body: "We work closely with leading beachfront hotels and resorts across the UAE to manage venue access, ceremony locations, dining arrangements, accommodation, and all resort requirements.",
       },
       {
-        title: "Elegant Ballroom Wedding Transformations",
-        body: "Our team transforms hotel ballrooms through bespoke wedding décor, floral design, luxury lighting, staging, and personalised styling.",
+        title: "Elegant Beach Wedding Styling",
+        body: "Our team enhances every coastal setting with bespoke décor, floral design, ambient lighting, elegant seating, personalised details, and styling that complements the natural beauty of the shoreline along with your vision.",
       },
       {
-        title: "Refined Wedding Guest Hospitality & RSVP",
-        body: "From room bookings and airport transfers to welcome experiences and family assistance, we ensure every guest feels comfortable and cared for.",
+        title: "Thoughtful Guest Hospitality & RSVP Management",
+        body: "From airport transfers and room bookings to welcome experiences and family assistance, we ensure every guest feels comfortable, cared for, and part of the celebration.",
       },
       {
-        title: "Complete Hotel Wedding Management",
-        body: "We coordinate ceremonies, receptions, rehearsals, entertainment, catering, technical production, seating, schedules, and seamless wedding-day operations.",
+        title: "Complete Beach Wedding Management",
+        body: "We coordinate ceremonies, receptions, rehearsals, entertainment, catering, technical production, seating, schedules, weather planning, and seamless wedding-day operations.",
       },
     ],
     faqs: [
