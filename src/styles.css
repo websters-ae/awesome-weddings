@@ -507,3 +507,16 @@ button,
 [role="menuitem"] {
   text-align: left;
 }
+
+.featured-venues p {
+  text-align: left;
+}
+
+.featured-venues article p {
+  text-align: justify;
+}
+
+.featured-venues .eyebrow,
+.featured-venues article p:first-child {
+  text-align: left;
+}

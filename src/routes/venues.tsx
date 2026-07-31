@@ -79,7 +79,7 @@ const featuredVenues = [
       "For couples who imagine celebrating above the city, Dubai offers extraordinary elevated settings with panoramic skyline and waterfront views. The iconic Burj Al Arab Jumeirah Helipad rises 212 metres above the Arabian Gulf, CÉ LA VI at Address Sky View offers private dining experiences on Level 54 overlooking Downtown Dubai, ZETA Seventy Seven at Address Beach Resort provides an open-air setting beside its record-breaking infinity pool on Level 77, while The Link at One Za’abeel delivers 360-degree city views from its dramatic sky concourse, suspended 100 metres above the ground.",
     endLine:
       "At Awesome Events Weddings, we help you navigate these extraordinary venues with confidence, selecting the setting that best reflects your celebration style, guest experience, and preferred city views. Whether it is an intimate ceremony above the Arabian Gulf or a sophisticated rooftop gathering overlooking Dubai’s skyline, we ensure the venue feels personal, memorable, and perfectly suited to the occasion.",
-    image: "/venues/none.webp",
+    image: "/venues/hsv.webp",
   },
 ].filter((venue): venue is { title: string; description: string; endLine: string; image: string } =>
   Boolean(venue.image),
