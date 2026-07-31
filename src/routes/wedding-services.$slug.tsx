@@ -311,11 +311,11 @@ function WeddingServicePage() {
                           : `Who Is ${service.title} Perfect For?`}
                 </h2>
 
-                <ul className="mt-6 grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
+                <ul className="mt-7 grid gap-x-10 gap-y-5 text-sm text-muted-foreground sm:grid-cols-2 md:gap-x-12">
                   {(detail.idealFor ?? service.perfectFor)!.map((item: string) => (
-                    <li key={item} className="flex items-start gap-2">
+                    <li key={item} className="flex items-start gap-3 text-left leading-relaxed">
                       <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      {item}
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
