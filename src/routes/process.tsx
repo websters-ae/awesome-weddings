@@ -54,7 +54,7 @@ function ProcessPage() {
             <h1 className="mt-4 font-display text-4xl uppercase tracking-wide md:text-5xl lg:text-6xl">
               Work Process
             </h1>
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-white/85 md:text-xl">
+            <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed !text-center text-white/85 md:text-xl">
               {processSubheading}
             </p>
           </div>
@@ -64,7 +64,7 @@ function ProcessPage() {
       <section className="section-y">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="eyebrow">Our Approach</p>
+            <p className="eyebrow !text-center">Our Approach</p>
             <h2 className="mt-3 font-display text-3xl md:text-4xl">
               From Your First Consultation to the Celebration
             </h2>

@@ -339,13 +339,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "civil-weddings-uae": {
     introHeading: "Elegant Civil Weddings in Dubai & Across the UAE",
     intro: [
-      "At Awesome Events Weddings, we create civil weddings in Dubai that feel meaningful, elegant, and deeply personal. As an experienced Wedding Planner Dubai, we help couples turn a simple legal ceremony into a beautifully styled celebration filled with warmth, thoughtful details, and unforgettable moments.",
+      "At Awesome Events Weddings, we create civil weddings in Dubai that feel meaningful, elegant, and deeply personal. As an experienced wedding planner in Dubai, we help couples turn a simple legal ceremony into a beautifully styled celebration filled with warmth, thoughtful details, and unforgettable moments.",
       "Whether you are planning an intimate courthouse ceremony, a private hotel celebration, or a refined gathering with family and friends, our team manages every element with care. From venue sourcing and ceremony styling to elegant wedding décor, florals, catering, photography, guest hospitality, and complete event coordination, we ensure your celebration feels effortless from beginning to end.",
       "We also support couples with civil ceremony planning, timelines, documentation guidance, and venue arrangements, helping the entire process feel clear and well organised. Every civil wedding in the UAE is designed around your story, personal style, traditions, and preferred guest experience.",
       "Our aim is to create a celebration that feels relaxed yet special, intimate yet beautifully elevated, allowing you to focus on the joy of beginning your new journey together.",
     ],
     idealFor: [
-      "the UAE residents planning a legally recognised civil marriage",
+      "UAE residents planning a legally recognised civil marriage",
       "International couples getting married in Dubai or the UAE",
       "Couples seeking a simple, elegant, and personalised civil ceremony",
       "Newlyweds planning a reception or celebration after their legal ceremony",
@@ -947,7 +947,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "destination-weddings": {
     introHeading: "Luxury Destination Weddings in Dubai & the UAE",
     intro: [
-      "It's no surprise that the UAE has become one of the world's most desirable destination wedding locations. From iconic landmarks like Burj Al Arab Jumeirah, Atlantis, The Palm, and Emirates Palace Mandarin Oriental to extraordinary escapes such as Al Maha, a Luxury Collection Desert Resort & Spa, Qasr Al Sarab Desert Resort by Anantara, Nurai Island, JA Hatta Fort Hotel, Oceanic Khorfakkan Resort & Spa, Meliá Desert Palm Dubai, and Al Habtoor Polo Resort, the UAE offers an incredible variety of destinations for every style of celebration. As a trusted Wedding Planner Dubai and Wedding Organizer the UAE, Awesome Events Weddings transforms these remarkable locations into unforgettable destination weddings for couples from around the world.",
+      "It's no surprise that the UAE has become one of the world's most desirable destination wedding locations. From iconic landmarks like Burj Al Arab Jumeirah, Atlantis, The Palm, and Emirates Palace Mandarin Oriental to extraordinary escapes such as Al Maha, a Luxury Collection Desert Resort & Spa, Qasr Al Sarab Desert Resort by Anantara, Nurai Island, JA Hatta Fort Hotel, Oceanic Khorfakkan Resort & Spa, Meliá Desert Palm Dubai, and Al Habtoor Polo Resort, the UAE offers an incredible variety of destinations for every style of celebration. As a trusted wedding planner in Dubai and wedding organizer in the UAE, Awesome Events Weddings transforms these remarkable locations into unforgettable destination weddings for couples from around the world.",
       "A destination wedding is more than choosing a beautiful venue—it's about bringing your favourite people together for a celebration they'll remember long after the final toast. Whether you're planning an intimate gathering with close family or a spectacular multi-day wedding celebration, every experience is thoughtfully shaped around your traditions, your guests, and the moments that matter most.",
       "Our customized Wedding Planning Services take care of every stage of the journey, including venue sourcing, guest accommodation, travel coordination, logistics, hospitality, entertainment, photography, décor, and complete wedding management. From the moment your guests arrive until it's time to say goodbye, we ensure everyone enjoys a warm, effortless, and unforgettable celebration together.",
     ],
@@ -983,7 +983,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       heading: "Luxury Styling for Destination Weddings in Dubai",
       intro:
         "Wherever you are in the world, our team can design and create your dream destination wedding décor in Dubai or anywhere across the UAE. Every setting is thoughtfully styled to feel personal, elegant, and beautifully connected to your love story.",
-      listHeading: "Our Destination Wedding Decoration Services Highlight:",
+      listHeading: "Our Destination Wedding Decoration Highlights:",
       items: [
         "Bespoke wedding décor concepts inspired by your culture, style, and celebration",
         "Grand stages, mandaps, floral arches, ceremony backdrops, and aisle styling",

@@ -105,7 +105,7 @@ function VenuesPage() {
             <SectionHeader
               eyebrow="Wedding Planners"
               title="Wedding Venues in Dubai & the UAE"
-              body="Finding the right venue is the first step towards an unforgettable celebration. At Awesome Events Weddings, our experienced luxury wedding planners help couples explore exceptional wedding venues across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE. Whether you are looking for an iconic celebration at Emirates Palace, an elegant outdoor wedding at Atlantis The Palm, or the scenic beauty and timeless charm of One&Only Royal Mirage, our tailored wedding planning services help bridge the gap between inspiration and reality. We match every venue to your vision, guest count, budget, cultural requirements, and celebration style, making the entire venue selection process feel clear, personal, and effortless."
+              body="Finding the right venue is the first step towards an unforgettable celebration. At Awesome Events Weddings, our experienced luxury wedding planners help couples discover exceptional wedding venues across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE. Whether you are looking for an iconic celebration at Emirates Palace, an elegant outdoor wedding at Atlantis The Palm, or the scenic beauty and timeless charm of One&Only Royal Mirage, our tailored wedding planning services help bridge the gap between inspiration and reality. We match every venue to your vision, guest count, budget, cultural requirements, and celebration style, making the entire venue selection process feel clear, personal, and effortless."
               align="center"
               className="
                 mx-auto
@@ -171,98 +171,77 @@ function VenuesPage() {
               const number = String(index + 1).padStart(2, "0");
 
               return (
-                <article key={venue.title} className="group relative">
-                  {/* Oversized background number */}
-                  <span
-                    aria-hidden="true"
-                    className={`pointer-events-none absolute -top-12 z-[5] select-none font-display text-[7rem] leading-none text-primary/[0.14] md:-top-20 md:text-[11rem] ${
-                      imageOnRight ? "right-4 md:right-10" : "left-4 md:left-10"
-                    }`}
-                  >
-                    {number}
-                  </span>
-
+                <div className="relative z-10 grid items-center lg:grid-cols-12">
+                  {/* Image */}
                   <div
-                    className={`relative z-10 grid items-center gap-0 lg:grid-cols-12 ${
-                      imageOnRight ? "" : ""
+                    className={`relative lg:col-span-7 ${
+                      imageOnRight
+                        ? "lg:col-start-6 lg:row-start-1"
+                        : "lg:col-start-1 lg:row-start-1"
                     }`}
                   >
-                    {/* Image */}
-                    <div
-                      className={`relative lg:col-span-7 ${
-                        imageOnRight
-                          ? "lg:col-start-6 lg:row-start-1"
-                          : "lg:col-start-1 lg:row-start-1"
-                      }`}
-                    >
-                      <div className="relative aspect-[16/11] overflow-hidden bg-muted md:aspect-[16/10]">
-                        <img
-                          src={venue.image}
-                          alt={venue.title}
-                          loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.045]"
-                        />
-
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/5 to-transparent" />
-                      </div>
-
-                      {/* Decorative outline */}
-                      <div
-                        aria-hidden="true"
-                        className={`absolute -z-10 hidden h-full w-full border border-primary/20 md:block ${
-                          imageOnRight ? "-right-5 -top-5" : "-left-5 -top-5"
-                        }`}
+                    <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                      <img
+                        src={venue.image}
+                        alt={venue.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.025]"
                       />
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
                     </div>
 
-                    {/* Content panel */}
                     <div
-                      className={`relative z-20 -mt-8 bg-background px-6 py-8 shadow-[0_24px_70px_rgba(40,25,15,0.12)] sm:px-8 md:px-10 md:py-11 lg:col-span-6 lg:mt-0 ${
-                        imageOnRight
-                          ? "lg:col-start-1 lg:row-start-1 lg:mr-[-3rem]"
-                          : "lg:col-start-7 lg:row-start-1 lg:ml-[-3rem]"
+                      aria-hidden="true"
+                      className={`absolute -z-10 hidden h-full w-full border border-primary/20 lg:block ${
+                        imageOnRight ? "-right-4 -top-4" : "-left-4 -top-4"
                       }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="h-px w-8 bg-primary" />
+                    />
+                  </div>
 
-                        <p
-                          data-venue-label
-                          className="text-[10px] font-medium uppercase tracking-[0.28em] text-primary"
-                        >
-                          Featured Setting
-                        </p>
-                      </div>
+                  {/* Content card */}
+                  <div
+                    className={`relative z-20 mt-[-2rem] bg-background px-6 py-8 shadow-[0_24px_65px_rgba(50,30,18,0.12)] sm:px-8 md:px-10 md:py-10 lg:col-span-5 lg:mt-0 ${
+                      imageOnRight
+                        ? "lg:col-start-1 lg:row-start-1 lg:mr-[-1rem]"
+                        : "lg:col-start-8 lg:row-start-1 lg:ml-[-1rem]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="h-px w-8 bg-primary" />
 
-                      <h3 className="mt-5 font-display text-3xl leading-tight md:text-4xl">
-                        {venue.title}
-                      </h3>
-
-                      <p className="mt-6 text-sm leading-7 text-muted-foreground md:text-base md:leading-8">
-                        {venue.description}
+                      <p
+                        data-venue-label
+                        className="text-[10px] font-medium uppercase tracking-[0.28em] text-primary"
+                      >
+                        Featured Setting
                       </p>
+                    </div>
 
-                      {/* End line */}
-                      <div className="mt-8 border-t border-border/80 pt-6">
-                        <p className="text-sm leading-7 text-foreground/70 md:text-[15px]">
-                          {venue.endLine}
-                        </p>
-                      </div>
+                    <h3 className="mt-5 font-display text-3xl leading-tight md:text-[2.35rem]">
+                      {venue.title}
+                    </h3>
 
-                      {/* Decorative bottom detail */}
-                      <div className="mt-7 flex items-center justify-between">
-                        <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
-                          Dubai · UAE
-                        </span>
+                    <p className="mt-5 text-sm leading-7 text-muted-foreground md:text-[15px] md:leading-8">
+                      {venue.description}
+                    </p>
 
-                        <span className="flex items-center gap-2">
-                          <span className="h-px w-8 bg-primary/40 transition-all duration-500 group-hover:w-14" />
-                          <span className="h-1.5 w-1.5 rotate-45 bg-primary" />
-                        </span>
-                      </div>
+                    <div className="mt-7 border-t border-border/80 pt-5">
+                      <p className="text-sm leading-7 text-foreground/70">{venue.endLine}</p>
+                    </div>
+
+                    <div className="mt-6 flex items-center justify-between">
+                      <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
+                        Dubai · UAE
+                      </span>
+
+                      <span className="flex items-center gap-2">
+                        <span className="h-px w-8 bg-primary/40 transition-all duration-500 group-hover:w-12" />
+                        <span className="h-1.5 w-1.5 rotate-45 bg-primary" />
+                      </span>
                     </div>
                   </div>
-                </article>
+                </div>
               );
             })}
           </div>
@@ -317,11 +296,11 @@ function VenuesPage() {
                   </h3>
 
                   <p className="mt-3 max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
-                    As a leading wedding organizer the UAE, we've built strong relationships with the
-                    region's finest venues, photographers, designers, entertainers, and hospitality
-                    partners. Whether you're planning a destination celebration or a local wedding,
-                    our wedding planning services ensure a smooth, stress-free experience with
-                    trusted professionals by your side every step of the way.
+                    As a leading wedding organizer in the UAE, we've built strong relationships with
+                    the region's finest venues, photographers, designers, entertainers, and
+                    hospitality partners. Whether you're planning a destination celebration or a
+                    local wedding, our wedding planning services ensure a smooth, stress-free
+                    experience with trusted professionals by your side every step of the way.
                   </p>
                 </div>
               </div>
