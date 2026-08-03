@@ -307,8 +307,8 @@ function WeddingServicePage() {
                       : service.slug === "luxury-hotel-weddings"
                         ? "Who Are Luxury Hotel Weddings Perfect For?"
                         : detail.idealFor
-                          ? `Who Is ${service.title} Ideal For?`
-                          : `Who Is ${service.title} Perfect For?`}
+                          ? `Who are ${service.title} Ideal For?`
+                          : `Who are ${service.title} Perfect For?`}
                 </h2>
 
                 <ul className="mt-7 grid gap-x-10 gap-y-5 text-sm text-muted-foreground sm:grid-cols-2 md:gap-x-12">

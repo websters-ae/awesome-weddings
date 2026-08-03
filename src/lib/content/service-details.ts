@@ -78,7 +78,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     intro: [
       'Say "I Do" by the Sea with a Celebration Designed Just for You.',
       "Celebrate your love with a breathtaking Luxury Beach Wedding planned by Awesome Events Weddings. As a trusted Wedding Planner in Dubai and Wedding Organizer in the UAE, we create elegant beachfront celebrations across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE's most exclusive coastal destinations. Whether you're dreaming of a romantic sunset ceremony at One&Only The Palm on Palm Jumeirah, a vibrant beachfront celebration at Atlantis The Palm, exchanging vows with the iconic Burj Al Arab Jumeirah as your backdrop, hosting an elegant seaside wedding at Jumeirah Al Naseem in Madinat Jumeirah, or escaping to the tranquil shores of Anantara Mina Al Arab Ras Al Khaimah Resort, our bespoke Wedding Planning Services ensure every detail is beautifully curated.",
-      "Every celebration is thoughtfully designed to reflect your love story, with every detail tailored to your style, traditions, and vision, creating unforgettable luxury weddings in the UAE with lasting memories by the sea.",
+      "Every celebration is thoughtfully designed to reflect your love story, with every detail tailored to your style, traditions, and vision, resulting in an unforgettable luxury beach wedding in the UAE and lasting memories by the sea.",
     ],
     idealFor: [
       "Couples dreaming of romantic seaside ceremonies with beautiful sunset views",
@@ -96,7 +96,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         title: "Elegant Beach Wedding Styling",
-        body: "Our team enhances every coastal setting with bespoke décor, floral design, ambient lighting, elegant seating, personalised details, and styling that complements the natural beauty of the shoreline along with your vision.",
+        body: "Our team enhances every coastal setting with bespoke décor, floral design, ambient lighting, elegant seating, personalised details, and styling that complements the natural beauty of the shoreline while reflecting your vision.",
       },
       {
         title: "Thoughtful Guest Hospitality & RSVP Management",
@@ -104,7 +104,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         title: "Complete Beach Wedding Management",
-        body: "We coordinate ceremonies, receptions, rehearsals, entertainment, catering, technical production, seating, schedules, weather planning, and seamless wedding-day operations.",
+        body: "We coordinate ceremonies, receptions, rehearsals, entertainment, catering, technical production, seating, schedules, weather contingency planning, and seamless wedding-day operations.",
       },
     ],
     faqs: [
@@ -165,7 +165,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     introHeading: "Plan an Unforgettable Desert Wedding in Dubai",
     intro: [
       "Celebrate your love amidst the golden dunes with a breathtaking Desert Wedding in Dubai.",
-      "At Awesome Events Weddings, extraordinary desert celebrations come to life through a seamless blend of Arabian heritage, luxury, and unforgettable experiences. Whether you're dreaming of an intimate desert escape at Al Maha, a Luxury Collection Desert Resort & Spa in the Dubai Desert Conservation Reserve, a magical sunset celebration at Bab Al Shams Desert Resort in Al Marmoom Desert, a spectacular destination wedding surrounded by the rolling dunes of Qasr Al Sarab Desert Resort by Anantara in the Liwa Desert, an exclusive desert oasis celebration at The Ritz-Carlton Ras Al Khaimah, Al Wadi Desert, or a unique wedding inspired by the timeless landscapes of Mleiha Archaeological Centre in Sharjah, our experienced Wedding Planner Dubai team transforms your vision into an unforgettable celebration.",
+      "At Awesome Events Weddings, extraordinary desert celebrations come to life through a seamless blend of Arabian heritage, luxury, and unforgettable experiences. Whether you're dreaming of an intimate desert escape at Al Maha, a Luxury Collection Desert Resort & Spa in the Dubai Desert Conservation Reserve, a magical sunset celebration at Bab Al Shams Desert Resort in Al Marmoom Desert, a spectacular destination wedding surrounded by the rolling dunes of Qasr Al Sarab Desert Resort by Anantara in the Liwa Desert, an exclusive desert oasis celebration at The Ritz-Carlton Ras Al Khaimah, Al Wadi Desert, or a unique wedding inspired by the timeless landscapes of Mleiha Archaeological Centre in Sharjah, our experienced Dubai wedding planning team transforms your vision into an unforgettable celebration.",
       "From exclusive desert wedding venues and bespoke Wedding Decoration in Dubai to gourmet catering, live entertainment, photography, luxury seating, traditional Majlis setups, fireworks, synchronized drone shows, and complete Wedding Planning Services, every celebration is thoughtfully tailored to reflect your love story, style, traditions, and vision, ensuring an unforgettable experience for you and your guests.",
     ],
     idealFor: [
@@ -184,7 +184,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         title: "Bespoke Desert Wedding Concepts",
-        body: "Every celebration is personalized around your story, traditions, style, and guest experience, creating unforgettable weddings inspired by the beauty of the Arabian desert.",
+        body: "Every celebration is tailored around your story, traditions, style, and guest experience, creating unforgettable weddings inspired by the beauty of the Arabian desert.",
       },
       {
         title: "Exclusive Desert Wedding Venues",
@@ -251,9 +251,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "intimate-elopements": {
     introHeading: "Beautiful Intimate Elopements & Micro Weddings Across the UAE",
     intro: [
-      "At Awesome Events Weddings, we believe a smaller celebration can still feel truly grand. As a trusted Wedding Planner Dubai, we create intimate elopements and micro weddings that are personal, refined, and unforgettable. Every celebration is thoughtfully designed with premium styling, elegant wedding décor, beautiful floral details, carefully curated catering, and seamless complete event coordination.",
+      "At Awesome Events Weddings, we believe a smaller celebration can still feel truly grand. As a trusted Wedding Planner in Dubai, we create intimate elopements and micro weddings that are personal, refined, and unforgettable. Every celebration is thoughtfully designed with premium styling, elegant wedding décor, beautiful floral details, carefully curated catering, and seamless complete event coordination.",
       "Whether you are planning a private ceremony for two or a close gathering with family and friends, we transform intimate spaces into meaningful wedding settings filled with warmth, elegance, and character. From venue styling and guest experience to entertainment, dining, photography, and on-the-day management, every detail is handled with care.",
-      "Our goal is to make your wedding feel micro but grand, creating a celebration that feels special, luxurious, and remembered by everyone who attends. With personalised planning and a strong focus on your story, we ensure your intimate wedding in Dubai or anywhere across the UAE feels effortless, heartfelt, and beautifully yours.",
+      "Our goal is to make your intimate wedding feel truly grand, creating a celebration that feels special, luxurious, and remembered by everyone who attends. With personalised planning and a strong focus on your story, we ensure your intimate wedding in Dubai or anywhere across the UAE feels effortless, heartfelt, and beautifully yours.",
     ],
     idealFor: [
       "Couples planning a romantic and private elopement",
@@ -279,13 +279,13 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         title: "Personal Support from Start to Finish",
-        body: "Our dedicated team provides complete elopement and micro wedding planning, managing suppliers, catering, schedules, guest care, and wedding-day coordination with warmth and attention.",
+        body: "Our dedicated team provides complete elopement and micro wedding planning, managing suppliers, catering, schedules, guest care, and wedding-day coordination with warmth and attention to detail.",
       },
     ],
     decor: {
       heading: "Luxury Styling for Intimate Weddings in Dubai",
       intro:
-        "Create a beautifully personal setting with Luxury Wedding Decoration for Intimate Elopements & Micro Weddings across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE. At Awesome Events Weddings, we design elegant spaces that celebrate love through personal touches, smaller settings, cosy styling, candlelight, private dining, and personalised décor. Whether you're planning a romantic Beach Wedding, an intimate Luxury Hotel Wedding, or a private Destination Wedding, our bespoke Wedding Decoration Dubai services are thoughtfully tailored to your vision.",
+        "Create a beautifully personal setting with Luxury Wedding Decoration for Intimate Elopements & Micro Weddings across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE. At Awesome Events Weddings, we design elegant spaces that celebrate love through personal touches, smaller settings, cosy styling, candlelight, private dining, and personalised décor. Whether you are planning a romantic beach wedding, an intimate luxury hotel wedding, or a private destination wedding, our bespoke wedding decoration services in Dubai & the UAE are thoughtfully tailored to your vision.",
       listHeading: "Our Intimate Wedding Décor Services Highlight:",
       items: [
         "Personalised décor and bespoke floral styling",
@@ -297,7 +297,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         "Elegant photo corners and personalised celebration details",
       ],
       outro:
-        "Every Intimate Elopement and Micro Wedding is thoughtfully designed to create a warm, meaningful atmosphere where every detail reflects your story. Our customised Wedding Decoration transforms intimate celebrations into timeless memories for you and your closest loved ones.",
+        "Every Intimate Elopement and Micro Wedding is thoughtfully designed to create a warm, meaningful atmosphere where every detail reflects your story. Our customised wedding decoration services transforms intimate celebrations into timeless memories for you and your loved ones.",
       image: "/decor/ie1.webp",
     },
     faqs: [
@@ -336,7 +336,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
   },
 
-  "civil-weddings-the UAE": {
+  "civil-weddings-uae": {
     introHeading: "Elegant Civil Weddings in Dubai & Across the UAE",
     intro: [
       "At Awesome Events Weddings, we create civil weddings in Dubai that feel meaningful, elegant, and deeply personal. As an experienced Wedding Planner Dubai, we help couples turn a simple legal ceremony into a beautifully styled celebration filled with warmth, thoughtful details, and unforgettable moments.",
@@ -429,7 +429,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     introHeading: "Celebrate Your Love in Dubai’s Most Luxurious Hotels",
     intro: [
       "Enjoy an elegant and effortless Luxury Hotel Wedding in Dubai with Awesome Events Weddings.",
-      "As a trusted Wedding Planner Dubai and Wedding Organizer the UAE, we curate exceptional celebrations across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE's finest five-star hotels. Whether you're envisioning a timeless celebration at Four Seasons Resort Dubai at Jumeirah Beach, a glamorous wedding at the iconic Atlantis The Royal on Palm Jumeirah, an exclusive luxury celebration at Bvlgari Resort Dubai on Jumeirah Bay Island, an elegant wedding within the sophisticated surroundings of Mandarin Oriental Jumeirah or an iconic celebration at Armani Hotel within the Burj Khalifa, our customized Wedding Planning Services are designed around your vision, with every detail thoughtfully curated and flawlessly executed.",
+      "As a trusted wedding planner in Dubai and wedding organizer in the UAE, we curate exceptional celebrations across Dubai, Abu Dhabi, Ras Al Khaimah, and the UAE's finest five-star hotels. Whether you're envisioning a timeless celebration at Four Seasons Resort Dubai at Jumeirah Beach, a glamorous wedding at the iconic Atlantis The Royal on Palm Jumeirah, an exclusive luxury celebration at Bvlgari Resort Dubai on Jumeirah Bay Island, an elegant wedding within the sophisticated surroundings of Mandarin Oriental Jumeirah, or an iconic celebration at Armani Hotel within the Burj Khalifa, our customized Wedding Planning Services are designed around your vision, with every detail thoughtfully curated and flawlessly executed.",
       "From luxury venue selection and customized wedding décor to floral styling, staging, lighting, entertainment, photography, guest accommodation, transportation, catering, seating plans, and complete wedding logistics, every celebration is thoughtfully tailored to reflect your love story, style, traditions, and vision, creating an unforgettable luxury hotel wedding experience for you and your guests.",
     ],
     idealFor: [
@@ -470,7 +470,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         "Luxury table styling and statement centerpieces",
         "Romantic wedding lighting and ambience concepts",
         "Beautiful reception and stage setups",
-        "Custom wedding themes and colour palettes & much more",
+        "Custom wedding themes, colour palettes, and much more",
       ],
       outro:
         "From the first welcome to the final celebration, we create luxury hotel wedding setups in Dubai & the UAE that reflect your love story and make every guest feel part of something truly special.",
@@ -515,7 +515,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "yacht-marina-weddings": {
     introHeading: "Luxury Yacht & Marina Weddings in Dubai",
     intro: [
-      "Celebrate your love aboard a Luxury Yacht Wedding in Dubai, where sparkling waters, iconic landmarks, and breathtaking sunsets create an unforgettable setting. As a trusted Wedding Planner, Awesome Events Weddings designs elegant yacht and marina celebrations across the UAE, offering exclusive luxury yachts and exceptional waterfront experiences.",
+      "Celebrate your love aboard a Luxury Yacht Wedding in Dubai, where sparkling waters, iconic landmarks, and breathtaking sunsets create an unforgettable setting. As a trusted wedding planner in Dubai, Awesome Events Weddings designs elegant yacht and marina celebrations across the UAE, offering exclusive luxury yachts and exceptional waterfront experiences.",
       "Whether you're envisioning a romantic Palm Jumeirah wedding cruise, a luxury yacht celebration with the iconic Burj Al Arab as your backdrop, an exclusive Atlantis The Palm yacht charter, a sophisticated Dubai Marina skyline wedding, or a grand celebration departing from Dubai Harbour, our customized Wedding Planning Services are tailored to your vision, ensuring every detail is thoughtfully planned and beautifully executed. From intimate gatherings to some of the best luxury yachts for wedding parties in Dubai, every celebration is designed to reflect your unique story.",
       "From luxury yacht sourcing and marina venue selection to elegant deck décor, floral styling, entertainment, photography, gourmet on-board catering, guest transfers, and complete wedding coordination, every element is carefully curated to create a warm and refined celebration. Whether you're planning a romantic sunset wedding cruise through Dubai Marina, an elegant engagement aboard a private yacht, or an exclusive celebration cruising around Palm Jumeirah, Atlantis The Palm, and Dubai's spectacular coastline, we ensure every moment is beautifully brought to life with exceptional attention to detail.",
     ],
@@ -560,7 +560,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         "Bespoke themes, colour palettes, and personalised yacht styling",
       ],
       outro:
-        "Every luxury yacht wedding setup in Dubai is thoughtfully designed to feel intimate, sophisticated, and beautifully connected to the waterfront.",
+        "Every luxury yacht wedding setup in Dubai and the UAE is thoughtfully designed to feel intimate, sophisticated, and beautifully connected to the waterfront.",
       image: "/decor/yacht-d.webp",
     },
     faqs: [
@@ -602,9 +602,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "garden-weddings": {
     introHeading: "Luxury Garden Weddings in Dubai & Across the UAE",
     intro: [
-      "Celebrate your love amidst beautifully landscaped gardens, blooming flowers, and tranquil surroundings that create a timeless setting for your special day. As a trusted Wedding Planner in Dubai and Wedding Organizer the UAE, we curate elegant Garden Weddings across the UAE, from intimate family gatherings and charming micro weddings to luxurious garden celebrations for hundreds of guests. Whether you're looking for a secluded botanical escape, a grand resort lawn, or a unique outdoor venue that suits your style, scenery, and budget, we help you find the perfect setting for your celebration.",
+      "Celebrate your love amidst beautifully landscaped gardens, blooming flowers, and tranquil surroundings that create a timeless setting for your special day. As a trusted wedding planner in Dubai and wedding organizer in the UAE, we curate elegant garden weddings across the UAE, from intimate family gatherings and charming micro weddings to luxurious garden celebrations for hundreds of guests. Whether you're looking for a secluded botanical escape, a grand resort lawn, or a unique outdoor venue that suits your style, scenery, and budget, we help you find the perfect setting for your celebration.",
       "Discover some of the UAE's most beautiful garden wedding venues, including Four Seasons Resort Dubai at Jumeirah Beach, Palazzo Versace Dubai, The Ritz-Carlton, Dubai in Jumeirah Beach Residence, InterContinental Fujairah Resort, and Vida Beach Resort Umm Al Quwain, along with many other exceptional venues offering picturesque gardens and elegant outdoor spaces for unforgettable weddings.",
-      "Our customized Wedding Planning Services cover every aspect of your celebration, from venue selection and floral styling to décor, lighting, staging, entertainment, guest hospitality, and seamless coordination. Blending nature's beauty with refined design, we create luxury Garden Weddings in the UAE that feel personal, elegant, and unforgettable.",
+      "Our customized Wedding Planning Services cover every aspect of your celebration, from venue selection and floral styling to décor, lighting, staging, entertainment, guest hospitality, and seamless coordination. Blending nature's beauty with refined design, we create luxury garden weddings in the UAE that feel personal, elegant, and unforgettable.",
     ],
     whyChooseTitle: "Romantic Garden Weddings Inspired by Nature",
     whyChoose: [
@@ -681,7 +681,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "outdoor-weddings": {
     introHeading: "Luxury Outdoor Weddings in Dubai & the UAE",
     intro: [
-      "Some of the most unforgettable wedding moments are created beneath the open sky, where every view becomes part of your celebration. As a trusted Wedding Planner in Dubai and Wedding Organizer the UAE, Awesome Events Weddings transforms breathtaking outdoor settings into elegant celebrations tailored to your vision.",
+      "Some of the most unforgettable wedding moments are created beneath the open sky, where every view becomes part of your celebration. As a trusted wedding planner in Dubai and wedding organizer in the UAE, Awesome Events Weddings transforms breathtaking outdoor settings into elegant celebrations tailored to your vision.",
       "From the contemporary elegance of Mandarin Oriental Jumeirah in Dubai and the beachfront charm of Taj Exotica Resort & Spa, The Palm, to the sophisticated settings of Address Hotels & Resorts, the natural beauty of Anantara Mina Al Arab Ras Al Khaimah Resort, the timeless luxury of Waldorf Astoria Ras Al Khaimah, and the serene coastline of Palace Beach Resort Fujairah, along with many other exceptional venues across the UAE, every location offers a distinctive backdrop for an unforgettable outdoor wedding. With access to some of the country's finest venues, we help you find the setting that perfectly complements your vision, style, and celebration.",
       "Every element of that celebration is thoughtfully brought together through our customized Wedding Planning Services, including elegant décor, floral styling, ambient lighting, bespoke seating, staging, entertainment, guest hospitality, and complete wedding coordination. With meticulous attention to detail, we create outdoor weddings that feel effortless, elegant, and truly unforgettable.",
     ],
@@ -768,9 +768,9 @@ export const serviceDetails: Record<string, ServiceDetail> = {
   "emirati-gcc-weddings": {
     introHeading: "Emirati & GCC Weddings Dubai",
     intro: [
-      "Rooted in tradition, family values, and timeless hospitality, Emirati and GCC weddings are among the region's most cherished celebrations. As a trusted Wedding Planner Dubai and Wedding Organizer the UAE, Awesome Events Weddings specialises in creating elegant Emirati and GCC Weddings that honour cultural traditions while delivering a refined and personalised experience. From intimate family gatherings to magnificent multi-day celebrations, every wedding is thoughtfully planned around your customs, preferences, and vision.",
-      "Whether you're planning a traditional Engagement, Henna Night, Nikah (Katb Kitab), Zaffa entrance, or a grand wedding reception, we work closely with your family to ensure every detail reflects your heritage with the utmost respect and discretion. Our experienced team can provide all-female event professionals, all-male event professionals, or a carefully coordinated combination of both, based on your family's preferences. We also assist with beautifully curated invitations and RSVP management, personalised wedding gifts and guest favours, guidance on traditional bridal and groom attire, menu planning, live Arabic music and cultural entertainment withluxury hospitality.",
-      "Our customized Wedding Planning Services bring every element together, including elegant majlis setups, floral décor, staging, lighting, entertainment, guest management, logistics, photography and videography coordination, valet services, VIP hospitality, and complete wedding management. Every celebration is designed to honour Emirati and GCC traditions while creating an unforgettable experience for you, your family, and your guests.",
+      "Rooted in tradition, family values, and timeless hospitality, Emirati and GCC weddings are among the region's most cherished celebrations. As a trusted wedding planner in Dubai and wedding organizer in the UAE, Awesome Events Weddings specializes in creating elegant Emirati and GCC weddings that honour cultural traditions while delivering a refined and personalised experience. From intimate family gatherings to magnificent multi-day celebrations, every wedding is thoughtfully planned around your customs, preferences, and vision.",
+      "Whether you're planning a traditional Engagement, Henna Night, Nikah (Katb Kitab), Zaffa entrance, or a grand wedding reception, we work closely with your family to ensure every detail reflects your heritage with the utmost respect and discretion. Our experienced team can provide all-female event professionals, all-male event professionals, or a carefully coordinated combination of both, based on your family's preferences. We also assist with beautifully curated invitations and RSVP management, personalised wedding gifts and guest favours, guidance on traditional bridal and groom attire, menu planning, live Arabic music and cultural entertainment, with luxury hospitality throughout the celebration.",
+      "Our customized Wedding Planning Services bring every element together, including elegant majlis setups, floral décor, staging, lighting, entertainment, guest management, logistics, photography and videography coordination, valet services, VIP hospitality, and complete wedding management. Every celebration is designed to honour Emirati and GCC traditions while ensuring an unforgettable experience for you, your family, and your guests.",
     ],
     idealFor: [
       "Couples planning Emirati weddings in Dubai and the UAE",
@@ -792,7 +792,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         title: "Luxury Majlis, Stage & Wedding Decoration",
-        body: "From elegant Majlis lounges and grand stages to floral installations, lighting, entrances, and bespoke wedding decoration Dubai, every space is designed around your preferred style.",
+        body: "From elegant Majlis lounges and grand stages to floral installations, lighting, entrances, and bespoke wedding decoration in Dubai, every space is designed around your preferred style.",
       },
       {
         title: "Complete Privacy & Guest Management",
@@ -803,7 +803,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       heading: "Emirati & GCC Wedding Decoration in Dubai & the UAE",
       intro:
         "Our Emirati and GCC wedding décor services in Dubai and the UAE create elegant celebrations inspired by cultural traditions, refined luxury, and warm Arabian hospitality.",
-      listHeading: "Our Emirati & GCC Wedding Décor Services Highlight:",
+      listHeading: "Our Emirati & GCC Wedding Décor Highlights:",
       items: [
         "Majlis-inspired seating and lounge styling",
         "Grand floral stages and statement backdrops",
@@ -879,7 +879,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         title: "Luxury Décor, Staging & Production",
-        body: "From vibrant Mehndi styling and grand reception stages to mandaps, floral installations, lighting, sound, LED screens, entrances, and wedding decoration Dubai, we transform every venue.",
+        body: "From vibrant Mehndi styling and grand reception stages to mandaps, floral installations, lighting, sound, LED screens, entrances, and wedding decoration in Dubai, we transform every venue.",
       },
       {
         title: "Complete Family, Guest & Event Coordination",
