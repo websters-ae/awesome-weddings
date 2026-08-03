@@ -82,8 +82,8 @@ function ProcessPage() {
             <div className="flex flex-wrap items-end justify-between gap-6">
               <SectionHeader
                 eyebrow="Wedding Guide"
-                title="Stories, guides & inspiration"
-                body="Expert planning advice, real venue guides, and answers to every question couples ask us."
+                title="Wedding Ideas, Guides & Inspiration"
+                body="Thoughtfully curated articles, planning advice, venue recommendations, and expert insights to help you plan a beautiful wedding anywhere in the UAE."
               />
               <Button asChild variant="outline">
                 <Link to="/wedding-guide">
