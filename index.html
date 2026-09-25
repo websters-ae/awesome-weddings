@@ -3,7 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Awesome Weddings</title>
+    <title>Luxury Wedding Planner in Dubai | Awesome Events Weddings</title>
+    <!-- Static SEO fallback: dist/ is served as plain files from IIS, so
+      crawlers and social bots that don't execute JS still see real meta.
+      The TanStack router `head()` calls replace/augment these at runtime. -->
+    <meta
+      name="description"
+      content="Dubai's leading luxury wedding planner. Beach, desert, hotel and destination weddings across the UAE — planned end-to-end by our award-winning team."
+    />
+    <meta name="author" content="Awesome Events Weddings" />
+    <meta name="theme-color" content="#4a0e0e" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Luxury Wedding Planner in Dubai | Awesome Events Weddings" />
+    <meta
+      property="og:description"
+      content="Dubai's leading luxury wedding planner. Beach, desert, hotel and destination weddings across the UAE — planned end-to-end by our award-winning team."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <!-- Fonts statically (not only via runtime head injection) so first
+      paint doesn't wait for the JS bundle to insert them. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    />
   </head>
   <body>
     <div id="root"></div>

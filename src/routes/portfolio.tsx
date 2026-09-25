@@ -17,14 +17,50 @@ export const Route = createFileRoute("/portfolio")({
   component: PortfolioPage,
 });
 
-const originalModules = import.meta.glob("/src/assets/portfolio/*.webp", {
-  eager: true,
-  import: "default",
-  query: "?url",
-}) as Record<string, string>;
+/*
+  Full-resolution portfolio images live in public/portfolio-full/ as plain
+  static files and are referenced by URL — Vite never processes them.
+
+  Two reasons: (1) the raw sources in src/assets/portfolio are straight from
+  the camera (up to ~5MB each); bundling them would explode dist/ and every
+  build would re-transform 100+ huge images. The prepare script
+  (portfolio:prepare) writes optimised 1600px/q70 copies instead. (2) Cards
+  below the fold must not fetch anything until scrolled near — full images
+  load on demand via `loadOriginal` and are cached per session.
+*/
+const fullSrcFor = (filename: string) => `/portfolio-full/${encodeURIComponent(filename)}`;
+
+const originalCache = new Map<string, Promise<string>>();
+
+function loadOriginal(filename: string): Promise<string> {
+  let pending = originalCache.get(filename);
+  if (!pending) {
+    // Static file: resolve immediately, but keep the promise API so callers
+    // don't care where the URL came from.
+    pending = Promise.resolve(fullSrcFor(filename));
+    originalCache.set(filename, pending);
+  }
+  return pending;
+}
+
+function useOriginalSrc(filename: string, shouldLoad: boolean): string | null {
+  const [src, setSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!shouldLoad) return;
+    let cancelled = false;
+    loadOriginal(filename).then((url) => {
+      if (!cancelled && url) setSrc(url);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [filename, shouldLoad]);
+
+  return src;
+}
 
 type PortfolioImage = PortfolioManifestItem & {
-  src: string;
   alt: string;
 };
 
@@ -56,6 +92,7 @@ function PortfolioCard({
   const cardRef = useRef<HTMLButtonElement | null>(null);
   const [shouldLoadFull, setShouldLoadFull] = useState(index < 4);
   const [isFullLoaded, setIsFullLoaded] = useState(false);
+  const fullSrc = useOriginalSrc(image.filename, shouldLoadFull);
 
   useEffect(() => {
     if (shouldLoadFull) return;
@@ -101,9 +138,9 @@ function PortfolioCard({
         }`}
       />
 
-      {shouldLoadFull && (
+      {shouldLoadFull && fullSrc && (
         <img
-          src={image.src}
+          src={fullSrc}
           alt={image.alt}
           width={image.width}
           height={image.height}
@@ -130,21 +167,49 @@ function PortfolioCard({
   );
 }
 
+function LightboxImage({
+  image,
+  loaded,
+  onLoaded,
+}: {
+  image: PortfolioImage;
+  loaded: boolean;
+  onLoaded: () => void;
+}) {
+  // The lightbox always needs the full image, and the parent effect has
+  // already warmed the cache — this usually resolves instantly.
+  const fullSrc = useOriginalSrc(image.filename, true);
+
+  if (!fullSrc) return null;
+
+  return (
+    <img
+      src={fullSrc}
+      alt={image.alt}
+      width={image.width}
+      height={image.height}
+      decoding="async"
+      fetchPriority="high"
+      onLoad={(event) => {
+        void event.currentTarget
+          .decode()
+          .catch(() => undefined)
+          .finally(() => onLoaded());
+      }}
+      className={`max-h-full max-w-full select-none object-contain shadow-2xl transition-opacity duration-500 ${
+        loaded ? "opacity-100" : "opacity-0"
+      }`}
+      draggable={false}
+    />
+  );
+}
+
 function PortfolioPage() {
   const images = useMemo<PortfolioImage[]>(() => {
-    const originals = new Map<string, string>();
-    Object.entries(originalModules).forEach(([path, src]) => {
-      const filename = path.split("/").pop();
-      if (filename) originals.set(filename, src);
-    });
-
-    return portfolioManifest
-      .map((item, index) => {
-        const src = originals.get(item.filename);
-        if (!src) return null;
-        return { ...item, src, alt: createReadableAlt(item.filename, index) };
-      })
-      .filter((image): image is PortfolioImage => image !== null);
+    return portfolioManifest.map((item, index) => ({
+      ...item,
+      alt: createReadableAlt(item.filename, index),
+    }));
   }, []);
 
   const [visibleCount, setVisibleCount] = useState(INITIAL_IMAGE_COUNT);
@@ -191,10 +256,12 @@ function PortfolioPage() {
     const previous = selectedIndex === 0 ? images.length - 1 : selectedIndex - 1;
     const next = selectedIndex === images.length - 1 ? 0 : selectedIndex + 1;
 
-    [images[previous], images[next]].forEach((image) => {
+    // Warm the browser cache for the current + neighbouring full images so
+    // the lightbox and prev/next navigation feel instant.
+    [images[selectedIndex], images[previous], images[next]].forEach((image) => {
       if (!image) return;
       const preload = new Image();
-      preload.src = image.src;
+      preload.src = fullSrcFor(image.filename);
     });
   }, [selectedIndex, images]);
 
@@ -304,24 +371,11 @@ function PortfolioPage() {
                 className="absolute max-h-full max-w-full object-contain opacity-80 blur-md"
               />
             )}
-            <img
-              key={selectedImage.src}
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              width={selectedImage.width}
-              height={selectedImage.height}
-              decoding="async"
-              fetchPriority="high"
-              onLoad={(event) => {
-                void event.currentTarget
-                  .decode()
-                  .catch(() => undefined)
-                  .finally(() => setIsLightboxImageLoaded(true));
-              }}
-              className={`max-h-full max-w-full select-none object-contain shadow-2xl transition-opacity duration-500 ${
-                isLightboxImageLoaded ? "opacity-100" : "opacity-0"
-              }`}
-              draggable={false}
+            <LightboxImage
+              key={selectedImage.filename}
+              image={selectedImage}
+              onLoaded={() => setIsLightboxImageLoaded(true)}
+              loaded={isLightboxImageLoaded}
             />
           </div>
 

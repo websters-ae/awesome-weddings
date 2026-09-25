@@ -279,7 +279,13 @@ function ServicesPage() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
-          <img src={servicesHero} alt="" className="h-full w-full object-cover" />
+          <img
+            src={servicesHero}
+            alt=""
+            fetchPriority="high"
+            decoding="async"
+            className="h-full w-full object-cover"
+          />
           <div className="absolute inset-0 bg-black/45" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/25 to-black/50" />
         </div>

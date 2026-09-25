@@ -5,7 +5,7 @@ import { primaryNav, company } from "@/lib/content/nav";
 import { useI18n } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { flagshipServices, culturalServices } from "@/lib/content/services";
-import Logo from "/logo.png";
+import Logo from "/logo.webp";
 
 const serviceLinks = [...flagshipServices, ...culturalServices].map((service) => ({
   label: service.title,
@@ -39,6 +39,9 @@ export function SiteHeader() {
             src={Logo}
             alt=""
             aria-hidden="true"
+            width={256}
+            height={256}
+            decoding="async"
             className="h-11 w-auto shrink-0 object-contain sm:h-12 md:h-14"
           />
         </Link>

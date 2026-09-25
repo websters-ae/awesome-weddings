@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionHeader } from "@/components/section-header";
 import { Button } from "@/components/ui/button";
 import { getServiceBySlug } from "@/lib/content/services";
-import venueOne from "@/assets/venue/awimg1.png";
-import venueTwo from "@/assets/venue/awimg2.png";
+import venueOne from "@/assets/venue/awimg1.webp";
+import venueTwo from "@/assets/venue/awimg2.webp";
 
 export const Route = createFileRoute("/venues")({
   head: () => ({
@@ -317,6 +317,8 @@ function VenuesPage() {
                 <img
                   src={venueOne}
                   alt="Elegant wedding venue"
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -325,6 +327,8 @@ function VenuesPage() {
                 <img
                   src={venueTwo}
                   alt="Luxury wedding venue"
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover"
                 />
               </div>

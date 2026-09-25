@@ -66,6 +66,8 @@ function HomePage() {
             alt="Luxury wedding ceremony in Dubai"
             width={1920}
             height={1200}
+            fetchPriority="high"
+            decoding="async"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 hero-scrim" />

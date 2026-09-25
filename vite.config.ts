@@ -11,7 +11,19 @@ import tailwindcss from "@tailwindcss/vite";
 import mdx from "@mdx-js/rollup";
 
 export default defineConfig({
-  plugins: [TanStackRouterVite(), mdx(), react(), tailwindcss()],
+  plugins: [
+    // Per-route code splitting: each TanStack file route becomes its own
+    // lazy chunk instead of inflating the initial bundle. This is the single
+    // biggest win for IIS static hosting (smaller first load, hashed chunks
+    // cached long-term by browsers).
+    TanStackRouterVite({ autoCodeSplitting: true }),
+    // Only process real .mdx articles (wedding guides). Without `include`,
+    // the plugin still only matches .mdx by default, but pinning it avoids
+    // surprises if new extensions are added later.
+    mdx({ include: ["**/*.mdx"] }),
+    react(),
+    tailwindcss(),
+  ],
   resolve: {
     tsconfigPaths: true,
     alias: {
@@ -21,5 +33,51 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
+    // Skip the compressed-size report: it gzip-compresses every asset to
+    // print sizes, which noticeably slows the build for zero runtime gain.
+    reportCompressedSize: false,
+    // No sourcemaps for the IIS static bundle (smaller dist, faster build).
+    sourcemap: false,
+    // Inline only tiny assets (<4KB) as base64; everything else stays a
+    // separate hashed file so IIS + browsers can cache it immutably.
+    assetsInlineLimit: 4096,
+    chunkSizeWarningLimit: 600,
+    target: "es2022",
+    rollupOptions: {
+      output: {
+        // Stable vendor chunking: React/framework code changes rarely, so
+        // splitting it out keeps the hash stable across deploys and lets
+        // returning visitors reuse the cached file.
+        // NOTE: Vite 8 (Rolldown) requires the function form — a plain
+        // object is rejected at build time.
+        manualChunks: (id) => {
+          if (!id.includes("node_modules")) return undefined;
+          if (
+            id.includes("node_modules/react-dom") ||
+            id.includes("node_modules/react/") ||
+            id.includes("node_modules/scheduler")
+          )
+            return "vendor-react";
+          if (id.includes("node_modules/@tanstack")) return "vendor-router";
+          if (
+            id.includes("node_modules/lucide-react") ||
+            id.includes("node_modules/clsx") ||
+            id.includes("node_modules/tailwind-merge") ||
+            id.includes("node_modules/class-variance-authority")
+          )
+            return "vendor-ui";
+          if (
+            id.includes("node_modules/react-hook-form") ||
+            id.includes("node_modules/@hookform") ||
+            id.includes("node_modules/zod")
+          )
+            return "vendor-forms";
+          return undefined;
+        },
+        assetFileNames: "assets/[name]-[hash][extname]",
+        chunkFileNames: "assets/[name]-[hash].js",
+        entryFileNames: "assets/[name]-[hash].js",
+      },
+    },
   },
 });

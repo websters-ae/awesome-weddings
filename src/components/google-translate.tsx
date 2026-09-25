@@ -13,7 +13,7 @@ export function GoogleTranslate() {
 
     const loader = document.createElement("script");
     loader.id = "google_translate_loader";
-    loader.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    loader.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     loader.async = true;
     document.head.appendChild(loader);
 

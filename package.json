@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "node scripts/generate-sitemap.mjs && vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
+    "sitemap": "node scripts/generate-sitemap.mjs",
     "portfolio:prepare": "node scripts/generate-portfolio-previews.mjs"
   },
   "dependencies": {
